@@ -1,0 +1,1215 @@
+Apache Maven 3.3.3 (7994120775791599e205a5524ec3e0dfe41d4a06; 2015-04-22T13:57:37+02:00)
+Maven home: C:\Program Files\apache-maven-3.3.3\bin\..
+Java version: 1.7.0_80, vendor: Oracle Corporation
+Java home: C:\Program Files\Java\jdk1.7.0_80\jre
+Default locale: de_DE, platform encoding: Cp1252
+OS name: "windows 7", version: "6.1", arch: "amd64", family: "windows"
+[DEBUG] Created new class realm maven.api
+[DEBUG] Importing foreign packages into class realm maven.api
+[DEBUG]   Imported: javax.enterprise.inject.* < plexus.core
+[DEBUG]   Imported: javax.enterprise.util.* < plexus.core
+[DEBUG]   Imported: javax.inject.* < plexus.core
+[DEBUG]   Imported: org.apache.maven.* < plexus.core
+[DEBUG]   Imported: org.apache.maven.artifact < plexus.core
+[DEBUG]   Imported: org.apache.maven.classrealm < plexus.core
+[DEBUG]   Imported: org.apache.maven.cli < plexus.core
+[DEBUG]   Imported: org.apache.maven.configuration < plexus.core
+[DEBUG]   Imported: org.apache.maven.exception < plexus.core
+[DEBUG]   Imported: org.apache.maven.execution < plexus.core
+[DEBUG]   Imported: org.apache.maven.execution.scope < plexus.core
+[DEBUG]   Imported: org.apache.maven.lifecycle < plexus.core
+[DEBUG]   Imported: org.apache.maven.model < plexus.core
+[DEBUG]   Imported: org.apache.maven.monitor < plexus.core
+[DEBUG]   Imported: org.apache.maven.plugin < plexus.core
+[DEBUG]   Imported: org.apache.maven.profiles < plexus.core
+[DEBUG]   Imported: org.apache.maven.project < plexus.core
+[DEBUG]   Imported: org.apache.maven.reporting < plexus.core
+[DEBUG]   Imported: org.apache.maven.repository < plexus.core
+[DEBUG]   Imported: org.apache.maven.rtinfo < plexus.core
+[DEBUG]   Imported: org.apache.maven.settings < plexus.core
+[DEBUG]   Imported: org.apache.maven.toolchain < plexus.core
+[DEBUG]   Imported: org.apache.maven.usability < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.* < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.authentication < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.authorization < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.events < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.observers < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.proxy < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.repository < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.resource < plexus.core
+[DEBUG]   Imported: org.codehaus.classworlds < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.* < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.classworlds < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.component < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.configuration < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.container < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.context < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.lifecycle < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.logging < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.personality < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.Xpp3Dom < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.pull.XmlPullParser < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.pull.XmlPullParserException < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.pull.XmlSerializer < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.* < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.artifact < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.collection < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.deployment < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.graph < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.impl < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.installation < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.internal.impl < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.metadata < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.repository < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.resolution < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.spi < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.transfer < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.version < plexus.core
+[DEBUG]   Imported: org.slf4j.* < plexus.core
+[DEBUG]   Imported: org.slf4j.spi.* < plexus.core
+[DEBUG] Populating class realm maven.api
+[INFO] Error stacktraces are turned on.
+[DEBUG] Reading global settings from C:\Program Files\apache-maven-3.3.3\bin\..\conf\settings.xml
+[DEBUG] Reading user settings from C:\Users\user\.m2\settings.xml
+[DEBUG] Reading global toolchains from C:\Program Files\apache-maven-3.3.3\bin\..\conf\toolchains.xml
+[DEBUG] Reading user toolchains from C:\Users\user\.m2\toolchains.xml
+[DEBUG] Using local repository at C:\Users\user\.m2\repository
+[DEBUG] Using manager EnhancedLocalRepositoryManager with priority 10.0 for C:\Users\user\.m2\repository
+[INFO] Scanning for projects...
+[DEBUG] Dependency collection stats: {ConflictMarker.analyzeTime=1, ConflictMarker.markTime=1, ConflictMarker.nodeCount=6, ConflictIdSorter.graphTime=0, ConflictIdSorter.topsortTime=1, ConflictIdSorter.conflictIdCount=5, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=3, ConflictResolver.conflictItemCount=6, DefaultDependencyCollector.collectTime=61, DefaultDependencyCollector.transformTime=8}
+[DEBUG] org.jvnet.wagon-svn:wagon-svn:jar:1.8:
+[DEBUG]    org.jvnet.hudson.svnkit:svnkit:jar:1.1.4-hudson-4:compile
+[DEBUG]       ch.ethz.ganymed:ganymed-ssh2:jar:build210:compile
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:1.4.1:compile
+[DEBUG]    org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2:compile
+[DEBUG] Created new class realm extension>org.jvnet.wagon-svn:wagon-svn:1.8
+[DEBUG] Importing foreign packages into class realm extension>org.jvnet.wagon-svn:wagon-svn:1.8
+[DEBUG]   Imported:  < maven.api
+[DEBUG] Populating class realm extension>org.jvnet.wagon-svn:wagon-svn:1.8
+[DEBUG]   Included: org.jvnet.wagon-svn:wagon-svn:jar:1.8
+[DEBUG]   Included: org.jvnet.hudson.svnkit:svnkit:jar:1.1.4-hudson-4
+[DEBUG]   Included: ch.ethz.ganymed:ganymed-ssh2:jar:build210
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:1.4.1
+[DEBUG] Dependency collection stats: {ConflictMarker.analyzeTime=0, ConflictMarker.markTime=0, ConflictMarker.nodeCount=4, ConflictIdSorter.graphTime=0, ConflictIdSorter.topsortTime=0, ConflictIdSorter.conflictIdCount=3, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=0, ConflictResolver.conflictItemCount=4, DefaultDependencyCollector.collectTime=18, DefaultDependencyCollector.transformTime=0}
+[DEBUG] org.apache.maven.wagon:wagon-ssh-external:jar:1.0-alpha-6:
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:1.0.4:compile
+[DEBUG]    org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-6:compile
+[DEBUG] Created new class realm extension>org.apache.maven.wagon:wagon-ssh-external:1.0-alpha-6
+[DEBUG] Importing foreign packages into class realm extension>org.apache.maven.wagon:wagon-ssh-external:1.0-alpha-6
+[DEBUG]   Imported:  < maven.api
+[DEBUG] Populating class realm extension>org.apache.maven.wagon:wagon-ssh-external:1.0-alpha-6
+[DEBUG]   Included: org.apache.maven.wagon:wagon-ssh-external:jar:1.0-alpha-6
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:1.0.4
+[DEBUG] Dependency collection stats: {ConflictMarker.analyzeTime=0, ConflictMarker.markTime=0, ConflictMarker.nodeCount=8, ConflictIdSorter.graphTime=0, ConflictIdSorter.topsortTime=0, ConflictIdSorter.conflictIdCount=8, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=0, ConflictResolver.conflictItemCount=8, DefaultDependencyCollector.collectTime=42, DefaultDependencyCollector.transformTime=1}
+[DEBUG] org.apache.maven.wagon:wagon-webdav:jar:1.0-beta-1:
+[DEBUG]    slide:slide-webdavlib:jar:2.1:compile
+[DEBUG]       commons-httpclient:commons-httpclient:jar:2.0.2:compile
+[DEBUG]          commons-logging:commons-logging:jar:1.0.3:compile
+[DEBUG]       jdom:jdom:jar:1.0:compile
+[DEBUG]       de.zeigermann.xml:xml-im-exporter:jar:1.1:compile
+[DEBUG]    org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-1:compile
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.0.4:compile
+[DEBUG] Created new class realm extension>org.apache.maven.wagon:wagon-webdav:1.0-beta-1
+[DEBUG] Importing foreign packages into class realm extension>org.apache.maven.wagon:wagon-webdav:1.0-beta-1
+[DEBUG]   Imported:  < maven.api
+[DEBUG] Populating class realm extension>org.apache.maven.wagon:wagon-webdav:1.0-beta-1
+[DEBUG]   Included: org.apache.maven.wagon:wagon-webdav:jar:1.0-beta-1
+[DEBUG]   Included: slide:slide-webdavlib:jar:2.1
+[DEBUG]   Included: commons-httpclient:commons-httpclient:jar:2.0.2
+[DEBUG]   Included: commons-logging:commons-logging:jar:1.0.3
+[DEBUG]   Included: jdom:jdom:jar:1.0
+[DEBUG]   Included: de.zeigermann.xml:xml-im-exporter:jar:1.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:1.0.4
+[DEBUG] Extension realms for project io.swagger:swagger-codegen-project:pom:2.1.4-SNAPSHOT: [ClassRealm[extension>org.jvnet.wagon-svn:wagon-svn:1.8, parent: sun.misc.Launcher$AppClassLoader@1c8825a5], ClassRealm[extension>org.apache.maven.wagon:wagon-ssh-external:1.0-alpha-6, parent: sun.misc.Launcher$AppClassLoader@1c8825a5], ClassRealm[extension>org.apache.maven.wagon:wagon-webdav:1.0-beta-1, parent: sun.misc.Launcher$AppClassLoader@1c8825a5]]
+[DEBUG] Created new class realm project>io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT
+[DEBUG] Populating class realm project>io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT
+[DEBUG] Looking up lifecyle mappings for packaging pom from ClassRealm[project>io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT, parent: ClassRealm[maven.api, parent: null]]
+[DEBUG] Extension realms for project org.sonatype.oss:oss-parent:pom:5: (none)
+[DEBUG] Looking up lifecyle mappings for packaging pom from ClassRealm[plexus.core, parent: null]
+[DEBUG] Extension realms for project io.swagger:swagger-codegen:jar:2.1.4-SNAPSHOT: [ClassRealm[extension>org.jvnet.wagon-svn:wagon-svn:1.8, parent: sun.misc.Launcher$AppClassLoader@1c8825a5], ClassRealm[extension>org.apache.maven.wagon:wagon-ssh-external:1.0-alpha-6, parent: sun.misc.Launcher$AppClassLoader@1c8825a5], ClassRealm[extension>org.apache.maven.wagon:wagon-webdav:1.0-beta-1, parent: sun.misc.Launcher$AppClassLoader@1c8825a5]]
+[DEBUG] Looking up lifecyle mappings for packaging jar from ClassRealm[project>io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT, parent: ClassRealm[maven.api, parent: null]]
+[DEBUG] Extension realms for project io.swagger:swagger-codegen-cli:jar:2.1.4-SNAPSHOT: [ClassRealm[extension>org.jvnet.wagon-svn:wagon-svn:1.8, parent: sun.misc.Launcher$AppClassLoader@1c8825a5], ClassRealm[extension>org.apache.maven.wagon:wagon-ssh-external:1.0-alpha-6, parent: sun.misc.Launcher$AppClassLoader@1c8825a5], ClassRealm[extension>org.apache.maven.wagon:wagon-webdav:1.0-beta-1, parent: sun.misc.Launcher$AppClassLoader@1c8825a5]]
+[DEBUG] Looking up lifecyle mappings for packaging jar from ClassRealm[project>io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT, parent: ClassRealm[maven.api, parent: null]]
+[DEBUG] Extension realms for project io.swagger:swagger-codegen-maven-plugin:maven-plugin:2.1.4-SNAPSHOT: [ClassRealm[extension>org.jvnet.wagon-svn:wagon-svn:1.8, parent: sun.misc.Launcher$AppClassLoader@1c8825a5], ClassRealm[extension>org.apache.maven.wagon:wagon-ssh-external:1.0-alpha-6, parent: sun.misc.Launcher$AppClassLoader@1c8825a5], ClassRealm[extension>org.apache.maven.wagon:wagon-webdav:1.0-beta-1, parent: sun.misc.Launcher$AppClassLoader@1c8825a5]]
+[DEBUG] Looking up lifecyle mappings for packaging maven-plugin from ClassRealm[project>io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT, parent: ClassRealm[maven.api, parent: null]]
+[DEBUG] Extension realms for project io.swagger:swagger-generator:war:2.1.4-SNAPSHOT: [ClassRealm[extension>org.jvnet.wagon-svn:wagon-svn:1.8, parent: sun.misc.Launcher$AppClassLoader@1c8825a5], ClassRealm[extension>org.apache.maven.wagon:wagon-ssh-external:1.0-alpha-6, parent: sun.misc.Launcher$AppClassLoader@1c8825a5], ClassRealm[extension>org.apache.maven.wagon:wagon-webdav:1.0-beta-1, parent: sun.misc.Launcher$AppClassLoader@1c8825a5]]
+[DEBUG] Looking up lifecyle mappings for packaging war from ClassRealm[project>io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT, parent: ClassRealm[maven.api, parent: null]]
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] swagger-codegen-project
+[INFO] swagger-codegen (core library)
+[INFO] swagger-codegen (executable)
+[INFO] swagger-codegen (maven-plugin)
+[INFO] swagger-generator
+[DEBUG] === REACTOR BUILD PLAN ================================================
+[DEBUG] Project: io.swagger:swagger-codegen-project:pom:2.1.4-SNAPSHOT
+[DEBUG] Tasks:   [package]
+[DEBUG] Style:   Regular
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Project: io.swagger:swagger-codegen:jar:2.1.4-SNAPSHOT
+[DEBUG] Tasks:   [package]
+[DEBUG] Style:   Regular
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Project: io.swagger:swagger-codegen-cli:jar:2.1.4-SNAPSHOT
+[DEBUG] Tasks:   [package]
+[DEBUG] Style:   Regular
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Project: io.swagger:swagger-codegen-maven-plugin:maven-plugin:2.1.4-SNAPSHOT
+[DEBUG] Tasks:   [package]
+[DEBUG] Style:   Regular
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Project: io.swagger:swagger-generator:war:2.1.4-SNAPSHOT
+[DEBUG] Tasks:   [package]
+[DEBUG] Style:   Regular
+[DEBUG] =======================================================================
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building swagger-codegen-project 2.1.4-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] === PROJECT BUILD PLAN ================================================
+[DEBUG] Project:       io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT
+[DEBUG] Dependencies (collect): []
+[DEBUG] Dependencies (resolve): [test]
+[DEBUG] Repositories (dependencies): [sonatype-snapshots (https://oss.sonatype.org/content/repositories/snapshots, default, releases+snapshots), sonatype-nexus-snapshots (https://oss.sonatype.org/content/repositories/snapshots, default, snapshots), central (https://repo.maven.apache.org/maven2, default, releases)]
+[DEBUG] Repositories (plugins)     : [central (https://repo.maven.apache.org/maven2, default, releases)]
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-enforcer-plugin:1.0-beta-1:enforce (enforce-maven)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <fail default-value="true">${enforcer.fail}</fail>
+  <failFast default-value="false">${enforcer.failFast}</failFast>
+  <ignoreCache default-value="false">${enforcer.ignoreCache}</ignoreCache>
+  <project>${project}</project>
+  <rules>
+    <requireMavenVersion>
+      <version>(,2.1.0),(2.1.0,2.2.0),(2.2.0,)</version>
+      <message>Maven 2.1.0 and 2.2.0 produce incorrect GPG signatures and checksums respectively.</message>
+    </requireMavenVersion>
+  </rules>
+  <session>${session}</session>
+  <skip default-value="false">${enforcer.skip}</skip>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-surefire-plugin:2.18.1:test (test-testng)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <additionalClasspathElements>${maven.test.additionalClasspath}</additionalClasspathElements>
+  <argLine>${argLine}</argLine>
+  <basedir default-value="${basedir}"/>
+  <childDelegation default-value="false">${childDelegation}</childDelegation>
+  <classesDirectory default-value="${project.build.outputDirectory}"/>
+  <classpathDependencyExcludes>${maven.test.dependency.excludes}</classpathDependencyExcludes>
+  <debugForkedProcess>${maven.surefire.debug}</debugForkedProcess>
+  <dependenciesToScan>${dependenciesToScan}</dependenciesToScan>
+  <disableXmlReport default-value="false">${disableXmlReport}</disableXmlReport>
+  <enableAssertions default-value="true">${enableAssertions}</enableAssertions>
+  <excludedGroups>${excludedGroups}</excludedGroups>
+  <failIfNoSpecifiedTests>${surefire.failIfNoSpecifiedTests}</failIfNoSpecifiedTests>
+  <failIfNoTests>${failIfNoTests}</failIfNoTests>
+  <forkCount default-value="1">${forkCount}</forkCount>
+  <forkMode default-value="once">${forkMode}</forkMode>
+  <forkedProcessTimeoutInSeconds>${surefire.timeout}</forkedProcessTimeoutInSeconds>
+  <groups>${groups}</groups>
+  <junitArtifactName default-value="junit:junit">none:none</junitArtifactName>
+  <jvm>${jvm}</jvm>
+  <localRepository default-value="${localRepository}"/>
+  <objectFactory>${objectFactory}</objectFactory>
+  <parallel>${parallel}</parallel>
+  <parallelMavenExecution default-value="${session.parallel}"/>
+  <parallelOptimized default-value="true">${parallelOptimized}</parallelOptimized>
+  <parallelTestsTimeoutForcedInSeconds>${surefire.parallel.forcedTimeout}</parallelTestsTimeoutForcedInSeconds>
+  <parallelTestsTimeoutInSeconds>${surefire.parallel.timeout}</parallelTestsTimeoutInSeconds>
+  <perCoreThreadCount default-value="true">${perCoreThreadCount}</perCoreThreadCount>
+  <pluginArtifactMap>${plugin.artifactMap}</pluginArtifactMap>
+  <pluginDescriptor default-value="${plugin}"/>
+  <printSummary default-value="true">${surefire.printSummary}</printSummary>
+  <projectArtifactMap>${project.artifactMap}</projectArtifactMap>
+  <redirectTestOutputToFile default-value="false">${maven.test.redirectTestOutputToFile}</redirectTestOutputToFile>
+  <remoteRepositories default-value="${project.pluginArtifactRepositories}"/>
+  <reportFormat default-value="brief">${surefire.reportFormat}</reportFormat>
+  <reportNameSuffix default-value="">${surefire.reportNameSuffix}</reportNameSuffix>
+  <reportsDirectory default-value="${project.build.directory}/surefire-reports"/>
+  <rerunFailingTestsCount default-value="0">${surefire.rerunFailingTestsCount}</rerunFailingTestsCount>
+  <reuseForks default-value="true">${reuseForks}</reuseForks>
+  <runOrder default-value="filesystem">${surefire.runOrder}</runOrder>
+  <skip default-value="false">${maven.test.skip}</skip>
+  <skipExec>${maven.test.skip.exec}</skipExec>
+  <skipTests default-value="false">${skipTests}</skipTests>
+  <suiteXmlFiles>${surefire.suiteXmlFiles}</suiteXmlFiles>
+  <test>${test}</test>
+  <testClassesDirectory default-value="${project.build.testOutputDirectory}"/>
+  <testFailureIgnore default-value="false">${maven.test.failure.ignore}</testFailureIgnore>
+  <testNGArtifactName default-value="org.testng:testng">org.testng:testng</testNGArtifactName>
+  <testSourceDirectory default-value="${project.build.testSourceDirectory}"/>
+  <threadCount>${threadCount}</threadCount>
+  <threadCountClasses default-value="0">${threadCountClasses}</threadCountClasses>
+  <threadCountMethods default-value="0">${threadCountMethods}</threadCountMethods>
+  <threadCountSuites default-value="0">${threadCountSuites}</threadCountSuites>
+  <trimStackTrace default-value="true">${trimStackTrace}</trimStackTrace>
+  <useFile default-value="true">${surefire.useFile}</useFile>
+  <useManifestOnlyJar default-value="true">${surefire.useManifestOnlyJar}</useManifestOnlyJar>
+  <useSystemClassLoader default-value="true">${surefire.useSystemClassLoader}</useSystemClassLoader>
+  <useUnlimitedThreads default-value="false">${useUnlimitedThreads}</useUnlimitedThreads>
+  <workingDirectory>${basedir}</workingDirectory>
+  <project default-value="${project}"/>
+  <session default-value="${session}"/>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies (default)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <addParentPoms default-value="false"/>
+  <classifier default-value="">${classifier}</classifier>
+  <copyPom default-value="false">${mdep.copyPom}</copyPom>
+  <excludeArtifactIds default-value="">${excludeArtifactIds}</excludeArtifactIds>
+  <excludeClassifiers default-value="">${excludeClassifiers}</excludeClassifiers>
+  <excludeGroupIds default-value="">${excludeGroupIds}</excludeGroupIds>
+  <excludeScope default-value="">${excludeScope}</excludeScope>
+  <excludeTransitive default-value="false">${excludeTransitive}</excludeTransitive>
+  <excludeTypes default-value="">${excludeTypes}</excludeTypes>
+  <failOnMissingClassifierArtifact default-value="false">${mdep.failOnMissingClassifierArtifact}</failOnMissingClassifierArtifact>
+  <includeArtifactIds default-value="">${includeArtifactIds}</includeArtifactIds>
+  <includeClassifiers default-value="">${includeClassifiers}</includeClassifiers>
+  <includeGroupIds default-value="">${includeGroupIds}</includeGroupIds>
+  <includeScope default-value="">${includeScope}</includeScope>
+  <includeTypes default-value="">${includeTypes}</includeTypes>
+  <local default-value="${localRepository}"/>
+  <markersDirectory default-value="${project.build.directory}/dependency-maven-plugin-markers">${markersDirectory}</markersDirectory>
+  <outputAbsoluteArtifactFilename default-value="false">${outputAbsoluteArtifactFilename}</outputAbsoluteArtifactFilename>
+  <outputDirectory default-value="${project.build.directory}/dependency">D:\28msec\xbrl\swagger-codegen\target/lib</outputDirectory>
+  <overWriteIfNewer default-value="true">${overWriteIfNewer}</overWriteIfNewer>
+  <overWriteReleases default-value="false">${overWriteReleases}</overWriteReleases>
+  <overWriteSnapshots default-value="false">${overWriteSnapshots}</overWriteSnapshots>
+  <prependGroupId default-value="false">${mdep.prependGroupId}</prependGroupId>
+  <reactorProjects default-value="${reactorProjects}"/>
+  <remoteRepos default-value="${project.remoteArtifactRepositories}"/>
+  <silent default-value="false">${silent}</silent>
+  <skip default-value="false">${mdep.skip}</skip>
+  <stripClassifier default-value="false">${mdep.stripClassifier}</stripClassifier>
+  <stripVersion default-value="false">${mdep.stripVersion}</stripVersion>
+  <type default-value="">${type}</type>
+  <useBaseVersion default-value="true">${mdep.useBaseVersion}</useBaseVersion>
+  <useRepositoryLayout default-value="false">${mdep.useRepositoryLayout}</useRepositoryLayout>
+  <useSubDirectoryPerArtifact default-value="false">${mdep.useSubDirectoryPerArtifact}</useSubDirectoryPerArtifact>
+  <useSubDirectoryPerScope default-value="false">${mdep.useSubDirectoryPerScope}</useSubDirectoryPerScope>
+  <useSubDirectoryPerType default-value="false">${mdep.useSubDirectoryPerType}</useSubDirectoryPerType>
+  <project default-value="${project}"/>
+</configuration>
+[DEBUG] =======================================================================
+[DEBUG] Dependency collection stats: {ConflictMarker.analyzeTime=0, ConflictMarker.markTime=0, ConflictMarker.nodeCount=1, ConflictIdSorter.graphTime=0, ConflictIdSorter.topsortTime=0, ConflictIdSorter.conflictIdCount=0, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=0, ConflictResolver.conflictItemCount=0, DefaultDependencyCollector.collectTime=0, DefaultDependencyCollector.transformTime=0}
+[DEBUG] io.swagger:swagger-codegen-project:pom:2.1.4-SNAPSHOT
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0-beta-1:enforce (enforce-maven) @ swagger-codegen-project ---
+[DEBUG] Dependency collection stats: {ConflictMarker.analyzeTime=1, ConflictMarker.markTime=0, ConflictMarker.nodeCount=74, ConflictIdSorter.graphTime=0, ConflictIdSorter.topsortTime=0, ConflictIdSorter.conflictIdCount=27, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=5, ConflictResolver.conflictItemCount=71, DefaultDependencyCollector.collectTime=194, DefaultDependencyCollector.transformTime=6}
+[DEBUG] org.apache.maven.plugins:maven-enforcer-plugin:jar:1.0-beta-1:
+[DEBUG]    org.apache.maven:maven-artifact:jar:2.0.9:compile
+[DEBUG]    org.apache.maven:maven-plugin-api:jar:2.0.9:compile
+[DEBUG]    org.apache.maven:maven-project:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-settings:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-profile:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-model:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-artifact-manager:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-plugin-registry:jar:2.0.9:compile
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile
+[DEBUG]          junit:junit:jar:3.8.2:test
+[DEBUG]    org.apache.maven:maven-core:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.9:compile
+[DEBUG]       org.apache.maven.reporting:maven-reporting-api:jar:2.0.9:compile
+[DEBUG]          org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-10:compile
+[DEBUG]       org.apache.maven:maven-repository-metadata:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-error-diagnostics:jar:2.0.9:compile
+[DEBUG]       commons-cli:commons-cli:jar:1.0:compile
+[DEBUG]       org.apache.maven:maven-plugin-descriptor:jar:2.0.9:compile
+[DEBUG]       org.codehaus.plexus:plexus-interactivity-api:jar:1.0-alpha-4:compile
+[DEBUG]       org.apache.maven:maven-monitor:jar:2.0.9:compile
+[DEBUG]       classworlds:classworlds:jar:1.1:compile
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:1.5.8:compile
+[DEBUG]    commons-lang:commons-lang:jar:2.3:compile
+[DEBUG]    org.apache.maven.enforcer:enforcer-api:jar:1.0-beta-1:compile
+[DEBUG]    org.apache.maven.enforcer:enforcer-rules:jar:1.0-beta-1:compile
+[DEBUG]       org.beanshell:bsh:jar:2.0b4:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-enforcer-plugin:1.0-beta-1
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-enforcer-plugin:1.0-beta-1
+[DEBUG]   Imported:  < project>io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-enforcer-plugin:1.0-beta-1
+[DEBUG]   Included: org.apache.maven.plugins:maven-enforcer-plugin:jar:1.0-beta-1
+[DEBUG]   Included: org.apache.maven.reporting:maven-reporting-api:jar:2.0.9
+[DEBUG]   Included: org.apache.maven.doxia:doxia-sink-api:jar:1.0-alpha-10
+[DEBUG]   Included: commons-cli:commons-cli:jar:1.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-interactivity-api:jar:1.0-alpha-4
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:1.5.8
+[DEBUG]   Included: commons-lang:commons-lang:jar:2.3
+[DEBUG]   Included: org.apache.maven.enforcer:enforcer-api:jar:1.0-beta-1
+[DEBUG]   Included: org.apache.maven.enforcer:enforcer-rules:jar:1.0-beta-1
+[DEBUG]   Included: org.beanshell:bsh:jar:2.0b4
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-enforcer-plugin:1.0-beta-1:enforce from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-enforcer-plugin:1.0-beta-1, parent: sun.misc.Launcher$AppClassLoader@1c8825a5]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-enforcer-plugin:1.0-beta-1:enforce' with basic configurator -->
+[DEBUG]   (s) fail = true
+[DEBUG]   (s) failFast = false
+[DEBUG]   (f) ignoreCache = false
+[DEBUG]   (s) project = MavenProject: io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT @ D:\28msec\xbrl\swagger-codegen\pom.xml
+[DEBUG]   (s) version = (,2.1.0),(2.1.0,2.2.0),(2.2.0,)
+[DEBUG]   (f) message = Maven 2.1.0 and 2.2.0 produce incorrect GPG signatures and checksums respectively.
+[DEBUG]   (s) rules = [org.apache.maven.plugins.enforcer.RequireMavenVersion@4564886c]
+[DEBUG]   (s) session = org.apache.maven.execution.MavenSession@4b388e0b
+[DEBUG]   (s) skip = false
+[DEBUG] -- end configuration --
+[DEBUG] Executing rule: org.apache.maven.plugins.enforcer.RequireMavenVersion
+[DEBUG] Rule org.apache.maven.plugins.enforcer.RequireMavenVersion is cacheable.
+[DEBUG] Detected Maven Version: 3.3.3
+[DEBUG] Detected Maven Version: 3.3.3 is allowed in the range (,2.1.0),(2.1.0,2.2.0),(2.2.0,).
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.18.1:test (test-testng) @ swagger-codegen-project ---
+[DEBUG] Dependency collection stats: {ConflictMarker.analyzeTime=1, ConflictMarker.markTime=0, ConflictMarker.nodeCount=112, ConflictIdSorter.graphTime=1, ConflictIdSorter.topsortTime=0, ConflictIdSorter.conflictIdCount=33, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=5, ConflictResolver.conflictItemCount=79, DefaultDependencyCollector.collectTime=225, DefaultDependencyCollector.transformTime=7}
+[DEBUG] org.apache.maven.plugins:maven-surefire-plugin:jar:2.18.1:
+[DEBUG]    org.apache.maven:maven-plugin-api:jar:2.2.1:compile
+[DEBUG]    org.apache.maven.surefire:maven-surefire-common:jar:2.18.1:compile
+[DEBUG]       org.apache.maven.surefire:surefire-booter:jar:2.18.1:compile
+[DEBUG]       org.apache.maven:maven-artifact:jar:2.2.1:compile
+[DEBUG]          org.codehaus.plexus:plexus-utils:jar:1.5.15:compile
+[DEBUG]       org.apache.maven:maven-plugin-descriptor:jar:2.2.1:compile
+[DEBUG]          org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile
+[DEBUG]             junit:junit:jar:3.8.1:test
+[DEBUG]       org.apache.maven:maven-project:jar:2.2.1:compile
+[DEBUG]          org.apache.maven:maven-settings:jar:2.2.1:compile
+[DEBUG]          org.apache.maven:maven-profile:jar:2.2.1:compile
+[DEBUG]          org.apache.maven:maven-artifact-manager:jar:2.2.1:compile
+[DEBUG]             backport-util-concurrent:backport-util-concurrent:jar:3.1:compile
+[DEBUG]          org.apache.maven:maven-plugin-registry:jar:2.2.1:compile
+[DEBUG]          org.codehaus.plexus:plexus-interpolation:jar:1.11:compile
+[DEBUG]       org.apache.maven:maven-model:jar:2.2.1:compile
+[DEBUG]       org.apache.maven:maven-core:jar:2.2.1:compile
+[DEBUG]          org.apache.maven:maven-plugin-parameter-documenter:jar:2.2.1:compile
+[DEBUG]          org.slf4j:slf4j-jdk14:jar:1.5.6:runtime
+[DEBUG]             org.slf4j:slf4j-api:jar:1.5.6:runtime
+[DEBUG]          org.slf4j:jcl-over-slf4j:jar:1.5.6:runtime
+[DEBUG]          org.apache.maven.reporting:maven-reporting-api:jar:3.0:compile
+[DEBUG]          org.apache.maven:maven-repository-metadata:jar:2.2.1:compile
+[DEBUG]          org.apache.maven:maven-error-diagnostics:jar:2.2.1:compile
+[DEBUG]          org.apache.maven:maven-monitor:jar:2.2.1:compile
+[DEBUG]          classworlds:classworlds:jar:1.1:compile
+[DEBUG]          org.sonatype.plexus:plexus-sec-dispatcher:jar:1.3:compile
+[DEBUG]             org.sonatype.plexus:plexus-cipher:jar:1.4:compile
+[DEBUG]       org.apache.commons:commons-lang3:jar:3.1:compile
+[DEBUG]    org.apache.maven.surefire:surefire-api:jar:2.18.1:compile
+[DEBUG]    org.apache.maven:maven-toolchain:jar:2.2.1:compile
+[DEBUG]    org.apache.maven.plugin-tools:maven-plugin-annotations:jar:3.3:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-surefire-plugin:2.18.1
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-surefire-plugin:2.18.1
+[DEBUG]   Imported:  < project>io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-surefire-plugin:2.18.1
+[DEBUG]   Included: org.apache.maven.plugins:maven-surefire-plugin:jar:2.18.1
+[DEBUG]   Included: org.apache.maven.surefire:maven-surefire-common:jar:2.18.1
+[DEBUG]   Included: org.apache.maven.surefire:surefire-booter:jar:2.18.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:1.5.15
+[DEBUG]   Included: backport-util-concurrent:backport-util-concurrent:jar:3.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-interpolation:jar:1.11
+[DEBUG]   Included: org.slf4j:slf4j-jdk14:jar:1.5.6
+[DEBUG]   Included: org.slf4j:jcl-over-slf4j:jar:1.5.6
+[DEBUG]   Included: org.apache.maven.reporting:maven-reporting-api:jar:3.0
+[DEBUG]   Included: org.sonatype.plexus:plexus-sec-dispatcher:jar:1.3
+[DEBUG]   Included: org.sonatype.plexus:plexus-cipher:jar:1.4
+[DEBUG]   Included: org.apache.commons:commons-lang3:jar:3.1
+[DEBUG]   Included: org.apache.maven.surefire:surefire-api:jar:2.18.1
+[DEBUG]   Included: org.apache.maven.plugin-tools:maven-plugin-annotations:jar:3.3
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-surefire-plugin:2.18.1:test from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-surefire-plugin:2.18.1, parent: sun.misc.Launcher$AppClassLoader@1c8825a5]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-surefire-plugin:2.18.1:test' with basic configurator -->
+[DEBUG]   (s) additionalClasspathElements = []
+[DEBUG]   (s) basedir = D:\28msec\xbrl\swagger-codegen
+[DEBUG]   (s) childDelegation = false
+[DEBUG]   (s) classesDirectory = D:\28msec\xbrl\swagger-codegen\target\classes
+[DEBUG]   (s) classpathDependencyExcludes = []
+[DEBUG]   (s) dependenciesToScan = []
+[DEBUG]   (s) disableXmlReport = false
+[DEBUG]   (s) enableAssertions = true
+[DEBUG]   (f) forkCount = 1
+[DEBUG]   (s) forkMode = once
+[DEBUG]   (s) junitArtifactName = none:none
+[DEBUG]   (s) localRepository =       id: local
+      url: file:///C:/Users/user/.m2/repository/
+   layout: default
+snapshots: [enabled => true, update => always]
+ releases: [enabled => true, update => always]
+
+[DEBUG]   (f) parallelMavenExecution = false
+[DEBUG]   (s) parallelOptimized = true
+[DEBUG]   (s) perCoreThreadCount = true
+[DEBUG]   (s) pluginArtifactMap = {org.apache.maven.plugins:maven-surefire-plugin=org.apache.maven.plugins:maven-surefire-plugin:maven-plugin:2.18.1:, org.apache.maven:maven-plugin-api=org.apache.maven:maven-plugin-api:jar:2.2.1:compile, org.apache.maven.surefire:maven-surefire-common=org.apache.maven.surefire:maven-surefire-common:jar:2.18.1:compile, org.apache.maven.surefire:surefire-booter=org.apache.maven.surefire:surefire-booter:jar:2.18.1:compile, org.apache.maven:maven-artifact=org.apache.maven:maven-artifact:jar:2.2.1:compile, org.codehaus.plexus:plexus-utils=org.codehaus.plexus:plexus-utils:jar:1.5.15:compile, org.apache.maven:maven-plugin-descriptor=org.apache.maven:maven-plugin-descriptor:jar:2.2.1:compile, org.codehaus.plexus:plexus-container-default=org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile, org.apache.maven:maven-project=org.apache.maven:maven-project:jar:2.2.1:compile, org.apache.maven:maven-settings=org.apache.maven:maven-settings:jar:2.2.1:compile, org.apache.maven:maven-profile=org.apache.maven:maven-profile:jar:2.2.1:compile, org.apache.maven:maven-artifact-manager=org.apache.maven:maven-artifact-manager:jar:2.2.1:compile, backport-util-concurrent:backport-util-concurrent=backport-util-concurrent:backport-util-concurrent:jar:3.1:compile, org.apache.maven:maven-plugin-registry=org.apache.maven:maven-plugin-registry:jar:2.2.1:compile, org.codehaus.plexus:plexus-interpolation=org.codehaus.plexus:plexus-interpolation:jar:1.11:compile, org.apache.maven:maven-model=org.apache.maven:maven-model:jar:2.2.1:compile, org.apache.maven:maven-core=org.apache.maven:maven-core:jar:2.2.1:compile, org.apache.maven:maven-plugin-parameter-documenter=org.apache.maven:maven-plugin-parameter-documenter:jar:2.2.1:compile, org.slf4j:slf4j-jdk14=org.slf4j:slf4j-jdk14:jar:1.5.6:runtime, org.slf4j:slf4j-api=org.slf4j:slf4j-api:jar:1.5.6:runtime, org.slf4j:jcl-over-slf4j=org.slf4j:jcl-over-slf4j:jar:1.5.6:runtime, org.apache.maven.reporting:maven-reporting-api=org.apache.maven.reporting:maven-reporting-api:jar:3.0:compile, org.apache.maven:maven-repository-metadata=org.apache.maven:maven-repository-metadata:jar:2.2.1:compile, org.apache.maven:maven-error-diagnostics=org.apache.maven:maven-error-diagnostics:jar:2.2.1:compile, org.apache.maven:maven-monitor=org.apache.maven:maven-monitor:jar:2.2.1:compile, classworlds:classworlds=classworlds:classworlds:jar:1.1:compile, org.sonatype.plexus:plexus-sec-dispatcher=org.sonatype.plexus:plexus-sec-dispatcher:jar:1.3:compile, org.sonatype.plexus:plexus-cipher=org.sonatype.plexus:plexus-cipher:jar:1.4:compile, org.apache.commons:commons-lang3=org.apache.commons:commons-lang3:jar:3.1:compile, org.apache.maven.surefire:surefire-api=org.apache.maven.surefire:surefire-api:jar:2.18.1:compile, org.apache.maven:maven-toolchain=org.apache.maven:maven-toolchain:jar:2.2.1:compile, org.apache.maven.plugin-tools:maven-plugin-annotations=org.apache.maven.plugin-tools:maven-plugin-annotations:jar:3.3:compile}
+[DEBUG]   (f) pluginDescriptor = Component Descriptor: role: 'org.apache.maven.plugin.Mojo', implementation: 'org.apache.maven.plugin.surefire.HelpMojo', role hint: 'org.apache.maven.plugins:maven-surefire-plugin:2.18.1:help'
+role: 'org.apache.maven.plugin.Mojo', implementation: 'org.apache.maven.plugin.surefire.SurefirePlugin', role hint: 'org.apache.maven.plugins:maven-surefire-plugin:2.18.1:test'
+---
+[DEBUG]   (s) printSummary = true
+[DEBUG]   (s) projectArtifactMap = {}
+[DEBUG]   (s) redirectTestOutputToFile = false
+[DEBUG]   (s) remoteRepositories = [      id: central
+      url: https://repo.maven.apache.org/maven2
+   layout: default
+snapshots: [enabled => false, update => daily]
+ releases: [enabled => true, update => never]
+]
+[DEBUG]   (s) reportFormat = brief
+[DEBUG]   (s) reportsDirectory = D:\28msec\xbrl\swagger-codegen\target\surefire-reports
+[DEBUG]   (f) rerunFailingTestsCount = 0
+[DEBUG]   (f) reuseForks = true
+[DEBUG]   (s) runOrder = filesystem
+[DEBUG]   (s) skip = false
+[DEBUG]   (s) skipTests = false
+[DEBUG]   (s) suiteXmlFiles = []
+[DEBUG]   (s) testClassesDirectory = D:\28msec\xbrl\swagger-codegen\target\test-classes
+[DEBUG]   (s) testFailureIgnore = false
+[DEBUG]   (s) testNGArtifactName = org.testng:testng
+[DEBUG]   (s) testSourceDirectory = D:\28msec\xbrl\swagger-codegen\src\test\java
+[DEBUG]   (s) threadCountClasses = 0
+[DEBUG]   (s) threadCountMethods = 0
+[DEBUG]   (s) threadCountSuites = 0
+[DEBUG]   (s) trimStackTrace = true
+[DEBUG]   (s) useFile = true
+[DEBUG]   (s) useManifestOnlyJar = true
+[DEBUG]   (s) useSystemClassLoader = true
+[DEBUG]   (s) useUnlimitedThreads = false
+[DEBUG]   (s) workingDirectory = D:\28msec\xbrl\swagger-codegen
+[DEBUG]   (s) project = MavenProject: io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT @ D:\28msec\xbrl\swagger-codegen\pom.xml
+[DEBUG]   (s) session = org.apache.maven.execution.MavenSession@4b388e0b
+[DEBUG] -- end configuration --
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:copy-dependencies (default) @ swagger-codegen-project ---
+[DEBUG] Dependency collection stats: {ConflictMarker.analyzeTime=1, ConflictMarker.markTime=1, ConflictMarker.nodeCount=297, ConflictIdSorter.graphTime=1, ConflictIdSorter.topsortTime=0, ConflictIdSorter.conflictIdCount=63, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=21, ConflictResolver.conflictItemCount=167, DefaultDependencyCollector.collectTime=512, DefaultDependencyCollector.transformTime=24}
+[DEBUG] org.apache.maven.plugins:maven-dependency-plugin:jar:2.8:
+[DEBUG]    org.apache.maven:maven-artifact:jar:2.0.9:compile
+[DEBUG]    org.apache.maven:maven-plugin-api:jar:2.0.9:compile
+[DEBUG]    org.apache.maven:maven-project:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-settings:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-profile:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-plugin-registry:jar:2.0.9:compile
+[DEBUG]    org.apache.maven:maven-model:jar:2.0.9:compile
+[DEBUG]    org.apache.maven:maven-core:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-error-diagnostics:jar:2.0.9:compile
+[DEBUG]       commons-cli:commons-cli:jar:1.0:compile
+[DEBUG]       org.apache.maven:maven-plugin-descriptor:jar:2.0.9:compile
+[DEBUG]       org.codehaus.plexus:plexus-interactivity-api:jar:1.0-alpha-4:compile
+[DEBUG]       org.apache.maven:maven-monitor:jar:2.0.9:compile
+[DEBUG]    org.apache.maven:maven-artifact-manager:jar:2.0.9:compile
+[DEBUG]    org.apache.maven:maven-repository-metadata:jar:2.0.9:compile
+[DEBUG]    org.apache.maven.reporting:maven-reporting-api:jar:3.0:compile
+[DEBUG]    org.apache.maven.reporting:maven-reporting-impl:jar:2.0.5:compile
+[DEBUG]       org.apache.maven.doxia:doxia-core:jar:1.0:compile
+[DEBUG]       org.apache.maven.shared:maven-doxia-tools:jar:1.0.2:compile
+[DEBUG]          commons-io:commons-io:jar:1.4:compile
+[DEBUG]       commons-validator:commons-validator:jar:1.2.0:compile
+[DEBUG]          commons-beanutils:commons-beanutils:jar:1.7.0:compile
+[DEBUG]          commons-digester:commons-digester:jar:1.6:compile
+[DEBUG]          commons-logging:commons-logging:jar:1.0.4:compile
+[DEBUG]          oro:oro:jar:2.0.8:compile
+[DEBUG]          xml-apis:xml-apis:jar:1.0.b2:compile
+[DEBUG]    org.apache.maven.doxia:doxia-sink-api:jar:1.0:compile
+[DEBUG]    org.apache.maven.doxia:doxia-site-renderer:jar:1.0:compile
+[DEBUG]       org.codehaus.plexus:plexus-i18n:jar:1.0-beta-7:compile
+[DEBUG]       org.codehaus.plexus:plexus-velocity:jar:1.1.7:compile
+[DEBUG]       org.apache.velocity:velocity:jar:1.5:compile
+[DEBUG]       org.apache.maven.doxia:doxia-decoration-model:jar:1.0:compile
+[DEBUG]       org.apache.maven.doxia:doxia-module-apt:jar:1.0:compile
+[DEBUG]       org.apache.maven.doxia:doxia-module-fml:jar:1.0:compile
+[DEBUG]       org.apache.maven.doxia:doxia-module-xdoc:jar:1.0:compile
+[DEBUG]       org.apache.maven.doxia:doxia-module-xhtml:jar:1.0:compile
+[DEBUG]    org.codehaus.plexus:plexus-archiver:jar:2.3:compile
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:3.0.9:compile
+[DEBUG]    org.apache.maven.shared:file-management:jar:1.2.1:compile
+[DEBUG]       org.apache.maven.shared:maven-shared-io:jar:1.1:compile
+[DEBUG]          org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-6:compile
+[DEBUG]    org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile
+[DEBUG]       junit:junit:jar:3.8.1:compile
+[DEBUG]    org.codehaus.plexus:plexus-io:jar:2.0.6:compile
+[DEBUG]    org.apache.maven.shared:maven-dependency-analyzer:jar:1.4:compile
+[DEBUG]       asm:asm:jar:3.3.1:compile
+[DEBUG]       org.codehaus.plexus:plexus-component-annotations:jar:1.5.5:compile
+[DEBUG]    org.apache.maven.shared:maven-dependency-tree:jar:2.1:compile
+[DEBUG]       org.eclipse.aether:aether-util:jar:0.9.0.M2:compile
+[DEBUG]    org.apache.maven.shared:maven-common-artifact-filters:jar:1.4:compile
+[DEBUG]    org.apache.maven.shared:maven-invoker:jar:2.0.11:compile
+[DEBUG]    commons-lang:commons-lang:jar:2.6:compile
+[DEBUG]    commons-collections:commons-collections:jar:3.2.1:compile
+[DEBUG]    classworlds:classworlds:jar:1.1:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-dependency-plugin:2.8
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-dependency-plugin:2.8
+[DEBUG]   Imported:  < project>io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-dependency-plugin:2.8
+[DEBUG]   Included: org.apache.maven.plugins:maven-dependency-plugin:jar:2.8
+[DEBUG]   Included: commons-cli:commons-cli:jar:1.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-interactivity-api:jar:1.0-alpha-4
+[DEBUG]   Included: org.apache.maven.reporting:maven-reporting-api:jar:3.0
+[DEBUG]   Included: org.apache.maven.reporting:maven-reporting-impl:jar:2.0.5
+[DEBUG]   Included: org.apache.maven.doxia:doxia-core:jar:1.0
+[DEBUG]   Included: org.apache.maven.shared:maven-doxia-tools:jar:1.0.2
+[DEBUG]   Included: commons-io:commons-io:jar:1.4
+[DEBUG]   Included: commons-validator:commons-validator:jar:1.2.0
+[DEBUG]   Included: commons-beanutils:commons-beanutils:jar:1.7.0
+[DEBUG]   Included: commons-digester:commons-digester:jar:1.6
+[DEBUG]   Included: commons-logging:commons-logging:jar:1.0.4
+[DEBUG]   Included: oro:oro:jar:2.0.8
+[DEBUG]   Included: xml-apis:xml-apis:jar:1.0.b2
+[DEBUG]   Included: org.apache.maven.doxia:doxia-sink-api:jar:1.0
+[DEBUG]   Included: org.apache.maven.doxia:doxia-site-renderer:jar:1.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-i18n:jar:1.0-beta-7
+[DEBUG]   Included: org.codehaus.plexus:plexus-velocity:jar:1.1.7
+[DEBUG]   Included: org.apache.velocity:velocity:jar:1.5
+[DEBUG]   Included: org.apache.maven.doxia:doxia-decoration-model:jar:1.0
+[DEBUG]   Included: org.apache.maven.doxia:doxia-module-apt:jar:1.0
+[DEBUG]   Included: org.apache.maven.doxia:doxia-module-fml:jar:1.0
+[DEBUG]   Included: org.apache.maven.doxia:doxia-module-xdoc:jar:1.0
+[DEBUG]   Included: org.apache.maven.doxia:doxia-module-xhtml:jar:1.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-archiver:jar:2.3
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:3.0.9
+[DEBUG]   Included: org.apache.maven.shared:file-management:jar:1.2.1
+[DEBUG]   Included: org.apache.maven.shared:maven-shared-io:jar:1.1
+[DEBUG]   Included: junit:junit:jar:3.8.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-io:jar:2.0.6
+[DEBUG]   Included: org.apache.maven.shared:maven-dependency-analyzer:jar:1.4
+[DEBUG]   Included: asm:asm:jar:3.3.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-component-annotations:jar:1.5.5
+[DEBUG]   Included: org.apache.maven.shared:maven-dependency-tree:jar:2.1
+[DEBUG]   Included: org.eclipse.aether:aether-util:jar:0.9.0.M2
+[DEBUG]   Included: org.apache.maven.shared:maven-common-artifact-filters:jar:1.4
+[DEBUG]   Included: org.apache.maven.shared:maven-invoker:jar:2.0.11
+[DEBUG]   Included: commons-lang:commons-lang:jar:2.6
+[DEBUG]   Included: commons-collections:commons-collections:jar:3.2.1
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-dependency-plugin:2.8, parent: sun.misc.Launcher$AppClassLoader@1c8825a5]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies' with basic configurator -->
+[DEBUG]   (f) addParentPoms = false
+[DEBUG]   (s) copyPom = false
+[DEBUG]   (f) excludeTransitive = false
+[DEBUG]   (s) failOnMissingClassifierArtifact = false
+[DEBUG]   (s) local =       id: local
+      url: file:///C:/Users/user/.m2/repository/
+   layout: default
+snapshots: [enabled => true, update => always]
+ releases: [enabled => true, update => always]
+
+[DEBUG]   (s) markersDirectory = D:\28msec\xbrl\swagger-codegen\target\dependency-maven-plugin-markers
+[DEBUG]   (f) outputAbsoluteArtifactFilename = false
+[DEBUG]   (s) outputDirectory = D:\28msec\xbrl\swagger-codegen\target\lib
+[DEBUG]   (f) overWriteIfNewer = true
+[DEBUG]   (f) overWriteReleases = false
+[DEBUG]   (f) overWriteSnapshots = false
+[DEBUG]   (s) prependGroupId = false
+[DEBUG]   (f) reactorProjects = [MavenProject: io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT @ D:\28msec\xbrl\swagger-codegen\pom.xml, MavenProject: io.swagger:swagger-codegen:2.1.4-SNAPSHOT @ D:\28msec\xbrl\swagger-codegen\modules\swagger-codegen\pom.xml, MavenProject: io.swagger:swagger-codegen-cli:2.1.4-SNAPSHOT @ D:\28msec\xbrl\swagger-codegen\modules\swagger-codegen-cli\pom.xml, MavenProject: io.swagger:swagger-codegen-maven-plugin:2.1.4-SNAPSHOT @ D:\28msec\xbrl\swagger-codegen\modules\swagger-codegen-maven-plugin\pom.xml, MavenProject: io.swagger:swagger-generator:2.1.4-SNAPSHOT @ D:\28msec\xbrl\swagger-codegen\modules\swagger-generator\pom.xml]
+[DEBUG]   (s) remoteRepos = [      id: sonatype-snapshots
+      url: https://oss.sonatype.org/content/repositories/snapshots
+   layout: default
+snapshots: [enabled => true, update => daily]
+ releases: [enabled => true, update => daily]
+,       id: sonatype-nexus-snapshots
+      url: https://oss.sonatype.org/content/repositories/snapshots
+   layout: default
+snapshots: [enabled => true, update => daily]
+ releases: [enabled => false, update => daily]
+,       id: central
+      url: https://repo.maven.apache.org/maven2
+   layout: default
+snapshots: [enabled => false, update => daily]
+ releases: [enabled => true, update => daily]
+]
+[DEBUG]   (f) silent = false
+[DEBUG]   (s) skip = false
+[DEBUG]   (f) stripClassifier = false
+[DEBUG]   (s) stripVersion = false
+[DEBUG]   (f) useBaseVersion = true
+[DEBUG]   (s) useRepositoryLayout = false
+[DEBUG]   (s) useSubDirectoryPerArtifact = false
+[DEBUG]   (s) useSubDirectoryPerScope = false
+[DEBUG]   (s) useSubDirectoryPerType = false
+[DEBUG]   (f) project = MavenProject: io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT @ D:\28msec\xbrl\swagger-codegen\pom.xml
+[DEBUG] -- end configuration --
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building swagger-codegen (core library) 2.1.4-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] === PROJECT BUILD PLAN ================================================
+[DEBUG] Project:       io.swagger:swagger-codegen:2.1.4-SNAPSHOT
+[DEBUG] Dependencies (collect): []
+[DEBUG] Dependencies (resolve): [compile, runtime, test]
+[DEBUG] Repositories (dependencies): [sonatype-snapshots (https://oss.sonatype.org/content/repositories/snapshots, default, releases+snapshots), sonatype-nexus-snapshots (https://oss.sonatype.org/content/repositories/snapshots, default, snapshots), central (https://repo.maven.apache.org/maven2, default, releases)]
+[DEBUG] Repositories (plugins)     : [central (https://repo.maven.apache.org/maven2, default, releases)]
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-enforcer-plugin:1.0-beta-1:enforce (enforce-maven)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <fail default-value="true">${enforcer.fail}</fail>
+  <failFast default-value="false">${enforcer.failFast}</failFast>
+  <ignoreCache default-value="false">${enforcer.ignoreCache}</ignoreCache>
+  <project>${project}</project>
+  <rules>
+    <requireMavenVersion>
+      <version>(,2.1.0),(2.1.0,2.2.0),(2.2.0,)</version>
+      <message>Maven 2.1.0 and 2.2.0 produce incorrect GPG signatures and checksums respectively.</message>
+    </requireMavenVersion>
+  </rules>
+  <session>${session}</session>
+  <skip default-value="false">${enforcer.skip}</skip>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-resources-plugin:2.6:resources (default-resources)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <buildFilters default-value="${project.build.filters}"/>
+  <encoding default-value="${project.build.sourceEncoding}">${encoding}</encoding>
+  <escapeString>${maven.resources.escapeString}</escapeString>
+  <escapeWindowsPaths default-value="true">${maven.resources.escapeWindowsPaths}</escapeWindowsPaths>
+  <includeEmptyDirs default-value="false">${maven.resources.includeEmptyDirs}</includeEmptyDirs>
+  <outputDirectory default-value="${project.build.outputDirectory}"/>
+  <overwrite default-value="false">${maven.resources.overwrite}</overwrite>
+  <project default-value="${project}"/>
+  <resources default-value="${project.resources}"/>
+  <session default-value="${session}"/>
+  <supportMultiLineFiltering default-value="false">${maven.resources.supportMultiLineFiltering}</supportMultiLineFiltering>
+  <useBuildFilters default-value="true"/>
+  <useDefaultDelimiters default-value="true"/>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-compiler-plugin:3.0:compile (default-compile)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <basedir default-value="${basedir}"/>
+  <buildDirectory default-value="${project.build.directory}"/>
+  <classpathElements default-value="${project.compileClasspathElements}"/>
+  <compileSourceRoots default-value="${project.compileSourceRoots}"/>
+  <compilerId default-value="javac">${maven.compiler.compilerId}</compilerId>
+  <compilerReuseStrategy default-value="${reuseCreated}">${maven.compiler.compilerReuseStrategy}</compilerReuseStrategy>
+  <compilerVersion>${maven.compiler.compilerVersion}</compilerVersion>
+  <debug default-value="true">${maven.compiler.debug}</debug>
+  <debuglevel>${maven.compiler.debuglevel}</debuglevel>
+  <encoding default-value="${project.build.sourceEncoding}">${encoding}</encoding>
+  <executable>${maven.compiler.executable}</executable>
+  <failOnError default-value="true">${maven.compiler.failOnError}</failOnError>
+  <forceJavacCompilerUse default-value="false">${maven.compiler.forceJavacCompilerUse}</forceJavacCompilerUse>
+  <fork default-value="false">${maven.compiler.fork}</fork>
+  <generatedSourcesDirectory default-value="${project.build.directory}/generated-sources/annotations"/>
+  <maxmem>${maven.compiler.maxmem}</maxmem>
+  <meminitial>${maven.compiler.meminitial}</meminitial>
+  <mojoExecution>${mojoExecution}</mojoExecution>
+  <optimize default-value="false">${maven.compiler.optimize}</optimize>
+  <outputDirectory default-value="${project.build.outputDirectory}"/>
+  <projectArtifact default-value="${project.artifact}"/>
+  <showDeprecation default-value="false">${maven.compiler.showDeprecation}</showDeprecation>
+  <showWarnings default-value="false">${maven.compiler.showWarnings}</showWarnings>
+  <skipMultiThreadWarning default-value="false">${maven.compiler.skipMultiThreadWarning}</skipMultiThreadWarning>
+  <source default-value="1.5">1.6</source>
+  <staleMillis default-value="0">${lastModGranularityMs}</staleMillis>
+  <target default-value="1.5">1.6</target>
+  <verbose default-value="false">${maven.compiler.verbose}</verbose>
+  <mavenSession default-value="${session}"/>
+  <session default-value="${session}"/>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-resources-plugin:2.6:testResources (default-testResources)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <buildFilters default-value="${project.build.filters}"/>
+  <encoding default-value="${project.build.sourceEncoding}">${encoding}</encoding>
+  <escapeString>${maven.resources.escapeString}</escapeString>
+  <escapeWindowsPaths default-value="true">${maven.resources.escapeWindowsPaths}</escapeWindowsPaths>
+  <includeEmptyDirs default-value="false">${maven.resources.includeEmptyDirs}</includeEmptyDirs>
+  <outputDirectory default-value="${project.build.testOutputDirectory}"/>
+  <overwrite default-value="false">${maven.resources.overwrite}</overwrite>
+  <project default-value="${project}"/>
+  <resources default-value="${project.testResources}"/>
+  <session default-value="${session}"/>
+  <skip>${maven.test.skip}</skip>
+  <supportMultiLineFiltering default-value="false">${maven.resources.supportMultiLineFiltering}</supportMultiLineFiltering>
+  <useBuildFilters default-value="true"/>
+  <useDefaultDelimiters default-value="true"/>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-compiler-plugin:3.0:testCompile (default-testCompile)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <basedir default-value="${basedir}"/>
+  <buildDirectory default-value="${project.build.directory}"/>
+  <classpathElements default-value="${project.testClasspathElements}"/>
+  <compileSourceRoots default-value="${project.testCompileSourceRoots}"/>
+  <compilerId default-value="javac">${maven.compiler.compilerId}</compilerId>
+  <compilerReuseStrategy default-value="${reuseCreated}">${maven.compiler.compilerReuseStrategy}</compilerReuseStrategy>
+  <compilerVersion>${maven.compiler.compilerVersion}</compilerVersion>
+  <debug default-value="true">${maven.compiler.debug}</debug>
+  <debuglevel>${maven.compiler.debuglevel}</debuglevel>
+  <encoding default-value="${project.build.sourceEncoding}">${encoding}</encoding>
+  <executable>${maven.compiler.executable}</executable>
+  <failOnError default-value="true">${maven.compiler.failOnError}</failOnError>
+  <forceJavacCompilerUse default-value="false">${maven.compiler.forceJavacCompilerUse}</forceJavacCompilerUse>
+  <fork default-value="false">${maven.compiler.fork}</fork>
+  <generatedTestSourcesDirectory default-value="${project.build.directory}/generated-test-sources/test-annotations"/>
+  <maxmem>${maven.compiler.maxmem}</maxmem>
+  <meminitial>${maven.compiler.meminitial}</meminitial>
+  <mojoExecution>${mojoExecution}</mojoExecution>
+  <optimize default-value="false">${maven.compiler.optimize}</optimize>
+  <outputDirectory default-value="${project.build.testOutputDirectory}"/>
+  <showDeprecation default-value="false">${maven.compiler.showDeprecation}</showDeprecation>
+  <showWarnings default-value="false">${maven.compiler.showWarnings}</showWarnings>
+  <skip>${maven.test.skip}</skip>
+  <skipMultiThreadWarning default-value="false">${maven.compiler.skipMultiThreadWarning}</skipMultiThreadWarning>
+  <source default-value="1.5">1.6</source>
+  <staleMillis default-value="0">${lastModGranularityMs}</staleMillis>
+  <target default-value="1.5">1.6</target>
+  <testSource>${maven.compiler.testSource}</testSource>
+  <testTarget>${maven.compiler.testTarget}</testTarget>
+  <verbose default-value="false">${maven.compiler.verbose}</verbose>
+  <mavenSession default-value="${session}"/>
+  <session default-value="${session}"/>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-surefire-plugin:2.18.1:test (default-test)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <additionalClasspathElements>${maven.test.additionalClasspath}</additionalClasspathElements>
+  <argLine>${argLine}</argLine>
+  <basedir default-value="${basedir}"/>
+  <childDelegation default-value="false">${childDelegation}</childDelegation>
+  <classesDirectory default-value="${project.build.outputDirectory}"/>
+  <classpathDependencyExcludes>${maven.test.dependency.excludes}</classpathDependencyExcludes>
+  <debugForkedProcess>${maven.surefire.debug}</debugForkedProcess>
+  <dependenciesToScan>${dependenciesToScan}</dependenciesToScan>
+  <disableXmlReport default-value="false">${disableXmlReport}</disableXmlReport>
+  <enableAssertions default-value="true">${enableAssertions}</enableAssertions>
+  <excludedGroups>${excludedGroups}</excludedGroups>
+  <failIfNoSpecifiedTests>${surefire.failIfNoSpecifiedTests}</failIfNoSpecifiedTests>
+  <failIfNoTests>${failIfNoTests}</failIfNoTests>
+  <forkCount default-value="1">${forkCount}</forkCount>
+  <forkMode default-value="once">${forkMode}</forkMode>
+  <forkedProcessTimeoutInSeconds>${surefire.timeout}</forkedProcessTimeoutInSeconds>
+  <groups>${groups}</groups>
+  <junitArtifactName default-value="junit:junit">${junitArtifactName}</junitArtifactName>
+  <jvm>${jvm}</jvm>
+  <localRepository default-value="${localRepository}"/>
+  <objectFactory>${objectFactory}</objectFactory>
+  <parallel>${parallel}</parallel>
+  <parallelMavenExecution default-value="${session.parallel}"/>
+  <parallelOptimized default-value="true">${parallelOptimized}</parallelOptimized>
+  <parallelTestsTimeoutForcedInSeconds>${surefire.parallel.forcedTimeout}</parallelTestsTimeoutForcedInSeconds>
+  <parallelTestsTimeoutInSeconds>${surefire.parallel.timeout}</parallelTestsTimeoutInSeconds>
+  <perCoreThreadCount default-value="true">${perCoreThreadCount}</perCoreThreadCount>
+  <pluginArtifactMap>${plugin.artifactMap}</pluginArtifactMap>
+  <pluginDescriptor default-value="${plugin}"/>
+  <printSummary default-value="true">${surefire.printSummary}</printSummary>
+  <projectArtifactMap>${project.artifactMap}</projectArtifactMap>
+  <redirectTestOutputToFile default-value="false">${maven.test.redirectTestOutputToFile}</redirectTestOutputToFile>
+  <remoteRepositories default-value="${project.pluginArtifactRepositories}"/>
+  <reportFormat default-value="brief">${surefire.reportFormat}</reportFormat>
+  <reportNameSuffix default-value="">${surefire.reportNameSuffix}</reportNameSuffix>
+  <reportsDirectory default-value="${project.build.directory}/surefire-reports"/>
+  <rerunFailingTestsCount default-value="0">${surefire.rerunFailingTestsCount}</rerunFailingTestsCount>
+  <reuseForks default-value="true">${reuseForks}</reuseForks>
+  <runOrder default-value="filesystem">${surefire.runOrder}</runOrder>
+  <skip default-value="false">${maven.test.skip}</skip>
+  <skipExec>${maven.test.skip.exec}</skipExec>
+  <skipTests default-value="false">${skipTests}</skipTests>
+  <suiteXmlFiles>${surefire.suiteXmlFiles}</suiteXmlFiles>
+  <test>${test}</test>
+  <testClassesDirectory default-value="${project.build.testOutputDirectory}"/>
+  <testFailureIgnore default-value="false">${maven.test.failure.ignore}</testFailureIgnore>
+  <testNGArtifactName default-value="org.testng:testng">none:none</testNGArtifactName>
+  <testSourceDirectory default-value="${project.build.testSourceDirectory}"/>
+  <threadCount>${threadCount}</threadCount>
+  <threadCountClasses default-value="0">${threadCountClasses}</threadCountClasses>
+  <threadCountMethods default-value="0">${threadCountMethods}</threadCountMethods>
+  <threadCountSuites default-value="0">${threadCountSuites}</threadCountSuites>
+  <trimStackTrace default-value="true">${trimStackTrace}</trimStackTrace>
+  <useFile default-value="true">${surefire.useFile}</useFile>
+  <useManifestOnlyJar default-value="true">${surefire.useManifestOnlyJar}</useManifestOnlyJar>
+  <useSystemClassLoader default-value="true">${surefire.useSystemClassLoader}</useSystemClassLoader>
+  <useUnlimitedThreads default-value="false">${useUnlimitedThreads}</useUnlimitedThreads>
+  <workingDirectory>${basedir}</workingDirectory>
+  <project default-value="${project}"/>
+  <session default-value="${session}"/>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-surefire-plugin:2.18.1:test (test-testng)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <additionalClasspathElements>${maven.test.additionalClasspath}</additionalClasspathElements>
+  <argLine>${argLine}</argLine>
+  <basedir default-value="${basedir}"/>
+  <childDelegation default-value="false">${childDelegation}</childDelegation>
+  <classesDirectory default-value="${project.build.outputDirectory}"/>
+  <classpathDependencyExcludes>${maven.test.dependency.excludes}</classpathDependencyExcludes>
+  <debugForkedProcess>${maven.surefire.debug}</debugForkedProcess>
+  <dependenciesToScan>${dependenciesToScan}</dependenciesToScan>
+  <disableXmlReport default-value="false">${disableXmlReport}</disableXmlReport>
+  <enableAssertions default-value="true">${enableAssertions}</enableAssertions>
+  <excludedGroups>${excludedGroups}</excludedGroups>
+  <failIfNoSpecifiedTests>${surefire.failIfNoSpecifiedTests}</failIfNoSpecifiedTests>
+  <failIfNoTests>${failIfNoTests}</failIfNoTests>
+  <forkCount default-value="1">${forkCount}</forkCount>
+  <forkMode default-value="once">${forkMode}</forkMode>
+  <forkedProcessTimeoutInSeconds>${surefire.timeout}</forkedProcessTimeoutInSeconds>
+  <groups>${groups}</groups>
+  <junitArtifactName default-value="junit:junit">none:none</junitArtifactName>
+  <jvm>${jvm}</jvm>
+  <localRepository default-value="${localRepository}"/>
+  <objectFactory>${objectFactory}</objectFactory>
+  <parallel>${parallel}</parallel>
+  <parallelMavenExecution default-value="${session.parallel}"/>
+  <parallelOptimized default-value="true">${parallelOptimized}</parallelOptimized>
+  <parallelTestsTimeoutForcedInSeconds>${surefire.parallel.forcedTimeout}</parallelTestsTimeoutForcedInSeconds>
+  <parallelTestsTimeoutInSeconds>${surefire.parallel.timeout}</parallelTestsTimeoutInSeconds>
+  <perCoreThreadCount default-value="true">${perCoreThreadCount}</perCoreThreadCount>
+  <pluginArtifactMap>${plugin.artifactMap}</pluginArtifactMap>
+  <pluginDescriptor default-value="${plugin}"/>
+  <printSummary default-value="true">${surefire.printSummary}</printSummary>
+  <projectArtifactMap>${project.artifactMap}</projectArtifactMap>
+  <redirectTestOutputToFile default-value="false">${maven.test.redirectTestOutputToFile}</redirectTestOutputToFile>
+  <remoteRepositories default-value="${project.pluginArtifactRepositories}"/>
+  <reportFormat default-value="brief">${surefire.reportFormat}</reportFormat>
+  <reportNameSuffix default-value="">${surefire.reportNameSuffix}</reportNameSuffix>
+  <reportsDirectory default-value="${project.build.directory}/surefire-reports"/>
+  <rerunFailingTestsCount default-value="0">${surefire.rerunFailingTestsCount}</rerunFailingTestsCount>
+  <reuseForks default-value="true">${reuseForks}</reuseForks>
+  <runOrder default-value="filesystem">${surefire.runOrder}</runOrder>
+  <skip default-value="false">${maven.test.skip}</skip>
+  <skipExec>${maven.test.skip.exec}</skipExec>
+  <skipTests default-value="false">${skipTests}</skipTests>
+  <suiteXmlFiles>${surefire.suiteXmlFiles}</suiteXmlFiles>
+  <test>${test}</test>
+  <testClassesDirectory default-value="${project.build.testOutputDirectory}"/>
+  <testFailureIgnore default-value="false">${maven.test.failure.ignore}</testFailureIgnore>
+  <testNGArtifactName default-value="org.testng:testng">org.testng:testng</testNGArtifactName>
+  <testSourceDirectory default-value="${project.build.testSourceDirectory}"/>
+  <threadCount>${threadCount}</threadCount>
+  <threadCountClasses default-value="0">${threadCountClasses}</threadCountClasses>
+  <threadCountMethods default-value="0">${threadCountMethods}</threadCountMethods>
+  <threadCountSuites default-value="0">${threadCountSuites}</threadCountSuites>
+  <trimStackTrace default-value="true">${trimStackTrace}</trimStackTrace>
+  <useFile default-value="true">${surefire.useFile}</useFile>
+  <useManifestOnlyJar default-value="true">${surefire.useManifestOnlyJar}</useManifestOnlyJar>
+  <useSystemClassLoader default-value="true">${surefire.useSystemClassLoader}</useSystemClassLoader>
+  <useUnlimitedThreads default-value="false">${useUnlimitedThreads}</useUnlimitedThreads>
+  <workingDirectory>${basedir}</workingDirectory>
+  <project default-value="${project}"/>
+  <session default-value="${session}"/>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-jar-plugin:2.4:jar (default-jar)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <archive>
+    <manifestEntries>
+      <mode>development</mode>
+      <url>https://github.com/swagger-api/swagger-codegen/modules/swagger-codegen</url>
+      <implementation-version>2.1.4-SNAPSHOT</implementation-version>
+      <package>io.swagger</package>
+    </manifestEntries>
+  </archive>
+  <classesDirectory default-value="${project.build.outputDirectory}"/>
+  <defaultManifestFile default-value="${project.build.outputDirectory}/META-INF/MANIFEST.MF"/>
+  <finalName default-value="${project.build.finalName}">${jar.finalName}</finalName>
+  <forceCreation default-value="false">${jar.forceCreation}</forceCreation>
+  <outputDirectory default-value="${project.build.directory}"/>
+  <project default-value="${project}"/>
+  <session default-value="${session}"/>
+  <skipIfEmpty default-value="false">${jar.skipIfEmpty}</skipIfEmpty>
+  <useDefaultManifestFile default-value="false">${jar.useDefaultManifestFile}</useDefaultManifestFile>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-dependency-plugin:2.8:copy-dependencies (default)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <addParentPoms default-value="false"/>
+  <classifier default-value="">${classifier}</classifier>
+  <copyPom default-value="false">${mdep.copyPom}</copyPom>
+  <excludeArtifactIds default-value="">${excludeArtifactIds}</excludeArtifactIds>
+  <excludeClassifiers default-value="">${excludeClassifiers}</excludeClassifiers>
+  <excludeGroupIds default-value="">${excludeGroupIds}</excludeGroupIds>
+  <excludeScope default-value="">${excludeScope}</excludeScope>
+  <excludeTransitive default-value="false">${excludeTransitive}</excludeTransitive>
+  <excludeTypes default-value="">${excludeTypes}</excludeTypes>
+  <failOnMissingClassifierArtifact default-value="false">${mdep.failOnMissingClassifierArtifact}</failOnMissingClassifierArtifact>
+  <includeArtifactIds default-value="">${includeArtifactIds}</includeArtifactIds>
+  <includeClassifiers default-value="">${includeClassifiers}</includeClassifiers>
+  <includeGroupIds default-value="">${includeGroupIds}</includeGroupIds>
+  <includeScope default-value="">${includeScope}</includeScope>
+  <includeTypes default-value="">${includeTypes}</includeTypes>
+  <local default-value="${localRepository}"/>
+  <markersDirectory default-value="${project.build.directory}/dependency-maven-plugin-markers">${markersDirectory}</markersDirectory>
+  <outputAbsoluteArtifactFilename default-value="false">${outputAbsoluteArtifactFilename}</outputAbsoluteArtifactFilename>
+  <outputDirectory default-value="${project.build.directory}/dependency">D:\28msec\xbrl\swagger-codegen\modules\swagger-codegen\target/lib</outputDirectory>
+  <overWriteIfNewer default-value="true">${overWriteIfNewer}</overWriteIfNewer>
+  <overWriteReleases default-value="false">${overWriteReleases}</overWriteReleases>
+  <overWriteSnapshots default-value="false">${overWriteSnapshots}</overWriteSnapshots>
+  <prependGroupId default-value="false">${mdep.prependGroupId}</prependGroupId>
+  <reactorProjects default-value="${reactorProjects}"/>
+  <remoteRepos default-value="${project.remoteArtifactRepositories}"/>
+  <silent default-value="false">${silent}</silent>
+  <skip default-value="false">${mdep.skip}</skip>
+  <stripClassifier default-value="false">${mdep.stripClassifier}</stripClassifier>
+  <stripVersion default-value="false">${mdep.stripVersion}</stripVersion>
+  <type default-value="">${type}</type>
+  <useBaseVersion default-value="true">${mdep.useBaseVersion}</useBaseVersion>
+  <useRepositoryLayout default-value="false">${mdep.useRepositoryLayout}</useRepositoryLayout>
+  <useSubDirectoryPerArtifact default-value="false">${mdep.useSubDirectoryPerArtifact}</useSubDirectoryPerArtifact>
+  <useSubDirectoryPerScope default-value="false">${mdep.useSubDirectoryPerScope}</useSubDirectoryPerScope>
+  <useSubDirectoryPerType default-value="false">${mdep.useSubDirectoryPerType}</useSubDirectoryPerType>
+  <project default-value="${project}"/>
+</configuration>
+[DEBUG] =======================================================================
+[DEBUG] Could not find metadata io.swagger:swagger-parser:1.0.11-SNAPSHOT/maven-metadata.xml in local (C:\Users\user\.m2\repository)
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-parser/1.0.11-SNAPSHOT/maven-metadata.xml
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-parser/1.0.11-SNAPSHOT/maven-metadata.xml
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-parser\1.0.11-SNAPSHOT\resolver-status.properties
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-parser\1.0.11-SNAPSHOT\resolver-status.properties
+[DEBUG] Could not find metadata io.swagger:swagger-parser:1.0.11-SNAPSHOT/maven-metadata.xml in sonatype-snapshots (https://oss.sonatype.org/content/repositories/snapshots)
+[DEBUG] Could not find metadata io.swagger:swagger-parser:1.0.11-SNAPSHOT/maven-metadata.xml in sonatype-nexus-snapshots (https://oss.sonatype.org/content/repositories/snapshots)
+[DEBUG] Could not find metadata io.swagger:swagger-parser:1.0.11-SNAPSHOT/maven-metadata.xml in local (C:\Users\user\.m2\repository)
+[DEBUG] Skipped remote request for io.swagger:swagger-parser:1.0.11-SNAPSHOT/maven-metadata.xml, already updated during this session.
+[DEBUG] Failure to find io.swagger:swagger-parser:1.0.11-SNAPSHOT/maven-metadata.xml in https://oss.sonatype.org/content/repositories/snapshots was cached in the local repository, resolution will not be reattempted until the update interval of sonatype-snapshots has elapsed or updates are forced
+[DEBUG] Skipped remote request for io.swagger:swagger-parser:1.0.11-SNAPSHOT/maven-metadata.xml, already updated during this session.
+[DEBUG] Failure to find io.swagger:swagger-parser:1.0.11-SNAPSHOT/maven-metadata.xml in https://oss.sonatype.org/content/repositories/snapshots was cached in the local repository, resolution will not be reattempted until the update interval of sonatype-nexus-snapshots has elapsed or updates are forced
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-parser/1.0.11-SNAPSHOT/swagger-parser-1.0.11-SNAPSHOT.pom
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-parser\1.0.11-SNAPSHOT\swagger-parser-1.0.11-SNAPSHOT.pom.lastUpdated
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-parser/1.0.11-SNAPSHOT/swagger-parser-1.0.11-SNAPSHOT.pom
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-parser\1.0.11-SNAPSHOT\swagger-parser-1.0.11-SNAPSHOT.pom.lastUpdated
+[WARNING] The POM for io.swagger:swagger-parser:jar:1.0.11-SNAPSHOT is missing, no dependency information available
+[DEBUG] Could not find metadata io.swagger:swagger-compat-spec-parser:1.0.11-SNAPSHOT/maven-metadata.xml in local (C:\Users\user\.m2\repository)
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-compat-spec-parser/1.0.11-SNAPSHOT/maven-metadata.xml
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-compat-spec-parser/1.0.11-SNAPSHOT/maven-metadata.xml
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-compat-spec-parser\1.0.11-SNAPSHOT\resolver-status.properties
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-compat-spec-parser\1.0.11-SNAPSHOT\resolver-status.properties
+[DEBUG] Could not find metadata io.swagger:swagger-compat-spec-parser:1.0.11-SNAPSHOT/maven-metadata.xml in sonatype-snapshots (https://oss.sonatype.org/content/repositories/snapshots)
+[DEBUG] Could not find metadata io.swagger:swagger-compat-spec-parser:1.0.11-SNAPSHOT/maven-metadata.xml in sonatype-nexus-snapshots (https://oss.sonatype.org/content/repositories/snapshots)
+[DEBUG] Could not find metadata io.swagger:swagger-compat-spec-parser:1.0.11-SNAPSHOT/maven-metadata.xml in local (C:\Users\user\.m2\repository)
+[DEBUG] Skipped remote request for io.swagger:swagger-compat-spec-parser:1.0.11-SNAPSHOT/maven-metadata.xml, already updated during this session.
+[DEBUG] Failure to find io.swagger:swagger-compat-spec-parser:1.0.11-SNAPSHOT/maven-metadata.xml in https://oss.sonatype.org/content/repositories/snapshots was cached in the local repository, resolution will not be reattempted until the update interval of sonatype-snapshots has elapsed or updates are forced
+[DEBUG] Skipped remote request for io.swagger:swagger-compat-spec-parser:1.0.11-SNAPSHOT/maven-metadata.xml, already updated during this session.
+[DEBUG] Failure to find io.swagger:swagger-compat-spec-parser:1.0.11-SNAPSHOT/maven-metadata.xml in https://oss.sonatype.org/content/repositories/snapshots was cached in the local repository, resolution will not be reattempted until the update interval of sonatype-nexus-snapshots has elapsed or updates are forced
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-compat-spec-parser/1.0.11-SNAPSHOT/swagger-compat-spec-parser-1.0.11-SNAPSHOT.pom
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-compat-spec-parser\1.0.11-SNAPSHOT\swagger-compat-spec-parser-1.0.11-SNAPSHOT.pom.lastUpdated
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-compat-spec-parser/1.0.11-SNAPSHOT/swagger-compat-spec-parser-1.0.11-SNAPSHOT.pom
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-compat-spec-parser\1.0.11-SNAPSHOT\swagger-compat-spec-parser-1.0.11-SNAPSHOT.pom.lastUpdated
+[WARNING] The POM for io.swagger:swagger-compat-spec-parser:jar:1.0.11-SNAPSHOT is missing, no dependency information available
+[DEBUG] Could not find metadata io.swagger:swagger-core:1.5.4-SNAPSHOT/maven-metadata.xml in local (C:\Users\user\.m2\repository)
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-core/1.5.4-SNAPSHOT/maven-metadata.xml
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-core/1.5.4-SNAPSHOT/maven-metadata.xml
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-core\1.5.4-SNAPSHOT\resolver-status.properties
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-core\1.5.4-SNAPSHOT\resolver-status.properties
+[DEBUG] Could not find metadata io.swagger:swagger-core:1.5.4-SNAPSHOT/maven-metadata.xml in sonatype-snapshots (https://oss.sonatype.org/content/repositories/snapshots)
+[DEBUG] Could not find metadata io.swagger:swagger-core:1.5.4-SNAPSHOT/maven-metadata.xml in sonatype-nexus-snapshots (https://oss.sonatype.org/content/repositories/snapshots)
+[DEBUG] Could not find metadata io.swagger:swagger-core:1.5.4-SNAPSHOT/maven-metadata.xml in local (C:\Users\user\.m2\repository)
+[DEBUG] Skipped remote request for io.swagger:swagger-core:1.5.4-SNAPSHOT/maven-metadata.xml, already updated during this session.
+[DEBUG] Failure to find io.swagger:swagger-core:1.5.4-SNAPSHOT/maven-metadata.xml in https://oss.sonatype.org/content/repositories/snapshots was cached in the local repository, resolution will not be reattempted until the update interval of sonatype-snapshots has elapsed or updates are forced
+[DEBUG] Skipped remote request for io.swagger:swagger-core:1.5.4-SNAPSHOT/maven-metadata.xml, already updated during this session.
+[DEBUG] Failure to find io.swagger:swagger-core:1.5.4-SNAPSHOT/maven-metadata.xml in https://oss.sonatype.org/content/repositories/snapshots was cached in the local repository, resolution will not be reattempted until the update interval of sonatype-nexus-snapshots has elapsed or updates are forced
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-core/1.5.4-SNAPSHOT/swagger-core-1.5.4-SNAPSHOT.pom
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-core\1.5.4-SNAPSHOT\swagger-core-1.5.4-SNAPSHOT.pom.lastUpdated
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-core/1.5.4-SNAPSHOT/swagger-core-1.5.4-SNAPSHOT.pom
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-core\1.5.4-SNAPSHOT\swagger-core-1.5.4-SNAPSHOT.pom.lastUpdated
+[WARNING] The POM for io.swagger:swagger-core:jar:1.5.4-SNAPSHOT is missing, no dependency information available
+[DEBUG] Dependency collection stats: {ConflictMarker.analyzeTime=1, ConflictMarker.markTime=0, ConflictMarker.nodeCount=162, ConflictIdSorter.graphTime=1, ConflictIdSorter.topsortTime=0, ConflictIdSorter.conflictIdCount=53, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=11, ConflictResolver.conflictItemCount=88, DefaultDependencyCollector.collectTime=5073, DefaultDependencyCollector.transformTime=13}
+[DEBUG] io.swagger:swagger-codegen:jar:2.1.4-SNAPSHOT
+[DEBUG]    io.swagger:swagger-parser:jar:1.0.11-SNAPSHOT:compile
+[DEBUG]    io.swagger:swagger-compat-spec-parser:jar:1.0.11-SNAPSHOT:compile
+[DEBUG]    io.swagger:swagger-core:jar:1.5.4-SNAPSHOT:compile
+[DEBUG]    com.samskivert:jmustache:jar:1.9:compile
+[DEBUG]    commons-io:commons-io:jar:2.3:compile
+[DEBUG]    org.apache.maven:maven-plugin-tools-api:jar:2.0:compile
+[DEBUG]       org.apache.maven:maven-project:jar:2.0:compile
+[DEBUG]          org.apache.maven:maven-profile:jar:2.0:compile
+[DEBUG]       org.apache.maven:maven-plugin-descriptor:jar:2.0:compile
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.0.4:compile
+[DEBUG]    org.apache.felix:maven-bundle-plugin:jar:2.3.4:compile
+[DEBUG]       biz.aQute:bndlib:jar:1.15.0:compile
+[DEBUG]       net.sf.kxml:kxml2:jar:2.2.2:compile
+[DEBUG]          xmlpull:xmlpull:jar:1.1.3.1:compile
+[DEBUG]       org.apache.felix:org.apache.felix.bundlerepository:jar:1.6.2:compile
+[DEBUG]          org.osgi:org.osgi.core:jar:4.1.0:compile
+[DEBUG]          org.easymock:easymock:jar:2.4:compile
+[DEBUG]       org.apache.felix:org.osgi.core:jar:1.0.0:compile
+[DEBUG]       org.apache.felix:org.osgi.service.obr:jar:1.0.1:compile
+[DEBUG]       org.apache.maven:maven-model:jar:2.0.7:compile
+[DEBUG]       org.apache.maven:maven-plugin-api:jar:2.0.7:compile
+[DEBUG]       org.apache.maven:maven-artifact:jar:2.0.7:compile
+[DEBUG]       org.apache.maven:maven-archiver:jar:2.2:compile
+[DEBUG]       org.apache.maven:maven-artifact-manager:jar:2.0.7:compile
+[DEBUG]          org.apache.maven:maven-repository-metadata:jar:2.0.7:compile
+[DEBUG]       org.apache.maven:maven-settings:jar:2.0.7:compile
+[DEBUG]       org.apache.maven.shared:maven-dependency-tree:jar:1.2:compile
+[DEBUG]       org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2:compile
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile
+[DEBUG]          classworlds:classworlds:jar:1.1-alpha-2:compile
+[DEBUG]       org.codehaus.plexus:plexus-archiver:jar:1.0-alpha-7:compile
+[DEBUG]    org.slf4j:slf4j-ext:jar:1.7.12:compile
+[DEBUG]       ch.qos.cal10n:cal10n-api:jar:0.8.1:compile
+[DEBUG]    org.slf4j:slf4j-api:jar:1.7.12:compile
+[DEBUG]    org.slf4j:slf4j-simple:jar:1.7.12:compile
+[DEBUG]    commons-lang:commons-lang:jar:2.4:compile
+[DEBUG]    commons-cli:commons-cli:jar:1.2:compile
+[DEBUG]    org.testng:testng:jar:6.9.6:test
+[DEBUG]       com.google.inject:guice:jar:no_aop:4.0:test
+[DEBUG]          javax.inject:javax.inject:jar:1:test
+[DEBUG]          aopalliance:aopalliance:jar:1.0:test
+[DEBUG]       org.beanshell:bsh:jar:2.0b4:test
+[DEBUG]       org.apache.ant:ant:jar:1.7.0:test
+[DEBUG]          org.apache.ant:ant-launcher:jar:1.7.0:test
+[DEBUG]       com.beust:jcommander:jar:1.48:test
+[DEBUG]       org.yaml:snakeyaml:jar:1.15:test
+[DEBUG]       junit:junit:jar:4.8.1:test (scope managed from compile by io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT) (version managed from 4.10 by io.swagger:swagger-codegen-project:2.1.4-SNAPSHOT)
+[DEBUG]    org.reflections:reflections:jar:0.9.10:test
+[DEBUG]       com.google.guava:guava:jar:15.0:test
+[DEBUG]       org.javassist:javassist:jar:3.19.0-GA:test
+[DEBUG]       com.google.code.findbugs:annotations:jar:2.0.1:test
+[DEBUG]    org.jmockit:jmockit:jar:1.19:test
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-parser/1.0.11-SNAPSHOT/swagger-parser-1.0.11-SNAPSHOT.jar
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-compat-spec-parser/1.0.11-SNAPSHOT/swagger-compat-spec-parser-1.0.11-SNAPSHOT.jar
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-core/1.5.4-SNAPSHOT/swagger-core-1.5.4-SNAPSHOT.jar
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-parser\1.0.11-SNAPSHOT\swagger-parser-1.0.11-SNAPSHOT.jar.lastUpdated
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-compat-spec-parser\1.0.11-SNAPSHOT\swagger-compat-spec-parser-1.0.11-SNAPSHOT.jar.lastUpdated
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-core\1.5.4-SNAPSHOT\swagger-core-1.5.4-SNAPSHOT.jar.lastUpdated
+[DEBUG] Using transporter WagonTransporter with priority -1.0 for https://oss.sonatype.org/content/repositories/snapshots
+[DEBUG] Using connector BasicRepositoryConnector with priority 0.0 for https://oss.sonatype.org/content/repositories/snapshots
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-parser/1.0.11-SNAPSHOT/swagger-parser-1.0.11-SNAPSHOT.jar
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-compat-spec-parser/1.0.11-SNAPSHOT/swagger-compat-spec-parser-1.0.11-SNAPSHOT.jar
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-core/1.5.4-SNAPSHOT/swagger-core-1.5.4-SNAPSHOT.jar
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-parser\1.0.11-SNAPSHOT\swagger-parser-1.0.11-SNAPSHOT.jar.lastUpdated
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-compat-spec-parser\1.0.11-SNAPSHOT\swagger-compat-spec-parser-1.0.11-SNAPSHOT.jar.lastUpdated
+[DEBUG] Writing tracking file C:\Users\user\.m2\repository\io\swagger\swagger-core\1.5.4-SNAPSHOT\swagger-core-1.5.4-SNAPSHOT.jar.lastUpdated
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] swagger-codegen-project ............................ SUCCESS [  1.822 s]
+[INFO] swagger-codegen (core library) ..................... FAILURE [  6.018 s]
+[INFO] swagger-codegen (executable) ....................... SKIPPED
+[INFO] swagger-codegen (maven-plugin) ..................... SKIPPED
+[INFO] swagger-generator .................................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 8.377 s
+[INFO] Finished at: 2015-10-26T15:05:24+01:00
+[INFO] Final Memory: 18M/231M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal on project swagger-codegen: Could not resolve dependencies for project io.swagger:swagger-codegen:jar:2.1.4-SNAPSHOT: The following artifacts could not be resolved: io.swagger:swagger-parser:jar:1.0.11-SNAPSHOT, io.swagger:swagger-compat-spec-parser:jar:1.0.11-SNAPSHOT, io.swagger:swagger-core:jar:1.5.4-SNAPSHOT: Could not find artifact io.swagger:swagger-parser:jar:1.0.11-SNAPSHOT in sonatype-snapshots (https://oss.sonatype.org/content/repositories/snapshots) -> [Help 1]
+org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal on project swagger-codegen: Could not resolve dependencies for project io.swagger:swagger-codegen:jar:2.1.4-SNAPSHOT: The following artifacts could not be resolved: io.swagger:swagger-parser:jar:1.0.11-SNAPSHOT, io.swagger:swagger-compat-spec-parser:jar:1.0.11-SNAPSHOT, io.swagger:swagger-core:jar:1.5.4-SNAPSHOT: Could not find artifact io.swagger:swagger-parser:jar:1.0.11-SNAPSHOT in sonatype-snapshots (https://oss.sonatype.org/content/repositories/snapshots)
+	at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.getDependencies(LifecycleDependencyResolver.java:221)
+	at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.resolveProjectDependencies(LifecycleDependencyResolver.java:127)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.ensureDependenciesAreResolved(MojoExecutor.java:257)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:200)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:116)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:80)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:51)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:128)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:307)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:193)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:106)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:862)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:286)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:197)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+Caused by: org.apache.maven.project.DependencyResolutionException: Could not resolve dependencies for project io.swagger:swagger-codegen:jar:2.1.4-SNAPSHOT: The following artifacts could not be resolved: io.swagger:swagger-parser:jar:1.0.11-SNAPSHOT, io.swagger:swagger-compat-spec-parser:jar:1.0.11-SNAPSHOT, io.swagger:swagger-core:jar:1.5.4-SNAPSHOT: Could not find artifact io.swagger:swagger-parser:jar:1.0.11-SNAPSHOT in sonatype-snapshots (https://oss.sonatype.org/content/repositories/snapshots)
+	at org.apache.maven.project.DefaultProjectDependenciesResolver.resolve(DefaultProjectDependenciesResolver.java:211)
+	at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.getDependencies(LifecycleDependencyResolver.java:195)
+	... 23 more
+Caused by: org.eclipse.aether.resolution.DependencyResolutionException: The following artifacts could not be resolved: io.swagger:swagger-parser:jar:1.0.11-SNAPSHOT, io.swagger:swagger-compat-spec-parser:jar:1.0.11-SNAPSHOT, io.swagger:swagger-core:jar:1.5.4-SNAPSHOT: Could not find artifact io.swagger:swagger-parser:jar:1.0.11-SNAPSHOT in sonatype-snapshots (https://oss.sonatype.org/content/repositories/snapshots)
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveDependencies(DefaultRepositorySystem.java:384)
+	at org.apache.maven.project.DefaultProjectDependenciesResolver.resolve(DefaultProjectDependenciesResolver.java:205)
+	... 24 more
+Caused by: org.eclipse.aether.resolution.ArtifactResolutionException: The following artifacts could not be resolved: io.swagger:swagger-parser:jar:1.0.11-SNAPSHOT, io.swagger:swagger-compat-spec-parser:jar:1.0.11-SNAPSHOT, io.swagger:swagger-core:jar:1.5.4-SNAPSHOT: Could not find artifact io.swagger:swagger-parser:jar:1.0.11-SNAPSHOT in sonatype-snapshots (https://oss.sonatype.org/content/repositories/snapshots)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:444)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246)
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveDependencies(DefaultRepositorySystem.java:367)
+	... 25 more
+Caused by: org.eclipse.aether.transfer.ArtifactNotFoundException: Could not find artifact io.swagger:swagger-parser:jar:1.0.11-SNAPSHOT in sonatype-snapshots (https://oss.sonatype.org/content/repositories/snapshots)
+	at org.eclipse.aether.connector.basic.ArtifactTransportListener.transferFailed(ArtifactTransportListener.java:39)
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector$TaskRunner.run(BasicRepositoryConnector.java:355)
+	at org.eclipse.aether.util.concurrency.RunnableErrorForwarder$1.run(RunnableErrorForwarder.java:67)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+[ERROR] 
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <goals> -rf :swagger-codegen

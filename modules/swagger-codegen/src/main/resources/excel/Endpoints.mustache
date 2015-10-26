@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace {{packageName}}
+{
+    /// <summary>
+    /// Wrapper for all endpoint clients.
+    /// </summary>
+    public class Endpoints
+    {
+        private static Dictionary<String, CellStore.Api.DataApi> _dataApis = new Dictionary<String, CellStore.Api.DataApi>();
+
+        public static getDataApi(String token, String basePath){
+          String key = "DataApi|" + token + "|" + basePath;
+          CellStore.Api.DataApi api = _dataApis.
+          if(api == null){
+            api = new CellStore.Api.DataApi(new CellStore.Client.ApiClient(basePath));
+            _dataApis.Add(key, api);
+          }
+          return api;
+        }
+}

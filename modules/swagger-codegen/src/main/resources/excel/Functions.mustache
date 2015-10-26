@@ -1,0 +1,98 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using ExcelDna.Integration;
+using ExcelDna.Logging;
+
+namespace {{packageName}}
+{
+    {{#operations}}
+    /// <summary>
+    /// Represents a collection of functions to interact with the API endpoints
+    /// </summary>
+    public class {{classname}}Functions
+    {
+    
+        private static object defaultErrorHandler(Exception ex)
+        {
+            System.IO.StreamWriter file = new System.IO.StreamWriter("c:\\excelLog.txt", true);
+            file.WriteLine("{0}", ex);
+            file.Close();
+            return "ERROR";
+        }
+
+        {{#operation}}
+        [ExcelFunction(Description = "{{summary}}", Category = "Cell Store / {{classname}}")]
+        public {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}void{{/returnType}} {{nickname}} (
+          {{#allParams}}
+            {{{dataType}}} {{paramName}}{{^required}} = {{defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}
+          {{/allParams}})
+        {
+          try
+            {
+              {{#allParams}}{{#required}}
+              // verify the required parameter '{{paramName}}' is set
+              if ({{paramName}} == null) throw new ApiException(400, "Missing required parameter '{{paramName}}' when calling {{nickname}}");
+              {{/required}}{{/allParams}}
+      
+              var path = "{{path}}";
+      
+              var pathParams = new Dictionary<String, String>();
+              var queryParams = new Dictionary<String, String>();
+              var headerParams = new Dictionary<String, String>();
+              var formParams = new Dictionary<String, String>();
+              var fileParams = new Dictionary<String, FileParameter>();
+              String postBody = null;
+
+              // to determine the Accept header
+              String[] http_header_accepts = new String[] {
+                  {{#produces}}"{{mediaType}}"{{#hasMore}}, {{/hasMore}}{{/produces}}
+              };
+              String http_header_accept = ApiClient.SelectHeaderAccept(http_header_accepts);
+              if (http_header_accept != null)
+                  headerParams.Add("Accept", ApiClient.SelectHeaderAccept(http_header_accepts));
+
+              {{#hardcodedQueryParams}}queryParams.Add("{{baseName}}", ApiClient.ParameterToString("{{defaultValue}}")); // hardcoded query parameter
+              {{/hardcodedQueryParams}}
+              {{#pathParams}}if ({{paramName}} != null) pathParams.Add("{{baseName}}", ApiClient.ParameterToString({{paramName}})); // path parameter
+              {{/pathParams}}
+              {{#queryParams}}if ({{paramName}} != null) queryParams.Add("{{baseName}}", ApiClient.ParameterToString({{paramName}})); // query parameter
+              {{/queryParams}}
+              {{#patternQueryParams}}if ({{paramName}} != null) ApiClient.AddPatternQueryParameters({{paramName}}, "{{pattern}}", queryParams); // pattern query parameter
+              {{/patternQueryParams}}
+              {{#headerParams}}if ({{paramName}} != null) headerParams.Add("{{baseName}}", ApiClient.ParameterToString({{paramName}})); // header parameter
+              {{/headerParams}}
+              {{#formParams}}if ({{paramName}} != null) {{#isFile}}fileParams.Add("{{baseName}}", ApiClient.ParameterToFile("{{baseName}}", {{paramName}}));{{/isFile}}{{^isFile}}formParams.Add("{{baseName}}", ApiClient.ParameterToString({{paramName}})); // form parameter{{/isFile}}
+              {{/formParams}}
+              {{#bodyParam}}postBody = ApiClient.Serialize({{paramName}}); // http body (model) parameter
+              {{/bodyParam}}
+      
+              // authentication setting, if any
+              String[] authSettings = new String[] { {{#authMethods}}"{{name}}"{{#hasMore}}, {{/hasMore}}{{/authMethods}} };
+      
+              // make the HTTP request
+              IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.{{httpMethod}}, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+      
+              if (((int)response.StatusCode) >= 400)
+                  throw new ApiException ((int)response.StatusCode, "Error calling {{nickname}}: " + response.Content, response.Content);
+              else if (((int)response.StatusCode) == 0)
+                  throw new ApiException ((int)response.StatusCode, "Error calling {{nickname}}: " + response.ErrorMessage, response.ErrorMessage);
+      
+              {{#returnType}}return ({{{returnType}}}) ApiClient.Deserialize(response.Content, typeof({{{returnType}}}), response.Headers);{{/returnType}}{{^returnType}}return;{{/returnType}}
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("{0} Exception caught.", e);
+                defaultErrorHandler(e);
+                return 0;
+            }
+        }
+  
+        {{/operation}}
+    }
+  
+    {{/operations}}
+}

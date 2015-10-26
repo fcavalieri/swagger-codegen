@@ -494,10 +494,16 @@ public class DefaultCodegen {
         } else if (p instanceof DecimalProperty) {
             datatype = "number";
         } else if (p instanceof RefProperty) {
-            RefProperty r = (RefProperty) p;
-            datatype = r.get$ref();
-            if (datatype.indexOf("#/definitions/") == 0) {
-                datatype = datatype.substring("#/definitions/".length());
+            try {
+                RefProperty r = (RefProperty) p;
+                datatype = r.get$ref();
+                if (datatype.indexOf("#/definitions/") == 0) {
+                    datatype = datatype.substring("#/definitions/".length());
+                }
+            } catch (Exception e) {
+                LOGGER.warn("Error obtaining the datatype from RefProperty:" + p + ". Datatype default to Object");
+                datatype = "Object";
+                e.printStackTrace();
             }
         } else {
             if (p != null) {
@@ -586,7 +592,7 @@ public class DefaultCodegen {
                 }
             }
             // interfaces (intermediate models)
-            if (allDefinitions != null) {
+            if (allDefinitions != null && composed.getInterfaces() != null) {
                 for (RefModel _interface : composed.getInterfaces()) {
                     final String interfaceRef = toModelName(_interface.getSimpleRef());
                     final Model interfaceModel = allDefinitions.get(interfaceRef);
@@ -863,8 +869,12 @@ public class DefaultCodegen {
         }
         return responses.get(code);
     }
-
+    
     public CodegenOperation fromOperation(String path, String httpMethod, Operation operation, Map<String, Model> definitions) {
+    	return fromOperation(path, httpMethod, operation, definitions, null);
+    }
+    
+    public CodegenOperation fromOperation(String path, String httpMethod, Operation operation, Map<String, Model> definitions, Swagger swagger) {
         CodegenOperation op = CodegenModelFactory.newInstance(CodegenModelType.OPERATION);
         Set<String> imports = new HashSet<String>();
         op.vendorExtensions = operation.getVendorExtensions();
@@ -900,15 +910,32 @@ public class DefaultCodegen {
         op.summary = escapeText(operation.getSummary());
         op.notes = escapeText(operation.getDescription());
         op.tags = operation.getTags();
+        op.hasConsumes = false;
+        op.hasProduces = false;
 
-        if (operation.getConsumes() != null && operation.getConsumes().size() > 0) {
+        List<String> consumes = new ArrayList<String>();
+        if (operation.getConsumes() != null) {
+            if (operation.getConsumes().size() > 0) {
+                // use consumes defined in the operation
+                consumes = operation.getConsumes();
+            } else {
+                // empty list, do nothing to override global setting
+            }
+        } else if (swagger != null && swagger.getConsumes() != null && swagger.getConsumes().size() > 0) {
+            // use consumes defined globally 
+            consumes = swagger.getConsumes();
+            LOGGER.debug("No consumes defined in operation. Using global consumes (" + swagger.getConsumes() + ") for " + op.operationId);
+        }
+        
+        // if "consumes" is defined (per operation or using global definition)
+        if (consumes != null && consumes.size() > 0) {
             List<Map<String, String>> c = new ArrayList<Map<String, String>>();
             int count = 0;
-            for (String key : operation.getConsumes()) {
+            for (String key : consumes) {
                 Map<String, String> mediaType = new HashMap<String, String>();
                 mediaType.put("mediaType", key);
                 count += 1;
-                if (count < operation.getConsumes().size()) {
+                if (count < consumes.size()) {
                     mediaType.put("hasMore", "true");
                 } else {
                     mediaType.put("hasMore", null);
@@ -919,14 +946,29 @@ public class DefaultCodegen {
             op.hasConsumes = true;
         }
 
-        if (operation.getProduces() != null && operation.getProduces().size() > 0) {
+        List<String> produces = new ArrayList<String>();
+        if (operation.getProduces() != null) {
+            if (operation.getProduces().size() > 0) {
+                // use produces defined in the operation
+                produces = operation.getProduces();
+            } else {
+                // empty list, do nothing to override global setting
+            }
+        } else if (swagger != null && swagger.getProduces() != null && swagger.getProduces().size() > 0) {
+            // use produces defined globally 
+            produces = swagger.getProduces();
+            LOGGER.debug("No produces defined in operation. Using global produces (" + swagger.getProduces() + ") for " + op.operationId);
+        }
+        
+        // if "produces" is defined (per operation or using global definition)
+        if (produces != null && produces.size() > 0) {
             List<Map<String, String>> c = new ArrayList<Map<String, String>>();
             int count = 0;
-            for (String key : operation.getProduces()) {
+            for (String key : produces) {
                 Map<String, String> mediaType = new HashMap<String, String>();
                 mediaType.put("mediaType", key);
                 count += 1;
-                if (count < operation.getProduces().size()) {
+                if (count < produces.size()) {
                     mediaType.put("hasMore", "true");
                 } else {
                     mediaType.put("hasMore", null);
@@ -1058,7 +1100,7 @@ public class DefaultCodegen {
             }
         }
         for (String i : imports) {
-            if (!defaultIncludes.contains(i) && !languageSpecificPrimitives.contains(i)) {
+            if (needToImport(i)) {
                 op.imports.add(i);
             }
         }
@@ -1458,6 +1500,7 @@ public class DefaultCodegen {
          */
         
         p.vendorExtensions = param.getVendorExtensions();
+<<<<<<< HEAD
         p.parameterKind = computeParameterKind(param);
         
         switch (p.parameterKind)
@@ -1473,6 +1516,128 @@ public class DefaultCodegen {
         	break;
         }
         return p;        
+=======
+
+        if (param instanceof SerializableParameter) {
+            SerializableParameter qp = (SerializableParameter) param;
+            Property property = null;
+            String collectionFormat = null;
+            String type = qp.getType();
+            if (null == type) {
+                LOGGER.warn("Type is NULL for Serializable Parameter: " + param);
+            }
+            if ("array".equals(type)) {
+                Property inner = qp.getItems();
+                if (inner == null) {
+                    LOGGER.warn("warning!  No inner type supplied for array parameter \"" + qp.getName() + "\", using String");
+                    inner = new StringProperty().description("//TODO automatically added by swagger-codegen");
+                }
+                property = new ArrayProperty(inner);
+                collectionFormat = qp.getCollectionFormat();
+                CodegenProperty pr = fromProperty("inner", inner);
+                p.baseType = pr.datatype;
+                p.isContainer = true;
+                imports.add(pr.baseType);
+            } else if ("object".equals(type)) {
+                Property inner = qp.getItems();
+                if (inner == null) {
+                    LOGGER.warn("warning!  No inner type supplied for map parameter \"" + qp.getName() + "\", using String");
+                    inner = new StringProperty().description("//TODO automatically added by swagger-codegen");
+                }
+                property = new MapProperty(inner);
+                collectionFormat = qp.getCollectionFormat();
+                CodegenProperty pr = fromProperty("inner", inner);
+                p.baseType = pr.datatype;
+                imports.add(pr.baseType);
+            } else {
+                Map<PropertyId, Object> args = new HashMap<PropertyId, Object>();
+                String format = qp.getFormat();
+                args.put(PropertyId.ENUM, qp.getEnum());
+                property = PropertyBuilder.build(type, format, args);
+            }
+            if (property == null) {
+                LOGGER.warn("warning!  Property type \"" + type + "\" not found for parameter \"" + param.getName() + "\", using String");
+                property = new StringProperty().description("//TODO automatically added by swagger-codegen.  Type was " + type + " but not supported");
+            }
+            property.setRequired(param.getRequired());
+            CodegenProperty model = fromProperty(qp.getName(), property);
+            p.dataType = model.datatype;
+            p.isEnum = model.isEnum;
+            p._enum = model._enum;
+            p.allowableValues = model.allowableValues;
+            p.collectionFormat = collectionFormat;
+            if(collectionFormat != null && collectionFormat.equals("multi")) {
+                p.isCollectionFormatMulti = true;
+            }
+            p.paramName = toParamName(qp.getName());
+
+            if (model.complexType != null) {
+                imports.add(model.complexType);
+            }
+        } else {
+            if (!(param instanceof BodyParameter)) {
+                LOGGER.error("Cannot use Parameter " + param + " as Body Parameter");
+            }
+
+            BodyParameter bp = (BodyParameter) param;
+            Model model = bp.getSchema();
+
+            if (model instanceof ModelImpl) {
+                ModelImpl impl = (ModelImpl) model;
+                CodegenModel cm = fromModel(bp.getName(), impl);
+                if (cm.emptyVars != null && cm.emptyVars == false) {
+                    p.dataType = getTypeDeclaration(cm.classname);
+                    imports.add(p.dataType);
+                } else {
+                    Property prop = PropertyBuilder.build(impl.getType(), impl.getFormat(), null);
+                    prop.setRequired(bp.getRequired());
+                    CodegenProperty cp = fromProperty("property", prop);
+                    if (cp != null) {
+                        p.dataType = cp.datatype;
+                        if (p.dataType.equals("byte[]")) {
+                            p.isBinary = true;
+                        }
+                        else {
+                            p.isBinary = false;
+                        }
+                    }
+                }
+            } else if (model instanceof ArrayModel) {
+                // to use the built-in model parsing, we unwrap the ArrayModel
+                // and get a single property from it
+                ArrayModel impl = (ArrayModel) model;
+                CodegenModel cm = fromModel(bp.getName(), impl);
+                // get the single property
+                ArrayProperty ap = new ArrayProperty().items(impl.getItems());
+                ap.setRequired(param.getRequired());
+                CodegenProperty cp = fromProperty("inner", ap);
+                if (cp.complexType != null) {
+                    imports.add(cp.complexType);
+                }
+                imports.add(cp.baseType);
+                p.dataType = cp.datatype;
+                p.isContainer = true;
+            } else {
+                Model sub = bp.getSchema();
+                if (sub instanceof RefModel) {
+                    String name = ((RefModel) sub).getSimpleRef();
+                    if (typeMapping.containsKey(name)) {
+                        name = typeMapping.get(name);
+                    } else {
+                        name = toModelName(name);
+                        if (defaultIncludes.contains(name)) {
+                            imports.add(name);
+                        }
+                        imports.add(name);
+                        name = getTypeDeclaration(name);
+                    }
+                    p.dataType = name;
+                }
+            }
+            p.paramName = toParamName(bp.getName());
+        }
+        return p;
+>>>>>>> 6b7ceab0814138b58889010ec20c2a71a2feba11
     }
 
     public List<CodegenSecurity> fromSecurity(Map<String, SecuritySchemeDefinition> schemes) {
@@ -1507,7 +1672,23 @@ public class DefaultCodegen {
                 sec.authorizationUrl = oauth2Definition.getAuthorizationUrl();
                 sec.tokenUrl = oauth2Definition.getTokenUrl();
                 if (oauth2Definition.getScopes() != null) {
-                    sec.scopes = oauth2Definition.getScopes().keySet();
+                    List<Map<String, Object>> scopes = new ArrayList<Map<String, Object>>();
+                    int count = 0, numScopes = oauth2Definition.getScopes().size();
+                    for(Map.Entry<String, String> scopeEntry : oauth2Definition.getScopes().entrySet()) {
+                        Map<String, Object> scope = new HashMap<String, Object>();
+                        scope.put("scope", scopeEntry.getKey());
+                        scope.put("description", scopeEntry.getValue());
+                        
+                        count += 1;
+                        if (count < numScopes) {
+                            scope.put("hasMore", "true");
+                        } else {
+                            scope.put("hasMore", null);
+                        }
+                        
+                        scopes.add(scope);
+                    }
+                    sec.scopes = scopes;
                 }
             }
 
@@ -1515,6 +1696,12 @@ public class DefaultCodegen {
             secs.add(sec);
         }
         return secs;
+    }
+
+    protected boolean needToImport(String type) {
+        return !defaultIncludes.contains(type)
+            && !languageSpecificPrimitives.contains(type)
+            && type.indexOf(".") < 0;
     }
 
     protected List<Map<String, Object>> toExamples(Map<String, Object> examples) {
@@ -1620,7 +1807,7 @@ public class DefaultCodegen {
     }
 
     private void addImport(CodegenModel m, String type) {
-        if (type != null && !languageSpecificPrimitives.contains(type) && !defaultIncludes.contains(type)) {
+        if (type != null && needToImport(type)) {
             m.imports.add(type);
         }
     }
@@ -1799,8 +1986,8 @@ public class DefaultCodegen {
      * @return sanitized string
      */
     public String sanitizeName(String name) {
-        // NOTE: performance wise, we should have written with 2 replaceAll to replace desired 
-        // character with _ or empty character. Below aims to spell out different cases we've 
+        // NOTE: performance wise, we should have written with 2 replaceAll to replace desired
+        // character with _ or empty character. Below aims to spell out different cases we've
         // encountered so far and hopefully make it easier for others to add more special
         // cases in the future.
 
@@ -1823,7 +2010,7 @@ public class DefaultCodegen {
 
         // input name and age => input_name_and_age
         name = name.replaceAll(" ", "_");
-        
+
         // remove everything else other than word, number and _
         // $php_variable => php_variable
         return name.replaceAll("[^a-zA-Z0-9_]", "");
