@@ -131,7 +131,6 @@ public class DefaultCodegen {
 
     // override with any special handling of the entire swagger spec
     public void processSwagger(Swagger swagger) {
-      LOGGER.info("swagger: " + swagger.toString());
     }
 
     // override with any special text escaping logic
@@ -815,10 +814,12 @@ public class DefaultCodegen {
           			}
           			property.items = cp;
           			if (property.items.isEnum) {
-          				  property.datatypeWithEnum = property.datatypeWithEnum.replace(property.items.baseType,
-          						property.items.datatypeWithEnum);
-                            if(property.defaultValue != null)
-          				        property.defaultValue = property.defaultValue.replace(property.items.baseType, property.items.datatypeWithEnum);
+          				  property.datatypeWithEnum = 
+          				      property.datatypeWithEnum.replace(property.items.baseType, property.items.datatypeWithEnum);
+                    if(property.defaultValue != null) {
+                        property.defaultValue = 
+                          property.defaultValue.replace(property.items.baseType, property.items.datatypeWithEnum);
+                    }
           			}
         		}
       	} else if (p instanceof MapProperty) {
