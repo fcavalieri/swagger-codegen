@@ -2,22 +2,34 @@ package io.cellstore.codegen;
 
 import io.swagger.codegen.CodegenOperation;
 import io.swagger.codegen.CodegenParameter;
-import io.swagger.codegen.CodegenProperty;
-import io.swagger.codegen.CodegenResponse;
-import io.swagger.codegen.CodegenSecurity;
-import io.swagger.models.ExternalDocs;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class CellStoreCodegenOperation extends CodegenOperation {
     public List<CodegenParameter> patternQueryParams = new ArrayList<CodegenParameter>();
     public List<CodegenParameter> hardcodedQueryParams = new ArrayList<CodegenParameter>();
     
-    public CellStoreCodegenOperation(CodegenOperation op){
-      
+    public boolean includeOperation()
+    {
+      if (vendorExtensions.size() > 0)
+      {
+        Object excludeFromBindings = vendorExtensions.get("x-exclude-from-bindings");
+        if (excludeFromBindings != null)
+        {
+          if (excludeFromBindings instanceof Boolean)
+          {
+            if (((Boolean)excludeFromBindings).booleanValue())
+              return false;
+          }
+          else
+          {
+            String msg = "Invalid value for x-exclude-from-bindings, only booleans are allowed\n";      
+            throw new RuntimeException(msg);
+          }
+        }
+      }
+      return true;
     }
+    
 }

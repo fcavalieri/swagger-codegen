@@ -34,12 +34,16 @@ public class CellStoreCodegen extends DefaultCodegen {
     {
         // remove excluded parameters
         List<Parameter> parameters = operation.getParameters();
+        List<Parameter> removeParams = new ArrayList<Parameter>();
         if (parameters != null) {
           for (Parameter param : parameters) {
             if (!includeParameter(param))
             {
-              parameters.remove(param);
+              removeParams.add(param);
             }
+          }
+          for (Parameter param : removeParams){
+            parameters.remove(param);
           }
           operation.setParameters(parameters);
         }
@@ -50,17 +54,21 @@ public class CellStoreCodegen extends DefaultCodegen {
         List<CodegenParameter> patternQueryParams = new ArrayList<CodegenParameter>();
         List<CodegenParameter> hardcodedQueryParams = new ArrayList<CodegenParameter>();
         if (op.queryParams != null) {
+          List<CodegenParameter> removeQueryParams = new ArrayList<CodegenParameter>();
           for (CodegenParameter p : op.queryParams) {
             CellStoreCodegenParameter param = (CellStoreCodegenParameter) p;
             if(param.getParameterKind() == CellStoreCodegenParameter.Kind.PATTERN){
-              op.queryParams.remove(p);
+              removeQueryParams.add(p);
               patternQueryParams.add(param.copy());
             } 
             else if(param.getParameterKind() == CellStoreCodegenParameter.Kind.HARDCODED)
             {
-              op.queryParams.remove(p);
+              removeQueryParams.add(p);
               hardcodedQueryParams.add(param.copy());
             }
+          }
+          for (CodegenParameter p : removeQueryParams) {
+            op.queryParams.remove(p);
           }
         }
         op.patternQueryParams = addHasMore(patternQueryParams);
@@ -68,12 +76,16 @@ public class CellStoreCodegen extends DefaultCodegen {
         
         // remove hard coded params from all params
         if (op.allParams != null) {
+          List<CodegenParameter> removeAllParams = new ArrayList<CodegenParameter>();
           for (CodegenParameter p : op.allParams) {
             CellStoreCodegenParameter param = (CellStoreCodegenParameter) p;
             if(param.getParameterKind() == CellStoreCodegenParameter.Kind.HARDCODED)
             {
-              op.allParams.remove(p);
+              removeAllParams.add(p);
             }
+          }
+          for (CodegenParameter p : removeAllParams) {
+            op.allParams.remove(p);
           }
         }
         
@@ -110,7 +122,8 @@ public class CellStoreCodegen extends DefaultCodegen {
         p.pattern = pattern;
         int pos = pattern.lastIndexOf("::");
         if(pos != -1){
-          p.patternSuffix = pattern.substring(pos); 
+          p.patternSuffix = pattern.substring(pos);
+          p.patternSuffix.replace("$", "");
         } else {
           p.patternSuffix = "";
         }
@@ -142,6 +155,22 @@ public class CellStoreCodegen extends DefaultCodegen {
         }
       }
       return true;
+    }
+    
+    @Override
+    public Map<String, Object> postProcessOperations(Map<String, Object> operations) {
+        Map<String, Object> objs = (Map<String, Object>) operations.get("operations");
+        List<CodegenOperation> ops = (List<CodegenOperation>) objs.get("operation");
+        List<CodegenOperation> removeOps = new ArrayList<CodegenOperation>();
+        for (CodegenOperation o : ops) {
+            CellStoreCodegenOperation op = (CellStoreCodegenOperation) o;
+            if(!op.includeOperation())
+              removeOps.add(o);
+        }
+        for (CodegenOperation o : removeOps) {
+          ops.remove(o);
+        }
+        return operations;
     }
     
   }

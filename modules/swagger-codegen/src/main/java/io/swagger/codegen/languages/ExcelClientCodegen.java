@@ -1,12 +1,11 @@
 package io.swagger.codegen.languages;
 
 import io.cellstore.codegen.CellStoreCodegen;
+import io.cellstore.codegen.CellStoreCodegenOperation;
 import io.swagger.codegen.CodegenConfig;
 import io.swagger.codegen.CodegenOperation;
 import io.swagger.codegen.CodegenParameter;
-import io.swagger.codegen.CodegenResponse;
 import io.swagger.codegen.CodegenType;
-import io.swagger.codegen.DefaultCodegen;
 import io.swagger.codegen.SupportingFile;
 import io.swagger.models.properties.ArrayProperty;
 import io.swagger.models.properties.MapProperty;
@@ -17,7 +16,6 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -91,13 +89,16 @@ public class ExcelClientCodegen extends CellStoreCodegen implements CodegenConfi
     }
 
     @Override
-    public Map<String, Object> postProcessOperations(Map<String, Object> objs) {
+    public Map<String, Object> postProcessOperations(Map<String, Object> operations) {
+        Map<String, Object> objs = super.postProcessOperations(operations);
         @SuppressWarnings("unchecked")
         Map<String, Object> objectMap = (Map<String, Object>) objs.get("operations");
         @SuppressWarnings("unchecked")
-        List<CodegenOperation> operations = (List<CodegenOperation>) objectMap.get("operation");
-        for (CodegenOperation operation : operations) {
-            List<CodegenParameter> params = operation.patternQueryParams;
+        List<CodegenOperation> ops = (List<CodegenOperation>) objectMap.get("operation");
+        for (CodegenOperation o : ops) {
+            CellStoreCodegenOperation op = (CellStoreCodegenOperation) o;
+            List<CodegenParameter> params = op.patternQueryParams;
+            LOGGER.info("pattern params: " + op.patternQueryParams.size());
             for (CodegenParameter param : params) {
               param.dataType = "Object[,]"; 
               LOGGER.info(param.toString());
