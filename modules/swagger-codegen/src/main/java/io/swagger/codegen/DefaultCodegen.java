@@ -3,7 +3,6 @@ package io.swagger.codegen;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 
-import io.swagger.codegen.CodegenParameter.Kind;
 import io.swagger.codegen.examples.ExampleGenerator;
 import io.swagger.models.ArrayModel;
 import io.swagger.models.ComposedModel;
@@ -132,6 +131,7 @@ public class DefaultCodegen {
 
     // override with any special handling of the entire swagger spec
     public void processSwagger(Swagger swagger) {
+      LOGGER.info("swagger: " + swagger.toString());
     }
 
     // override with any special text escaping logic
@@ -1006,32 +1006,15 @@ public class DefaultCodegen {
         List<CodegenParameter> headerParams = new ArrayList<CodegenParameter>();
         List<CodegenParameter> cookieParams = new ArrayList<CodegenParameter>();
         List<CodegenParameter> formParams = new ArrayList<CodegenParameter>();
-        List<CodegenParameter> patternQueryParams = new ArrayList<CodegenParameter>();
-        List<CodegenParameter> hardcodedQueryParams = new ArrayList<CodegenParameter>();
-
+        
         if (parameters != null) {
             for (Parameter param : parameters) {
-            	if (!includeParameter(param))
-            		continue;
             	
                 CodegenParameter p = fromParameter(param, imports);
                 allParams.add(p);
                 if (param instanceof QueryParameter) 
                 {
                 	p.isQueryParam = new Boolean(true);
-                	switch (p.parameterKind)
-                	{
-                	case NORMAL:
-                		queryParams.add(p.copy());
-                		break;
-                	case HARDCODED:
-                		hardcodedQueryParams.add(p.copy());
-                		allParams.remove(p);
-                		break;
-                	case PATTERN:
-                		patternQueryParams.add(p.copy());
-                		break;
-                	}
                 } else if (param instanceof PathParameter) {
                     p.required = true;
                     p.isPathParam = new Boolean(true);
@@ -1085,8 +1068,6 @@ public class DefaultCodegen {
         op.headerParams = addHasMore(headerParams);
         // op.cookieParams = cookieParams;
         op.formParams = addHasMore(formParams);
-        op.patternQueryParams = addHasMore(patternQueryParams);
-        op.hardcodedQueryParams = addHasMore(hardcodedQueryParams);
         // legacy support
         op.nickname = op.operationId;
 
@@ -1283,7 +1264,15 @@ public class DefaultCodegen {
     {
     	SerializableParameter qp = (SerializableParameter) param;
     	
-    	codegenParam.pattern = (String)codegenParam.vendorExtensions.get("x-name-pattern");
+    	
+    	String pattern = (String)codegenParam.vendorExtensions.get("x-name-pattern");
+    	codegenParam.pattern = pattern;
+    	int pos = pattern.lastIndexOf("::");
+      if(pos != -1){
+    	  codegenParam.patternSuffix = pattern.substring(pos); 
+    	} else {
+    	  codegenParam.patternSuffix = "";
+    	}
     	
     	String type = qp.getType();
     	Map<PropertyId, Object> args = new HashMap<PropertyId, Object>();
@@ -1303,7 +1292,8 @@ public class DefaultCodegen {
         codegenParam._enum = model._enum;
         codegenParam.allowableValues = model.allowableValues;
         codegenParam.paramName = toParamName(getParameterName(param));
-
+        codegenParam.isPatternParam = new Boolean(true);
+        
         if (model.complexType != null) {
             imports.add(model.complexType);
         }        
