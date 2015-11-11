@@ -2,22 +2,27 @@ package io.swagger.codegen.languages;
 
 import io.cellstore.codegen.CellStoreCodegen;
 import io.cellstore.codegen.CellStoreCodegenOperation;
+import io.cellstore.codegen.CellStoreCodegenParameter;
 import io.swagger.codegen.CodegenConfig;
 import io.swagger.codegen.CodegenOperation;
 import io.swagger.codegen.CodegenParameter;
 import io.swagger.codegen.CodegenType;
 import io.swagger.codegen.SupportingFile;
+import io.swagger.models.parameters.Parameter;
+import io.swagger.models.parameters.SerializableParameter;
 import io.swagger.models.properties.ArrayProperty;
 import io.swagger.models.properties.MapProperty;
 import io.swagger.models.properties.Property;
 import io.swagger.codegen.CliOption;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -89,19 +94,81 @@ public class ExcelClientCodegen extends CellStoreCodegen implements CodegenConfi
     }
 
     @Override
+    public CodegenParameter fromParameter(Parameter param, Set<String> imports) 
+    {
+      CellStoreCodegenParameter p = 
+          (CellStoreCodegenParameter) super.fromParameter(param, imports);
+      if (p.baseType == null && param instanceof SerializableParameter) {
+        p.baseType = p.dataType;
+        p.dataType = "Object";
+      }
+      if(p.baseType != null){
+        if(p.baseType.startsWith("int")){
+          p.conversion = "Convert.ToInt32";
+        } else if(p.baseType.startsWith("bool")){
+          p.conversion = "Convert.ToBoolean";
+        } else if(p.baseType.startsWith("string")){
+          p.conversion = "Convert.ToString";
+        } 
+      } 
+      return p;
+    }
+    
+    public boolean includeOperation(CellStoreCodegenOperation op)
+    {
+      if (op.vendorExtensions.size() > 0)
+      {
+        Object includeBinding = op.vendorExtensions.get("x-excel-include-binding");
+        if (includeBinding != null)
+        {
+          if (includeBinding instanceof Boolean)
+          {
+            if (((Boolean)includeBinding).booleanValue())
+              return true;
+          }
+          else
+          {
+            String msg = "Invalid value for x-excel-include-binding, only booleans are allowed\n";      
+            throw new RuntimeException(msg);
+          }
+        }
+      }
+      return false;
+    }
+    
+    @Override
     public Map<String, Object> postProcessOperations(Map<String, Object> operations) {
         Map<String, Object> objs = super.postProcessOperations(operations);
         @SuppressWarnings("unchecked")
         Map<String, Object> objectMap = (Map<String, Object>) objs.get("operations");
         @SuppressWarnings("unchecked")
         List<CodegenOperation> ops = (List<CodegenOperation>) objectMap.get("operation");
+        
+        // remove bindings that are not explicitly included
+        List<CodegenOperation> removeOps = new ArrayList<CodegenOperation>();
         for (CodegenOperation o : ops) {
             CellStoreCodegenOperation op = (CellStoreCodegenOperation) o;
-            List<CodegenParameter> params = op.patternQueryParams;
-            LOGGER.info("pattern params: " + op.patternQueryParams.size());
-            for (CodegenParameter param : params) {
-              param.dataType = "Object[,]"; 
-              LOGGER.info(param.toString());
+            if(!includeOperation(op))
+              removeOps.add(o);
+        }
+        for (CodegenOperation o : removeOps) {
+          ops.remove(o);
+        }
+        
+        for (CodegenOperation o : ops) {
+            o.returnType = "Object[,]";
+            CellStoreCodegenOperation op = (CellStoreCodegenOperation) o;
+            List<CodegenParameter> pparams = op.patternQueryParams;
+            for (CodegenParameter param : pparams) {
+              param.dataType = "Object[]";
+            }
+            List<CodegenParameter> allParams = op.allParams;
+            for (CodegenParameter p : allParams) {
+              CellStoreCodegenParameter param = (CellStoreCodegenParameter) p;
+              if(param.getParameterKind() == CellStoreCodegenParameter.Kind.PATTERN){
+                param.dataType = "Object[]";
+                LOGGER.info("ALL :" + param.toString());
+              }
             }
         }
         return objs;

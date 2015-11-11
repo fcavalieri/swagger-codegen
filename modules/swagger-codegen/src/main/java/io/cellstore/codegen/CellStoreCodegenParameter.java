@@ -12,6 +12,7 @@ import java.util.List;
 public class CellStoreCodegenParameter extends CodegenParameter {
     public Boolean isPatternParam;
     public String pattern, patternSuffix;
+    public String conversion;
     
     /**
      * Determines whether this parameter is mandatory. If the parameter is in "path",
@@ -19,8 +20,6 @@ public class CellStoreCodegenParameter extends CodegenParameter {
      * MAY be included and its default value is false.
      */
     public Boolean required;
-    
-    private Kind parameterKind;
     
     public enum Kind 
     {
@@ -58,6 +57,7 @@ public class CellStoreCodegenParameter extends CodegenParameter {
           if (bindingName instanceof String)
           {
             this.paramName = codegen.toParamName((String)bindingName);
+            return;
           }
           else
           {
@@ -78,6 +78,7 @@ public class CellStoreCodegenParameter extends CodegenParameter {
           if (bindingDescription instanceof String)
           {
             this.description = codegen.escapeText((String)bindingDescription);
+            return;
           }
           else
           {
@@ -122,7 +123,8 @@ public class CellStoreCodegenParameter extends CodegenParameter {
           output += "  allowableValues: " + this.allowableValues.toString() + "\n";
       }
       output += "  vendorExtensions: " + this.vendorExtensions.toString() + "\n";
-      output += "  parameterKind: " + this.parameterKind + "\n";
+      output += "  conversion: " + this.conversion + "\n";
+      output += "  parameterKind: " + getParameterKind() + "\n";
       return output;
     }
     
@@ -132,7 +134,7 @@ public class CellStoreCodegenParameter extends CodegenParameter {
         output.isPatternParam = this.isPatternParam;
         output.patternSuffix = this.patternSuffix;
         output.pattern = this.pattern;
-        output.parameterKind = this.parameterKind;
+        output.conversion = this.conversion;
         return output;
     }
 }

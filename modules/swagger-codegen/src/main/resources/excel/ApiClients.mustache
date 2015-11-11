@@ -32,8 +32,8 @@ namespace {{packageName}}.Client
         /// <returns>CellStore.Api.DataApi</returns>            
         public static CellStore.Api.DataApi getDataApiClient(String basePath = "http://secxbrl.28.io/v1/_queries/public")
         {
-            CellStore.Api.DataApi dataApi = dataApis[basePath];
-            if(dataApi == null)
+            CellStore.Api.DataApi dataApi = null;
+            if(!dataApis.TryGetValue(basePath, out dataApi))
             {
               dataApi = new CellStore.Api.DataApi(new CellStore.Client.ApiClient(basePath));
               dataApis.Add(basePath, dataApi);
@@ -48,8 +48,8 @@ namespace {{packageName}}.Client
         /// <returns>CellStore.Api.UsersApi</returns>            
         public static CellStore.Api.UsersApi getUsersApiClient(String basePath = "http://secxbrl.28.io/v1/_queries/public")
         {
-            CellStore.Api.UsersApi userApi = usersApis[basePath];
-            if(userApi == null)
+            CellStore.Api.UsersApi userApi = null;
+            if(!usersApis.TryGetValue(basePath, out userApi))
             {
               userApi = new CellStore.Api.UsersApi(new CellStore.Client.ApiClient(basePath));
               usersApis.Add(basePath, userApi);
@@ -64,8 +64,8 @@ namespace {{packageName}}.Client
         /// <returns>CellStore.Api.SessionsApi</returns>            
         public static CellStore.Api.SessionsApi getSessionsApiClient(String basePath = "http://secxbrl.28.io/v1/_queries/public")
         {
-            CellStore.Api.SessionsApi sessionApi = sessionsApis[basePath];
-            if(sessionApi == null)
+            CellStore.Api.SessionsApi sessionApi = null;
+            if(!sessionsApis.TryGetValue(basePath, out sessionApi))
             {
               sessionApi = new CellStore.Api.SessionsApi(new CellStore.Client.ApiClient(basePath));
               sessionsApis.Add(basePath, sessionApi);
@@ -80,8 +80,8 @@ namespace {{packageName}}.Client
         /// <returns>CellStore.Api.ReportsApi</returns>            
         public static CellStore.Api.ReportsApi getReportsApiClient(String basePath = "http://secxbrl.28.io/v1/_queries/public")
         {
-            CellStore.Api.ReportsApi reportsApi = reportsApis[basePath];
-            if(reportsApi == null)
+            CellStore.Api.ReportsApi reportsApi = null;
+            if(!reportsApis.TryGetValue(basePath, out reportsApi))
             {
               reportsApi = new CellStore.Api.ReportsApi(new CellStore.Client.ApiClient(basePath));
               reportsApis.Add(basePath, reportsApi);

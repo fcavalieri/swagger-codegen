@@ -4,12 +4,19 @@ import io.swagger.codegen.CodegenModelFactory;
 import io.swagger.codegen.CodegenModelType;
 import io.swagger.codegen.CodegenOperation;
 import io.swagger.codegen.CodegenParameter;
+import io.swagger.codegen.CodegenProperty;
 import io.swagger.codegen.DefaultCodegen;
 import io.swagger.models.Model;
 import io.swagger.models.Operation;
 import io.swagger.models.parameters.Parameter;
+import io.swagger.models.parameters.SerializableParameter;
+import io.swagger.models.properties.MapProperty;
+import io.swagger.models.properties.Property;
+import io.swagger.models.properties.PropertyBuilder;
+import io.swagger.models.properties.PropertyBuilder.PropertyId;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -109,11 +116,34 @@ public class CellStoreCodegen extends DefaultCodegen {
     @Override
     public CodegenParameter fromParameter(Parameter param, Set<String> imports) 
     {
-      CellStoreCodegenParameter p = (CellStoreCodegenParameter) super.fromParameter(param, imports);
+      CellStoreCodegenParameter p = 
+          (CellStoreCodegenParameter) super.fromParameter(param, imports);
       p.setDescription(this, param);
       p.setParamName(this, param);
       if (p.defaultValue == null)
       p.defaultValue = "null";
+      
+      if(p.getParameterKind() == CellStoreCodegenParameter.Kind.PATTERN
+         || p.getParameterKind() == CellStoreCodegenParameter.Kind.HARDCODED)
+      {
+          SerializableParameter qp = (SerializableParameter) param;
+          String type = qp.getType();
+          Map<PropertyId, Object> args = new HashMap<PropertyId, Object>();
+          String format = qp.getFormat();
+          args.put(PropertyId.ENUM, qp.getEnum());
+          
+          Property inner = PropertyBuilder.build(type, format, args);                     
+          CodegenProperty pr = fromProperty("inner", inner);
+          p.baseType = pr.datatype;
+          p.isContainer = true;
+          imports.add(pr.baseType);
+
+          Property property = new MapProperty(inner);
+          CodegenProperty model = fromProperty(qp.getName(), property);
+          p.dataType = model.datatype;
+          p.isEnum = model.isEnum;
+          p._enum = model._enum;
+      }
       
       if(p.getParameterKind() == CellStoreCodegenParameter.Kind.PATTERN)
       {
@@ -123,7 +153,7 @@ public class CellStoreCodegen extends DefaultCodegen {
         int pos = pattern.lastIndexOf("::");
         if(pos != -1){
           p.patternSuffix = pattern.substring(pos);
-          p.patternSuffix.replace("$", "");
+          p.patternSuffix = p.patternSuffix.replace("$", "");
         } else {
           p.patternSuffix = "";
         }
