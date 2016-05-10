@@ -8,6 +8,7 @@ import io.swagger.models.auth.SecuritySchemeDefinition;
 import io.swagger.models.parameters.Parameter;
 import io.swagger.util.Json;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +17,6 @@ import java.io.*;
 import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
-import org.apache.commons.lang3.ObjectUtils;
 
 public class DefaultGenerator extends AbstractGenerator implements Generator {
     protected Logger LOGGER = LoggerFactory.getLogger(DefaultGenerator.class);
@@ -270,6 +270,7 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                             String suffix = config.modelTemplateFiles().get(templateName);
                             String filename = config.modelFileFolder() + File.separator + config.toModelFilename(name) + suffix;
                             if (!config.shouldOverwrite(filename)) {
+                                LOGGER.info("Skipped overwriting " + filename);
                                 continue;
                             }
                             String templateFile = getFullTemplateFile(config, templateName);
@@ -291,7 +292,9 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                         for (String templateName : config.modelTestTemplateFiles().keySet()) {
                             String suffix = config.modelTestTemplateFiles().get(templateName);
                             String filename = config.modelTestFileFolder() + File.separator + config.toModelTestFilename(name) + suffix;
-                            if (!config.shouldOverwrite(filename)) {
+                            // do not overwrite test file that already exists
+                            if (new File(filename).exists()) {
+                                LOGGER.info("File exists. Skipped overwriting " + filename);
                                 continue;
                             }
                             String templateFile = getFullTemplateFile(config, templateName);
@@ -314,6 +317,7 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                             String suffix = config.modelDocTemplateFiles().get(templateName);
                             String filename = config.modelDocFileFolder() + File.separator + config.toModelDocFilename(name) + suffix;
                             if (!config.shouldOverwrite(filename)) {
+                                LOGGER.info("Skipped overwriting " + filename);
                                 continue;
                             }
                             String templateFile = getFullTemplateFile(config, templateName);
@@ -404,6 +408,7 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                     for (String templateName : config.apiTemplateFiles().keySet()) {
                         String filename = config.apiFilename(templateName, tag);
                         if (!config.shouldOverwrite(filename) && new File(filename).exists()) {
+                            LOGGER.info("Skipped overwriting " + filename);
                             continue;
                         }
 
@@ -426,10 +431,11 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                     // to generate api test files
                     for (String templateName : config.apiTestTemplateFiles().keySet()) {
                         String filename = config.apiTestFilename(templateName, tag);
-                        if (!config.shouldOverwrite(filename) && new File(filename).exists()) {
+                        // do not overwrite test file that already exists
+                        if (new File(filename).exists()) {
+                            LOGGER.info("File exists. Skipped overwriting " + filename);
                             continue;
                         }
-
                         String templateFile = getFullTemplateFile(config, templateName);
                         String template = readTemplate(templateFile);
                         Template tmpl = Mustache.compiler()
@@ -450,6 +456,7 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                     for (String templateName : config.apiDocTemplateFiles().keySet()) {
                         String filename = config.apiDocFilename(templateName, tag);
                         if (!config.shouldOverwrite(filename) && new File(filename).exists()) {
+                            LOGGER.info("Skipped overwriting " + filename);
                             continue;
                         }
 
@@ -532,6 +539,7 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                     }
                     String outputFilename = outputFolder + File.separator + support.destinationFilename;
                     if (!config.shouldOverwrite(outputFilename)) {
+                        LOGGER.info("Skipped overwriting " + outputFilename);
                         continue;
                     }
 

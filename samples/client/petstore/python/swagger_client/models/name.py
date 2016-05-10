@@ -20,6 +20,7 @@ Copyright 2016 SmartBear Software
 
 from pprint import pformat
 from six import iteritems
+import re
 
 
 class Name(object):
@@ -37,14 +38,20 @@ class Name(object):
                                   and the value is json key in definition.
         """
         self.swagger_types = {
-            'name': 'int'
+            'name': 'int',
+            'snake_case': 'int',
+            '_property': 'str'
         }
 
         self.attribute_map = {
-            'name': 'name'
+            'name': 'name',
+            'snake_case': 'snake_case',
+            '_property': 'property'
         }
 
         self._name = None
+        self._snake_case = None
+        self.__property = None
 
     @property
     def name(self):
@@ -66,7 +73,54 @@ class Name(object):
         :param name: The name of this Name.
         :type: int
         """
+        
         self._name = name
+
+    @property
+    def snake_case(self):
+        """
+        Gets the snake_case of this Name.
+
+
+        :return: The snake_case of this Name.
+        :rtype: int
+        """
+        return self._snake_case
+
+    @snake_case.setter
+    def snake_case(self, snake_case):
+        """
+        Sets the snake_case of this Name.
+
+
+        :param snake_case: The snake_case of this Name.
+        :type: int
+        """
+        
+        self._snake_case = snake_case
+
+    @property
+    def _property(self):
+        """
+        Gets the _property of this Name.
+
+
+        :return: The _property of this Name.
+        :rtype: str
+        """
+        return self.__property
+
+    @_property.setter
+    def _property(self, _property):
+        """
+        Sets the _property of this Name.
+
+
+        :param _property: The _property of this Name.
+        :type: str
+        """
+        
+        self.__property = _property
 
     def to_dict(self):
         """

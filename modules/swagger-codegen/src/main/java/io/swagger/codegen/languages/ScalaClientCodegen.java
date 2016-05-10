@@ -26,7 +26,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class ScalaClientCodegen extends DefaultCodegen implements CodegenConfig {
     protected String invokerPackage = "io.swagger.client";
@@ -101,6 +101,7 @@ public class ScalaClientCodegen extends DefaultCodegen implements CodegenConfig 
         //TODO binary should be mapped to byte array
         // mapped to String as a workaround
         typeMapping.put("binary", "String");
+        typeMapping.put("ByteArray", "String");
 
         languageSpecificPrimitives = new HashSet<String>(
                 Arrays.asList(
