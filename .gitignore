@@ -1,5 +1,3 @@
-node_modules
-
 *.iml
 out/
 *.ipr
@@ -45,6 +43,7 @@ samples/server-generator/scalatra/output/.history
 # nodejs
 samples/server-generator/node/output/node_modules
 samples/server/petstore/nodejs/node_modules
+samples/server/petstore/nodejs-server/node_modules
 
 # qt5 cpp
 samples/client/petstore/qt5cpp/PetStore/moc_*
@@ -57,6 +56,12 @@ samples/client/petstore/qt5cpp/PetStore/Makefile
 **/.gradle/
 samples/client/petstore/java/hello.txt
 samples/client/petstore/android/default/hello.txt
+samples/client/petstore/android/volley/.gradle/
+samples/client/petstore/android/volley/build/
+samples/client/petstore/java/jersey2/.gradle/
+samples/client/petstore/java/jersey2/build/
+samples/client/petstore/java/okhttp-gson/.gradle/
+samples/client/petstore/java/okhttp-gson/build/
 
 #PHP
 samples/client/petstore/php/SwaggerClient-php/composer.lock
@@ -86,9 +91,19 @@ samples/client/petstore/swift/SwaggerClientTests/Pods/Pods.xcodeproj/xcshareddat
 samples/client/petstore/csharp/SwaggerClientTest/.vs
 samples/client/petstore/csharp/SwaggerClientTest/obj
 samples/client/petstore/csharp/SwaggerClientTest/bin
-samples/client/petstore/csharp/SwaggerClientTest/Lib/SwaggerClient/vendor/
+samples/client/petstore/csharp/SwaggerClientTest/packages
 samples/client/petstore/csharp/SwaggerClientTest/bin/Debug/
 samples/client/petstore/csharp/SwaggerClientTest/obj/Debug/
+samples/client/petstore/csharp/SwaggerClientTest/TestResult.xml
+samples/client/petstore/csharp/SwaggerClientTest/nuget.exe
+samples/client/petstore/csharp/SwaggerClientTest/testrunner/
+samples/client/petstore/csharp/SwaggerClient/.vs
+samples/client/petstore/csharp/SwaggerClient/nuget.exe
+samples/client/petstore/csharp/SwaggerClient/obj
+samples/client/petstore/csharp/SwaggerClient/bin
+samples/client/petstore/csharp/SwaggerClient/obj/Debug/
+samples/client/petstore/csharp/SwaggerClient/bin/Debug/
+samples/client/petstore/csharp/SwaggerClient/packages
 
 # Python
 *.pyc
@@ -99,7 +114,20 @@ samples/client/petstore/python/.coverage
 samples/client/petstore/python/.projectile
 samples/client/petstore/python/.venv/
 
-*/.settings
+# ts
+samples/client/petstore/typescript-node/npm/node_modules
+samples/client/petstore/typescript-fetch/with-package-metadata/node_modules
+samples/client/petstore/typescript-fetch/with-package-metadata/dist
+samples/client/petstore/typescript-fetch/with-package-metadata/typings
+samples/client/petstore/typescript-fetch/default/node_modules
+samples/client/petstore/typescript-fetch/default/dist
+samples/client/petstore/typescript-fetch/default/typings
+samples/client/petstore/typescript-fetch/default-es6/node_modules
+samples/client/petstore/typescript-fetch/default-es6/dist
+samples/client/petstore/typescript-fetch/default-es6/typings
+
+#28msec
+node_modules
 .settings
 
 *.mustache~

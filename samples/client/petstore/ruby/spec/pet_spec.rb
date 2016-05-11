@@ -1,16 +1,6 @@
 require 'spec_helper'
 require 'json'
 
-def serialize_json(o)
-  API_CLIENT.object_to_http_body(o)
-end
-
-def deserialize_json(s, type)
-  headers = {'Content-Type' => 'application/json'}
-  response = double('response', headers: headers, body: s)
-  API_CLIENT.deserialize(response, type)
-end
-
 describe "Pet" do
   before do
     @pet_api = Petstore::PetApi.new(API_CLIENT)
@@ -94,7 +84,9 @@ describe "Pet" do
       end
     end
 
-    it "should create and get pet with byte array (binary, string)" do
+    # skip the following as original petstore spec does not have endpoints for testing byte array
+    # we will re-enable this after updating the petstore server
+    xit "should create and get pet with byte array (binary, string)" do
       pet = @pet_api.get_pet_by_id(@pet_id)
       pet.id = @pet_id + 1
       str = serialize_json(pet)
@@ -111,7 +103,9 @@ describe "Pet" do
       @pet_api.delete_pet(pet.id)
     end
 
-    it "should get pet in bject" do
+    # skip the following as original petstore spec does not have endpoints for testing byte array
+    # we will re-enable this after updating the petstore server
+    xit "should get pet in object" do
       pet = @pet_api.get_pet_by_id_in_object(@pet_id)
       pet.should be_a(Petstore::InlineResponse200)
       pet.id.should == @pet_id
@@ -136,7 +130,7 @@ describe "Pet" do
     end
 
     it "should find pets by status" do
-      pets = @pet_api.find_pets_by_status(:status => 'available')
+      pets = @pet_api.find_pets_by_status(['available'])
       pets.length.should >= 3
       pets.each do |pet|
         pet.should be_a(Petstore::Pet)
@@ -145,12 +139,12 @@ describe "Pet" do
     end
 
     it "should not find a pet with invalid status" do
-      pets = @pet_api.find_pets_by_status(:status => 'invalid-status')
+      pets = @pet_api.find_pets_by_status(['invalid-status'])
       pets.length.should == 0
     end
 
     it "should find a pet by status" do
-      pets = @pet_api.find_pets_by_status(:status => "available,sold")
+      pets = @pet_api.find_pets_by_status(["available", "sold"])
       pets.each do |pet|
         if pet.status != 'available' && pet.status != 'sold'
           raise "pet status wasn't right"
@@ -162,7 +156,7 @@ describe "Pet" do
       id = @pet_id + 1
 
       pet = Petstore::Pet.new('id' => id, 'name' => "RUBY UNIT TESTING")
-      result = @pet_api.add_pet(:body => pet)
+      result = @pet_api.add_pet(pet)
       # nothing is returned
       result.should be_nil
 
@@ -175,13 +169,14 @@ describe "Pet" do
 
     it "should upload a file to a pet" do
       result = @pet_api.upload_file(@pet_id, file: File.new('hello.txt'))
-      # nothing is returned
-      result.should be_nil
+      # ApiResponse is returned
+      result.should be_a(Petstore::ApiResponse)
     end
 
     it "should upload a file with form parameter to a pet" do
       result = @pet_api.upload_file(@pet_id, file: File.new('hello.txt'), additional_metadata: 'metadata')
-      result.should be_nil
+      # ApiResponse is returned
+      result.should be_a(Petstore::ApiResponse)
     end
 
     it "should implement eql? and hash" do

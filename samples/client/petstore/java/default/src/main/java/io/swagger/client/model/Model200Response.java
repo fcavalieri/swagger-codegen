@@ -1,15 +1,17 @@
 package io.swagger.client.model;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 
+/**
+ * Model for testing model name starting with number
+ */
+@ApiModel(description = "Model for testing model name starting with number")
 
-
-
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-03-17T10:45:51.189+08:00")
 public class Model200Response   {
   
   private Integer name = null;
@@ -31,7 +33,6 @@ public class Model200Response   {
     this.name = name;
   }
 
-  
 
   @Override
   public boolean equals(java.lang.Object o) {
