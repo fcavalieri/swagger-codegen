@@ -1,5 +1,3 @@
-node_modules
-
 *.iml
 out/
 *.ipr
@@ -128,6 +126,8 @@ samples/client/petstore/typescript-fetch/default-es6/node_modules
 samples/client/petstore/typescript-fetch/default-es6/dist
 samples/client/petstore/typescript-fetch/default-es6/typings
 
+#28msec
+node_modules
 .settings
 
 *.mustache~
