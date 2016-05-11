@@ -76,10 +76,12 @@ public class CodegenParameter {
     
     public CodegenParameter copy() {
         CodegenParameter output = new CodegenParameter();
+/* 28msec */
         return copy(output);
     }
  
     public CodegenParameter copy(CodegenParameter output) {
+/* 28msec */
         output.isFile = this.isFile;
         output.notFile = this.notFile;
         output.hasMore = this.hasMore;
