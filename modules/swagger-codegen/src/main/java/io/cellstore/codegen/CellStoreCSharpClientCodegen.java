@@ -21,6 +21,11 @@ public class CellStoreCSharpClientCodegen extends CSharpClientCodegen
     super();
     CodegenModelFactory.setTypeMapping(CodegenModelType.OPERATION, CellStoreCodegenOperation.class);
     CodegenModelFactory.setTypeMapping(CodegenModelType.PARAMETER, CellStoreCodegenParameter.class);
+    setPackageGuid("{A0E12E5D-6E4A-4166-8E7A-1FF8DD8B89F9}");
+    languageSpecificPrimitives.add("Newtonsoft.Json.Linq.JObject");
+    //typeMapping.put("any", "Object");
+    //typeMapping.remove("object");
+    //typeMapping.put("object", "JObject");
   };
 
   @Override
@@ -185,15 +190,26 @@ public class CellStoreCSharpClientCodegen extends CSharpClientCodegen
     Map<String, Object> objs = (Map<String, Object>) operations.get("operations");
     List<CodegenOperation> ops = (List<CodegenOperation>) objs.get("operation");
     List<CodegenOperation> removeOps = new ArrayList<CodegenOperation>();
-    for (CodegenOperation o : ops) {
+    for (CodegenOperation o : ops)
+    {
       CellStoreCodegenOperation op = (CellStoreCodegenOperation) o;
       if(!op.includeOperation())
         removeOps.add(o);
     }
-    for (CodegenOperation o : removeOps) {
+    for (CodegenOperation o : removeOps)
       ops.remove(o);
+    super.postProcessOperations(operations);
+
+    objs = (Map<String, Object>) operations.get("operations");
+    ops = (List<CodegenOperation>) objs.get("operation");
+    for (CodegenOperation o : ops)
+    {
+      CellStoreCodegenOperation op = (CellStoreCodegenOperation) o;
+      if (op.returnType != null && op.returnType.equals("Object"))
+        op.returnType = "Newtonsoft.Json.Linq.JObject";
     }
-    return super.postProcessOperations(operations);
+
+    return operations;
   }
 
   private List<CodegenParameter> addHasMore(List<CodegenParameter> objs)
