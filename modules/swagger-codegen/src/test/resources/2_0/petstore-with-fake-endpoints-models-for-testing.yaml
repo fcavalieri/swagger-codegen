@@ -1,16 +1,16 @@
 swagger: '2.0'
 info:
-  description: 'This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: " \ '
-  version: 1.0.0
-  title: Swagger Petstore
+  description: "This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\"
+  version: 1.0.0 
+  title: Swagger Petstore 
   termsOfService: 'http://swagger.io/terms/'
   contact:
-    email: apiteam@swagger.io
+    email: apiteam@swagger.io 
   license:
-    name: Apache 2.0
+    name: Apache 2.0 
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-host: petstore.swagger.io
-basePath: /v2
+host: petstore.swagger.io 
+basePath: /v2 
 tags:
   - name: pet
     description: Everything about your Pets
@@ -561,6 +561,69 @@ paths:
           description: User not found
 
   /fake:
+    patch:
+      tags:
+        - fake
+      summary: To test "client" model
+      descriptions: To test "client" model
+      operationId: testClientModel
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: client model
+          required: true
+          schema:
+            $ref: '#/definitions/Client'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Client'
+    get:
+      tags:
+        - fake
+      summary: To test enum query parameters
+      descriptions: To test enum query parameters
+      operationId: testEnumQueryParameters
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: enum_query_string
+          type: string
+          default: '-efg'
+          enum:
+            - _abc
+            - '-efg'
+            - (xyz)
+          in: formData 
+          description: Query parameter enum test (string)
+        - name: enum_query_integer
+          type: number
+          format: int32 
+          enum:
+            - 1
+            - -2
+          in: query
+          description: Query parameter enum test (double)
+        - name: enum_query_double
+          type: number
+          format: double 
+          enum:
+            - 1.1
+            - -1.2
+          in: formData
+          description: Query parameter enum test (double)
+      responses:
+        '400':
+          description: Invalid request
+        '404':
+          description: Not found
     post:
       tags:
         - fake 
@@ -575,9 +638,12 @@ paths:
         偽のエンドポイント
         가짜 엔드 포인트
       operationId: testEndpointParameters
+      consumes:
+        - application/xml; charset=utf-8
+        - application/json; charset=utf-8
       produces:
-        - application/xml
-        - application/json
+        - application/xml; charset=utf-8
+        - application/json; charset=utf-8
       parameters:
         - name: integer
           type: integer
@@ -714,6 +780,7 @@ definitions:
       id:
         type: integer
         format: int64
+        x-is-unique: true
       username:
         type: string
       firstName:
@@ -751,6 +818,7 @@ definitions:
       id:
         type: integer
         format: int64
+        x-is-unique: true
       category:
         $ref: '#/definitions/Category'
       name:
@@ -829,6 +897,8 @@ definitions:
       name:
         type: integer
         format: int32
+      class:
+        type: string 
     xml:
       name: Name
   Dog:
@@ -944,6 +1014,160 @@ definitions:
         enum:
           - 1.1
           - -1.2
+  AdditionalPropertiesClass:
+    type: object
+    properties:
+      map_property:
+        type: object
+        additionalProperties:
+          type: string
+      map_of_map_property:
+        type: object
+        additionalProperties:
+          type: object
+          additionalProperties:
+            type: string
+  MixedPropertiesAndAdditionalPropertiesClass:
+    type: object
+    properties:
+      uuid:
+        type: string
+        format: uuid
+      dateTime:
+        type: string
+        format: date-time
+      map: 
+        type: object
+        additionalProperties:
+          $ref: '#/definitions/Animal'
+  List:
+    type: object
+    properties:
+      123-list:
+        type: string
+  Client:
+    type: object
+    properties:
+      client:
+        type: string
+  ReadOnlyFirst:
+    type: object
+    properties:
+      bar:
+        type: string
+        readOnly: true
+      baz:
+        type: string
+  hasOnlyReadOnly:
+    type: object
+    properties:
+      bar:
+        type: string
+        readOnly: true
+      foo:
+        type: string
+        readOnly: true
+  MapTest:
+    type: object
+    properties:
+      map_map_of_string:
+        type: object
+        additionalProperties:
+          type: object
+          additionalProperties:
+            type: string  
+      # comment out the following (map of map of enum) as many language not yet support this
+      #map_map_of_enum:
+      #  type: object
+      #  additionalProperties:
+      #    type: object
+      #    additionalProperties:
+      #      type: string  
+      #      enum:
+      #        - UPPER
+      #        - lower
+      map_of_enum_string:
+        type: object
+        additionalProperties:
+          type: string
+          enum:
+            - UPPER
+            - lower
+  ArrayTest:
+    type: object
+    properties:
+      array_of_string:
+        type: array
+        items:
+          type: string
+      array_array_of_integer:
+        type: array
+        items:
+          type: array
+          items:
+            type: integer
+            format: int64
+      array_array_of_model:
+        type: array
+        items:
+          type: array
+          items:
+            $ref: '#/definitions/ReadOnlyFirst'
+      # commented out the below test case for array of enum for the time being
+      # as not all language can handle it
+      #array_of_enum:
+      #  type: array
+      #  items:
+      #    type: string
+      #    enum:
+      #      - UPPER
+      #      - lower
+  NumberOnly:
+    type: object
+    properties:
+      JustNumber:
+        type: number
+  ArrayOfNumberOnly:
+    type: object
+    properties:
+      ArrayNumber:
+        type: array
+        items:
+          type: number
+  ArrayOfArrayOfNumberOnly:
+    type: object
+    properties:
+      ArrayArrayNumber:
+        type: array
+        items:
+          type: array
+          items:
+            type: number
+  EnumArrays:
+    type: object
+    properties:
+      just_enum:
+        type: string
+        enum:
+          - bird
+          - eagle
+      array_enum:
+        type: array
+        items:
+          type: string
+          enum:
+            - fish
+            - crab
+      # comment out the following as 2d array of enum is not supported at the moment
+      #array_array_enum:
+      #  type: array
+      #  items:
+      #    type: array
+      #    items:
+      #      type: string
+      #      enum:
+      #        - Cat
+      #        - Dog
 externalDocs:
   description: Find out more about Swagger
   url: 'http://swagger.io'

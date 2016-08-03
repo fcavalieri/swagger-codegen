@@ -1,3 +1,4 @@
+{{>licenseInfo}}
 package {{package}}
 
 {{#imports}}import {{import}}
@@ -36,7 +37,7 @@ class {{classname}}(val defBasePath: String = "{{basePath}}",
 
     {{/pathParams}}
 
-    val contentTypes = List({{#consumes}}"{{mediaType}}", {{/consumes}}"application/json")
+    val contentTypes = List({{#consumes}}"{{{mediaType}}}", {{/consumes}}"application/json")
     val contentType = contentTypes(0)
 
     // query params

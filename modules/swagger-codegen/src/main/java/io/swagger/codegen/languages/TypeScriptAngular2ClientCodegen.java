@@ -5,12 +5,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import io.swagger.codegen.CliOption;
+import io.swagger.codegen.CodegenModel;
 import io.swagger.codegen.CodegenParameter;
 import io.swagger.codegen.SupportingFile;
+import io.swagger.models.ModelImpl;
 import io.swagger.models.properties.ArrayProperty;
 import io.swagger.models.properties.BooleanProperty;
 import io.swagger.models.properties.FileProperty;
 import io.swagger.models.properties.MapProperty;
+import io.swagger.models.properties.ObjectProperty;
 import io.swagger.models.properties.Property;
 
 public class TypeScriptAngular2ClientCodegen extends AbstractTypeScriptClientCodegen {
@@ -44,6 +47,12 @@ public class TypeScriptAngular2ClientCodegen extends AbstractTypeScriptClientCod
     }
 
     @Override
+    protected void addAdditionPropertiesToCodeGenModel(CodegenModel codegenModel, ModelImpl swaggerModel) {
+        codegenModel.additionalPropertiesType = getSwaggerType(swaggerModel.getAdditionalProperties());
+        addImport(codegenModel, codegenModel.additionalPropertiesType);
+    }
+
+    @Override
     public String getName() {
         return "typescript-angular2";
     }
@@ -59,6 +68,8 @@ public class TypeScriptAngular2ClientCodegen extends AbstractTypeScriptClientCod
         supportingFiles.add(new SupportingFile("models.mustache", modelPackage().replace('.', File.separatorChar), "models.ts"));
         supportingFiles.add(new SupportingFile("apis.mustache", apiPackage().replace('.', File.separatorChar), "api.ts"));
         supportingFiles.add(new SupportingFile("index.mustache", getIndexDirectory(), "index.ts"));
+        supportingFiles.add(new SupportingFile("gitignore", "", ".gitignore"));
+        supportingFiles.add(new SupportingFile("git_push.sh.mustache", "", "git_push.sh"));
 
         if(additionalProperties.containsKey(NPM_NAME)) {
             addNpmPackageGeneration();
@@ -106,14 +117,19 @@ public class TypeScriptAngular2ClientCodegen extends AbstractTypeScriptClientCod
             MapProperty mp = (MapProperty)p;
             inner = mp.getAdditionalProperties();
             return "{ [key: string]: " + this.getTypeDeclaration(inner) + "; }";
+        } else if(p instanceof FileProperty || p instanceof ObjectProperty) {
+            return "any";
         } else {
-            return p instanceof FileProperty ? "any" : super.getTypeDeclaration(p);
+            return super.getTypeDeclaration(p);
         }
     }
 
     @Override
     public String getSwaggerType(Property p) {
         String swaggerType = super.getSwaggerType(p);
+        if(languageSpecificPrimitives.contains(swaggerType)) {
+            return swaggerType;
+        }
         return addModelPrefix(swaggerType);
     }
 
@@ -121,11 +137,23 @@ public class TypeScriptAngular2ClientCodegen extends AbstractTypeScriptClientCod
         String type = null;
         if (typeMapping.containsKey(swaggerType)) {
             type = typeMapping.get(swaggerType);
-            if (languageSpecificPrimitives.contains(type))
-                return type;
-        } else
+        } else {
+            type = swaggerType;
+        }
+
+        if (!startsWithLanguageSpecificPrimitiv(type)) {
             type = "models." + swaggerType;
+        }
         return type;
+    }
+
+    private boolean startsWithLanguageSpecificPrimitiv(String type) {
+        for (String langPrimitive:languageSpecificPrimitives) {
+            if (type.startsWith(langPrimitive))  {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

@@ -7,10 +7,8 @@ import io.swagger.models.properties.*;
 import io.swagger.models.Model;
 import io.swagger.models.Operation;
 import io.swagger.models.Swagger;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
-import java.io.File;
 
 public class HaskellServantCodegen extends DefaultCodegen implements CodegenConfig {
 
@@ -432,7 +430,7 @@ public class HaskellServantCodegen extends DefaultCodegen implements CodegenConf
             case "pipes": return "(QueryList 'PipeSeparated (" + type + "))";
             case "multi": return "(QueryList 'MultiParamArray (" + type + "))";
             default:
-                throw new NotImplementedException();
+                throw new UnsupportedOperationException();
         }
     }
 
@@ -473,6 +471,11 @@ public class HaskellServantCodegen extends DefaultCodegen implements CodegenConf
 
         // Create newtypes for things with non-object types
         String dataOrNewtype = "data";
+        // check if it's a ModelImpl before casting 
+        if (!(mod instanceof ModelImpl)) {
+            return model;
+        }
+
         String modelType = ((ModelImpl)  mod).getType();
         if(modelType != "object" && typeMapping.containsKey(modelType)) {
             String newtype = typeMapping.get(modelType);
@@ -493,4 +496,16 @@ public class HaskellServantCodegen extends DefaultCodegen implements CodegenConf
         p.dataType = fixModelChars(p.dataType);
         return p;
     }
+
+    @Override
+    public String escapeQuotationMark(String input) {
+        // remove " to avoid code injection
+        return input.replace("\"", "");
+    }
+
+    @Override
+    public String escapeUnsafeCharacters(String input) {
+        return input.replace("{-", "{_-").replace("-}", "-_}");
+    }
+
 }

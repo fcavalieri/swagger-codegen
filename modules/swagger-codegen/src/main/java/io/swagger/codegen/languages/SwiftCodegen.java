@@ -38,6 +38,7 @@ public class SwiftCodegen extends DefaultCodegen implements CodegenConfig {
     public static final String POD_SCREENSHOTS = "podScreenshots";
     public static final String POD_DOCUMENTATION_URL = "podDocumentationURL";
     public static final String SWIFT_USE_API_NAMESPACE = "swiftUseApiNamespace";
+    public static final String DEFAULT_POD_AUTHORS = "Swagger Codegen";
     protected static final String LIBRARY_PROMISE_KIT = "PromiseKit";
     protected static final String[] RESPONSE_LIBRARIES = { LIBRARY_PROMISE_KIT };
     protected String projectName = "SwaggerClient";
@@ -86,8 +87,10 @@ public class SwiftCodegen extends DefaultCodegen implements CodegenConfig {
                 );
         defaultIncludes = new HashSet<String>(
                 Arrays.asList(
+                    "NSData",
                     "NSDate",
                     "NSURL", // for file
+                    "NSUUID",
                     "Array",
                     "Dictionary",
                     "Set",
@@ -127,10 +130,9 @@ public class SwiftCodegen extends DefaultCodegen implements CodegenConfig {
         typeMapping.put("double", "Double");
         typeMapping.put("object", "AnyObject");
         typeMapping.put("file", "NSURL");
-        //TODO binary should be mapped to byte array
-        // mapped to String as a workaround
-        typeMapping.put("binary", "String");
-        typeMapping.put("ByteArray", "String");
+        typeMapping.put("binary", "NSData");
+        typeMapping.put("ByteArray", "NSData");
+        typeMapping.put("UUID", "NSUUID");
 
         importMapping = new HashMap<String, String>();
 
@@ -191,6 +193,10 @@ public class SwiftCodegen extends DefaultCodegen implements CodegenConfig {
         }
         additionalProperties.put(SWIFT_USE_API_NAMESPACE, swiftUseApiNamespace);
 
+        if (!additionalProperties.containsKey(POD_AUTHORS)) {
+            additionalProperties.put(POD_AUTHORS, DEFAULT_POD_AUTHORS);
+        }
+
         supportingFiles.add(new SupportingFile("Podspec.mustache", "", projectName + ".podspec"));
         supportingFiles.add(new SupportingFile("Cartfile.mustache", "", "Cartfile"));
         supportingFiles.add(new SupportingFile("APIHelper.mustache", sourceFolder, "APIHelper.swift"));
@@ -249,6 +255,11 @@ public class SwiftCodegen extends DefaultCodegen implements CodegenConfig {
         } else
             type = swaggerType;
         return toModelName(type);
+    }
+
+    @Override
+    public boolean isDataTypeBinary(final String dataType) {
+      return dataType != null && dataType.equals("NSData");
     }
 
     /**
@@ -325,9 +336,17 @@ public class SwiftCodegen extends DefaultCodegen implements CodegenConfig {
     @Override
     public CodegenProperty fromProperty(String name, Property p) {
         CodegenProperty codegenProperty = super.fromProperty(name, p);
+        // TODO skip array/map of enum for the time being,
+        // we need to add logic here to handle array/map of enum for any
+        // dimensions
+        if (Boolean.TRUE.equals(codegenProperty.isContainer)) {
+            return codegenProperty;
+        }
+
         if (codegenProperty.isEnum) {
             List<Map<String, String>> swiftEnums = new ArrayList<Map<String, String>>();
             List<String> values = (List<String>) codegenProperty.allowableValues.get("values");
+            
             for (String value : values) {
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("enum", toSwiftyEnumName(value));
@@ -342,7 +361,7 @@ public class SwiftCodegen extends DefaultCodegen implements CodegenConfig {
             // Ensure that the enum type doesn't match a reserved word or
             // the variable name doesn't match the generated enum type or the
             // Swift compiler will generate an error
-            if (isReservedWord(codegenProperty.datatypeWithEnum) || name.equals(codegenProperty.datatypeWithEnum)) {
+            if (isReservedWord(codegenProperty.datatypeWithEnum) || toVarName(name).equals(codegenProperty.datatypeWithEnum)) {
                 codegenProperty.datatypeWithEnum = codegenProperty.datatypeWithEnum + "Enum";
             }
         }
@@ -355,8 +374,8 @@ public class SwiftCodegen extends DefaultCodegen implements CodegenConfig {
         if (value.matches("[A-Z][a-z0-9]+[a-zA-Z0-9]*")) {
             return value;
         }
-        char[] separators = {'-', '_', ' '};
-        return WordUtils.capitalizeFully(StringUtils.lowerCase(value), separators).replaceAll("[-_ ]", "");
+        char[] separators = {'-', '_', ' ', ':'};
+        return WordUtils.capitalizeFully(StringUtils.lowerCase(value), separators).replaceAll("[-_  :]", "");
     }
 
 
@@ -502,6 +521,7 @@ public class SwiftCodegen extends DefaultCodegen implements CodegenConfig {
 
     @Override
     public String toEnumVarName(String name, String datatype) {
+        // TODO: this code is probably useless, because the var name is computed from the value in map.put("enum", toSwiftyEnumName(value));
         // number
         if ("int".equals(datatype) || "double".equals(datatype) || "float".equals(datatype)) {
             String varName = new String(name);
@@ -525,8 +545,9 @@ public class SwiftCodegen extends DefaultCodegen implements CodegenConfig {
 
     @Override
     public String toEnumName(CodegenProperty property) {
-        String enumName = underscore(toModelName(property.name)).toUpperCase();
+        String enumName = toModelName(property.name);
 
+        // TODO: toModelName already does something for names starting with number, so this code is probably never called
         if (enumName.matches("\\d.*")) { // starts with number
             return "_" + enumName;
         } else {
@@ -538,6 +559,17 @@ public class SwiftCodegen extends DefaultCodegen implements CodegenConfig {
     public Map<String, Object> postProcessModels(Map<String, Object> objs) {
         // process enum in models
         return postProcessModelsEnum(objs);
+    }
+
+    @Override
+    public String escapeQuotationMark(String input) {
+        // remove " to avoid code injection
+        return input.replace("\"", "");
+    }
+
+    @Override
+    public String escapeUnsafeCharacters(String input) {
+        return input.replace("*/", "*_/").replace("/*", "/_*");
     }
 
 }

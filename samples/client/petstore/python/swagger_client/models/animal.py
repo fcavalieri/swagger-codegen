@@ -20,7 +20,6 @@ Copyright 2016 SmartBear Software
 
 from pprint import pformat
 from six import iteritems
-import re
 
 
 class Animal(object):
@@ -67,7 +66,6 @@ class Animal(object):
         :param class_name: The class_name of this Animal.
         :type: str
         """
-        
         self._class_name = class_name
 
     def to_dict(self):

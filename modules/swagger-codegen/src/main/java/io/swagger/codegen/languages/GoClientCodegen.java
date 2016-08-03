@@ -146,7 +146,9 @@ public class GoClientCodegen extends DefaultCodegen implements CodegenConfig {
         supportingFiles.add(new SupportingFile("configuration.mustache", "", "configuration.go"));
         supportingFiles.add(new SupportingFile("api_client.mustache", "", "api_client.go"));
         supportingFiles.add(new SupportingFile("api_response.mustache", "", "api_response.go"));
+        supportingFiles.add(new SupportingFile(".travis.yml", "", ".travis.yml"));
         supportingFiles.add(new SupportingFile("pom.mustache", "", "pom.xml"));
+        supportingFiles.add(new SupportingFile("LICENSE", "", "LICENSE"));
     }
 
     @Override
@@ -180,7 +182,7 @@ public class GoClientCodegen extends DefaultCodegen implements CodegenConfig {
     @Override
     public String toVarName(String name) {
         // replace - with _ e.g. created-at => created_at
-        name = name.replaceAll("-", "_");
+        name = sanitizeName(name.replaceAll("-", "_"));
 
         // if it's all uppper case, do nothing
         if (name.matches("^[A-Z_]*$"))
@@ -344,13 +346,15 @@ public class GoClientCodegen extends DefaultCodegen implements CodegenConfig {
 
     @Override
     public String toOperationId(String operationId) {
+        String sanitizedOperationId = new String(sanitizeName(operationId));
+
         // method name cannot use reserved keyword, e.g. return
-        if (isReservedWord(operationId)) {
-            LOGGER.warn(operationId + " (reserved word) cannot be used as method name. Renamed to " + camelize(sanitizeName("call_" + operationId)));
-            operationId = "call_" + operationId;
+        if (isReservedWord(sanitizedOperationId)) {
+            LOGGER.warn(operationId + " (reserved word) cannot be used as method name. Renamed to " + camelize("call_" + operationId));
+            sanitizedOperationId = "call_" + sanitizedOperationId;
         }
 
-        return camelize(operationId);
+        return camelize(sanitizedOperationId);
     }
 
     @Override
@@ -449,5 +453,16 @@ public class GoClientCodegen extends DefaultCodegen implements CodegenConfig {
 
     public void setPackageVersion(String packageVersion) {
         this.packageVersion = packageVersion;
+    }
+
+    @Override
+    public String escapeQuotationMark(String input) {
+        // remove " to avoid code injection
+        return input.replace("\"", "");
+    }
+
+    @Override
+    public String escapeUnsafeCharacters(String input) {
+        return input.replace("*/", "*_/").replace("/*", "/_*");
     }
 }
