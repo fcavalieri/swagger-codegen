@@ -7,15 +7,17 @@ import io.swagger.client.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import io.swagger.client.model.Client;
+import org.joda.time.LocalDate;
 import java.math.BigDecimal;
-import java.util.Date;
+import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-05-06T18:35:03.551+08:00")
+
 public class FakeApi {
   private ApiClient apiClient;
 
@@ -36,8 +38,49 @@ public class FakeApi {
   }
 
   /**
-   * Fake endpoint for testing various parameters
-   * Fake endpoint for testing various parameters
+   * To test \&quot;client\&quot; model
+   * 
+   * @param body client model (required)
+   * @return Client
+   * @throws ApiException if fails to make API call
+   */
+  public Client testClientModel(Client body) throws ApiException {
+    Object localVarPostBody = body;
+    
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling testClientModel");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/fake".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] {  };
+
+    GenericType<Client> localVarReturnType = new GenericType<Client>() {};
+    return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
+   * Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
    * @param number None (required)
    * @param _double None (required)
    * @param string None (required)
@@ -52,7 +95,7 @@ public class FakeApi {
    * @param password None (optional)
    * @throws ApiException if fails to make API call
    */
-  public void testEndpointParameters(BigDecimal number, Double _double, String string, byte[] _byte, Integer integer, Integer int32, Long int64, Float _float, byte[] binary, Date date, Date dateTime, String password) throws ApiException {
+  public void testEndpointParameters(BigDecimal number, Double _double, String string, byte[] _byte, Integer integer, Integer int32, Long int64, Float _float, byte[] binary, LocalDate date, DateTime dateTime, String password) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'number' is set
@@ -111,12 +154,12 @@ if (password != null)
       localVarFormParams.put("password", password);
 
     final String[] localVarAccepts = {
-      "application/xml", "application/json"
+      "application/xml; charset=utf-8", "application/json; charset=utf-8"
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/xml; charset=utf-8", "application/json; charset=utf-8"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -124,5 +167,47 @@ if (password != null)
 
 
     apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+  }
+  /**
+   * To test enum query parameters
+   * 
+   * @param enumQueryString Query parameter enum test (string) (optional, default to -efg)
+   * @param enumQueryInteger Query parameter enum test (double) (optional)
+   * @param enumQueryDouble Query parameter enum test (double) (optional)
+   * @throws ApiException if fails to make API call
+   */
+  public void testEnumQueryParameters(String enumQueryString, BigDecimal enumQueryInteger, Double enumQueryDouble) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/fake".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "enum_query_integer", enumQueryInteger));
+
+    
+    if (enumQueryString != null)
+      localVarFormParams.put("enum_query_string", enumQueryString);
+if (enumQueryDouble != null)
+      localVarFormParams.put("enum_query_double", enumQueryDouble);
+
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] {  };
+
+
+    apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
   }
 }

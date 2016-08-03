@@ -1,3 +1,4 @@
+{{>licenseInfo}}
 /// <reference path="api.d.ts" />
 
 /* tslint:disable:no-unused-variable member-ordering */
@@ -15,10 +16,10 @@ namespace {{package}} {
         protected basePath = '{{basePath}}';
         public defaultHeaders : any = {};
 
-        static $inject: string[] = ['$http', '$httpParamSerializer'];
+        static $inject: string[] = ['$http', '$httpParamSerializer', 'basePath'];
 
         constructor(protected $http: ng.IHttpService, protected $httpParamSerializer?: (d: any) => any, basePath?: string) {
-            if (basePath) {
+            if (basePath !== undefined) {
                 this.basePath = basePath;
             }
         }
@@ -50,9 +51,9 @@ namespace {{package}} {
 {{/hasFormParams}}
 {{#allParams}}
 {{#required}}
-            // verify required parameter '{{paramName}}' is set
-            if (!{{paramName}}) {
-                throw new Error('Missing required parameter {{paramName}} when calling {{nickname}}');
+            // verify required parameter '{{paramName}}' is not null or undefined
+            if ({{paramName}} === null || {{paramName}} === undefined) {
+                throw new Error('Required parameter {{paramName}} was null or undefined when calling {{nickname}}.');
             }
 {{/required}}
 {{/allParams}}

@@ -42,6 +42,11 @@ public class PerlClientCodegen extends DefaultCodegen implements CodegenConfig {
 
     public PerlClientCodegen() {
         super();
+
+        // clear import mapping (from default generator) as perl does not use it
+        // at the moment
+        importMapping.clear();
+
         modelPackage = File.separatorChar + "Object";
         outputFolder = "generated-code" + File.separatorChar + "perl";
         modelTemplateFiles.put("object.mustache", ".pm");
@@ -373,7 +378,8 @@ public class PerlClientCodegen extends DefaultCodegen implements CodegenConfig {
             return underscore("call_" + operationId);
         }
 
-        return underscore(operationId);
+        //return underscore(operationId).replaceAll("[^A-Za-z0-9_]", "");
+        return underscore(sanitizeName(operationId));
     }
 
     public void setModuleName(String moduleName) {
@@ -402,5 +408,16 @@ public class PerlClientCodegen extends DefaultCodegen implements CodegenConfig {
             p.example = "DateTime->from_epoch(epoch => str2time('" + p.example + "'))";
         }
 
+    }
+
+    @Override
+    public String escapeQuotationMark(String input) {
+        return input.replace("'", "");
+    }
+
+    @Override
+    public String escapeUnsafeCharacters(String input) {
+        // remove =end, =cut to avoid code injection
+        return input.replace("=begin", "=_begin").replace("=end", "=_end").replace("=cut", "=_cut").replace("=pod", "=_pod");
     }
 }

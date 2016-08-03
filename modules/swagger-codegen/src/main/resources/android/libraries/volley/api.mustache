@@ -1,3 +1,4 @@
+{{>licenseInfo}}
 package {{package}};
 
 import {{invokerPackage}}.ApiInvoker;
@@ -81,7 +82,7 @@ public class {{classname}} {
   {{/headerParams}}
 
       String[] contentTypes = {
-  {{#consumes}}"{{mediaType}}"{{#hasMore}},{{/hasMore}}{{/consumes}}
+  {{#consumes}}"{{{mediaType}}}"{{#hasMore}},{{/hasMore}}{{/consumes}}
       };
       String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
@@ -167,7 +168,7 @@ public class {{classname}} {
     {{/headerParams}}
 
     String[] contentTypes = {
-      {{#consumes}}"{{mediaType}}"{{#hasMore}},{{/hasMore}}{{/consumes}}
+      {{#consumes}}"{{{mediaType}}}"{{#hasMore}},{{/hasMore}}{{/consumes}}
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 

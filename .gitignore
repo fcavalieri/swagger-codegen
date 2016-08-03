@@ -41,6 +41,7 @@ samples/server-generator/scalatra/target
 samples/server-generator/scalatra/output/.history
 
 # nodejs
+**/node_modules
 samples/server-generator/node/output/node_modules
 samples/server/petstore/nodejs/node_modules
 samples/server/petstore/nodejs-server/node_modules
@@ -53,8 +54,10 @@ samples/client/petstore/qt5cpp/PetStore/PetStore
 samples/client/petstore/qt5cpp/PetStore/Makefile
 
 #Java/Android
-**/.gradle/
+**/.gradle
 samples/client/petstore/java/hello.txt
+samples/client/petstore/java/okhttp-gson/hello.txt
+samples/client/petstore/java/jersey2-java8/hello.txt
 samples/client/petstore/android/default/hello.txt
 samples/client/petstore/android/volley/.gradle/
 samples/client/petstore/android/volley/build/
@@ -62,32 +65,47 @@ samples/client/petstore/java/jersey2/.gradle/
 samples/client/petstore/java/jersey2/build/
 samples/client/petstore/java/okhttp-gson/.gradle/
 samples/client/petstore/java/okhttp-gson/build/
+samples/client/petstore/java/feign/build/
+samples/client/petstore/java/retrofit/build/
+samples/client/petstore/java/retrofit2/build/
+samples/client/petstore/java/retrofit2rx/build/
+samples/client/petstore/java/default/build/
+samples/client/petstore/scala/build/
 
 #PHP
 samples/client/petstore/php/SwaggerClient-php/composer.lock
 samples/client/petstore/php/SwaggerClient-php/vendor/
 samples/client/petstore/silex/SwaggerServer/composer.lock
 samples/client/petstore/silex/SwaggerServer/venodr/
+**/vendor/
+**/composer.lock
 
 # Perl
 samples/client/petstore/perl/deep_module_test/
 
 # Objc
-samples/client/petstore/objc/PetstoreClient.xcworkspace/xcuserdata
-samples/client/petstore/objc/SwaggerClientTests/SwaggerClient.xcodeproj/xcuserdata
-samples/client/petstore/objc/SwaggerClientTests/Build
-samples/client/petstore/objc/SwaggerClientTests/Pods
-samples/client/petstore/objc/SwaggerClientTests/SwaggerClient.xcworkspace
-samples/client/petstore/objc/SwaggerClientTests/Podfile.lock
+samples/client/petstore/objc/default/SwaggerClientTests/SwaggerClient.xcodeproj/xcuserdata
+samples/client/petstore/objc/default/SwaggerClientTests/Build
+samples/client/petstore/objc/default/SwaggerClientTests/Pods
+samples/client/petstore/objc/default/SwaggerClientTests/SwaggerClient.xcworkspace
+samples/client/petstore/objc/default/SwaggerClientTests/Podfile.lock
+
+samples/client/petstore/objc/core-data/SwaggerClientTests/SwaggerClient.xcodeproj/xcuserdata
+samples/client/petstore/objc/core-data/SwaggerClientTests/Build
+samples/client/petstore/objc/core-data/SwaggerClientTests/Pods
+samples/client/petstore/objc/core-data/SwaggerClientTests/SwaggerClient.xcworkspace
+samples/client/petstore/objc/core-data/SwaggerClientTests/Podfile.lock
 
 # Swift
 samples/client/petstore/swift/SwaggerClientTests/SwaggerClient.xcodeproj/xcuserdata
 samples/client/petstore/swift/SwaggerClientTests/SwaggerClient.xcworkspace/xcuserdata
 samples/client/petstore/swift/SwaggerClientTests/Pods/Pods.xcodeproj/xcuserdata
 samples/client/petstore/swift/SwaggerClientTests/Pods/Pods.xcodeproj/xcshareddata/xcschemes
+samples/client/petstore/swift/**/SwaggerClientTests/Podfile.lock 
 
 # C#
 *.csproj.user
+samples/client/petstore/csharp/SwaggerClient/IO.Swagger.userprefs
 samples/client/petstore/csharp/SwaggerClientTest/.vs
 samples/client/petstore/csharp/SwaggerClientTest/obj
 samples/client/petstore/csharp/SwaggerClientTest/bin
@@ -104,6 +122,7 @@ samples/client/petstore/csharp/SwaggerClient/bin
 samples/client/petstore/csharp/SwaggerClient/obj/Debug/
 samples/client/petstore/csharp/SwaggerClient/bin/Debug/
 samples/client/petstore/csharp/SwaggerClient/packages
+samples/client/petstore/csharp/SwaggerClient/TestResult.xml
 
 # Python
 *.pyc
@@ -116,15 +135,10 @@ samples/client/petstore/python/.venv/
 
 # ts
 samples/client/petstore/typescript-node/npm/node_modules
-samples/client/petstore/typescript-fetch/with-package-metadata/node_modules
-samples/client/petstore/typescript-fetch/with-package-metadata/dist
-samples/client/petstore/typescript-fetch/with-package-metadata/typings
-samples/client/petstore/typescript-fetch/default/node_modules
-samples/client/petstore/typescript-fetch/default/dist
-samples/client/petstore/typescript-fetch/default/typings
-samples/client/petstore/typescript-fetch/default-es6/node_modules
-samples/client/petstore/typescript-fetch/default-es6/dist
-samples/client/petstore/typescript-fetch/default-es6/typings
+samples/client/petstore/typescript-node/**/typings
+samples/client/petstore/typescript-angular/**/typings
+samples/client/petstore/typescript-fetch/**/dist/
+samples/client/petstore/typescript-fetch/**/typings
 
 #28msec
 node_modules

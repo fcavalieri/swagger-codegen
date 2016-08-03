@@ -1,3 +1,4 @@
+{{>partial_header}}
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,23 +17,41 @@ using RestSharp;
 namespace {{packageName}}.Client
 {
     /// <summary>
-    /// API client is mainly responible for making the HTTP call to the API backend.
+    /// API client is mainly responsible for making the HTTP call to the API backend.
     /// </summary>
-    public class ApiClient
+    public partial class ApiClient
     {
+        private JsonSerializerSettings serializerSettings = new JsonSerializerSettings
+        {
+            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor
+        };
+
+        /// <summary>
+        /// Allows for extending request processing for <see cref="ApiClient"/> generated code.
+        /// </summary>
+        /// <param name="request">The RestSharp request object</param>
+        partial void InterceptRequest(IRestRequest request);
+
+        /// <summary>
+        /// Allows for extending response processing for <see cref="ApiClient"/> generated code.
+        /// </summary>
+        /// <param name="request">The RestSharp request object</param>
+        /// <param name="response">The RestSharp response object</param>
+        partial void InterceptResponse(IRestRequest request, IRestResponse response);
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default configuration and base path ({{basePath}}).
+        /// with default configuration and base path ({{{basePath}}}).
         /// </summary>
         public ApiClient()
         {
             Configuration = Configuration.Default;
-            RestClient = new RestClient("{{basePath}}");
+            RestClient = new RestClient("{{{basePath}}}");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path ({{basePath}}).
+        /// with default base path ({{{basePath}}}).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
         public ApiClient(Configuration config = null)
@@ -42,7 +61,7 @@ namespace {{packageName}}.Client
             else
                 Configuration = config;
 
-            RestClient = new RestClient("{{basePath}}");
+            RestClient = new RestClient("{{{basePath}}}");
         }
 
         /// <summary>
@@ -50,7 +69,7 @@ namespace {{packageName}}.Client
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "{{basePath}}")
+        public ApiClient(String basePath = "{{{basePath}}}")
         {
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
@@ -80,30 +99,38 @@ namespace {{packageName}}.Client
 
         // Creates and sets up a RestRequest prior to a call.
         private RestRequest PrepareRequest(
+/* 28msec */
             String path, RestSharp.Method method, Dictionary<String, List<String>> queryParams, Object postBody,
+/* 28msec */
             Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
             Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
             String contentType)
         {
             var request = new RestRequest(path, method);
+/* 28msec */
             String userContentType = null;
+/* 28msec */
 
             // add path parameter, if any
             foreach(var param in pathParams)
                 request.AddParameter(param.Key, param.Value, ParameterType.UrlSegment);
 
             // add header parameter, if any
+/* 28msec */
             foreach(var param in headerParams)
             {
                 request.AddHeader(param.Key, param.Value);
                 if (param.Key.ToLower().Equals("content-type"))
                     userContentType = param.Value;
             }
+/* 28msec */
 
             // add query parameter, if any
+/* 28msec */
             foreach(var param in queryParams)
                 foreach(var value in param.Value)
                     request.AddQueryParameter(param.Key, value);
+/* 28msec */
 
             // add form parameter, if any
             foreach(var param in formParams)
@@ -124,11 +151,13 @@ namespace {{packageName}}.Client
 
             if (postBody != null) // http body (model or byte[]) parameter
             {
+/* 28msec */
                 if (userContentType != null)
                 {
                     request.AddParameter(userContentType, postBody, ParameterType.RequestBody);
                 }
                 else if (postBody.GetType() == typeof(String))
+/* 28msec */
                 {
                     request.AddParameter("application/json", postBody, ParameterType.RequestBody);
                 }
@@ -155,7 +184,9 @@ namespace {{packageName}}.Client
         /// <param name="contentType">Content Type of the request</param>
         /// <returns>Object</returns>
         public Object CallApi(
+/* 28msec */
             String path, RestSharp.Method method, Dictionary<String, List<String>> queryParams, Object postBody,
+/* 28msec */
             Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
             Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
             String contentType)
@@ -169,6 +200,7 @@ namespace {{packageName}}.Client
             // set user agent
             RestClient.UserAgent = Configuration.UserAgent;
 
+            InterceptRequest(request);
             {{^supportsUWP}}
             var response = RestClient.Execute(request);
             {{/supportsUWP}}
@@ -176,6 +208,8 @@ namespace {{packageName}}.Client
             // Using async method to perform sync call (uwp-only)
             var response = RestClient.ExecuteTaskAsync(request).Result;
             {{/supportsUWP}}
+            InterceptResponse(request, response);
+
             return (Object) response;
         }
         {{#supportsAsync}}
@@ -193,7 +227,9 @@ namespace {{packageName}}.Client
         /// <param name="contentType">Content type.</param>
         /// <returns>The Task instance.</returns>
         public async System.Threading.Tasks.Task<Object> CallApiAsync(
+/* 28msec */
             String path, RestSharp.Method method, Dictionary<String, List<String>> queryParams, Object postBody,
+/* 28msec */
             Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
             Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
             String contentType)
@@ -201,7 +237,9 @@ namespace {{packageName}}.Client
             var request = PrepareRequest(
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, contentType);
+            InterceptRequest(request);
             var response = await RestClient.ExecuteTaskAsync(request);
+            InterceptResponse(request, response);
             return (Object)response;
         }{{/supportsAsync}}
 
@@ -229,14 +267,16 @@ namespace {{packageName}}.Client
                 return FileParameter.Create(name, ReadAsBytes(stream), "no_file_name_provided");
         }
 
+/* 28msec */
         /// <summary>
-        /// If parameter is DateTime or DateTimeOffset, output in a formatted string (default ISO 8601), customizable with Configuration.DateTime.
+        /// If parameter is DateTime, output in a formatted string (default ISO 8601), customizable with Configuration.DateTime.
         /// If parameter is a boolean, return "true" or "false"
         /// Otherwise just return its string conversion.
         /// </summary>
         /// <param name="obj">The parameter (header, path, query, form).</param>
         /// <returns>Formatted string.</returns>
         public string SingleParameterToString(object obj)
+/* 28msec */
         {
             if (obj is DateTime)
                 // Return a formatted date string - Can be customized with Configuration.DateTimeFormat
@@ -250,6 +290,7 @@ namespace {{packageName}}.Client
                 // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
                 // For example: 2009-06-15T13:45:30.0000000
                 return ((DateTimeOffset)obj).ToString (Configuration.DateTimeFormat);
+/* 28msec */
             else if (obj is bool)
                 return ((bool)obj) ? "true" : "false";
             else if (obj is Boolean)
@@ -257,7 +298,9 @@ namespace {{packageName}}.Client
             else
                 return Convert.ToString (obj);
         }
+/* 28msec */
 
+/* 28msec */
         /// <summary>
         /// If parameter is DateTime or DateTimeOffset, output in a formatted string (default ISO 8601), customizable with Configuration.DateTime.
         /// If parameter is a boolean, return "true" or "false"
@@ -280,6 +323,7 @@ namespace {{packageName}}.Client
                 return new List<string> { SingleParameterToString(obj) };
             }
         }
+/* 28msec */
 
         /// <summary>
         /// Deserialize the JSON string into a proper object.
@@ -331,7 +375,7 @@ namespace {{packageName}}.Client
             // at this point, it must be a model (json)
             try
             {
-                return JsonConvert.DeserializeObject(response.Content, type);
+                return JsonConvert.DeserializeObject(response.Content, type, serializerSettings);
             }
             catch (Exception e)
             {
@@ -413,7 +457,8 @@ namespace {{packageName}}.Client
         {
             return Convert.ChangeType(source, dest);
         }
-        
+
+/* 28msec */        
         /// <summary>
         /// Adds pattern-based parameters (after name validation) to a dictionary query parameters.
         /// </summary>
@@ -436,6 +481,7 @@ namespace {{packageName}}.Client
                     throw new ApiException((int)400, "Invalid parameter " + entry.Key + ", parameter name must match the regular expression \"" + pattern + "\"");
             }
         }
+/* 28msec */
 
         /// <summary>
         /// Convert stream to byte array

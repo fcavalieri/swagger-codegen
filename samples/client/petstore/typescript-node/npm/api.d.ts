@@ -1,5 +1,6 @@
 import request = require('request');
 import http = require('http');
+import Promise = require('bluebird');
 export declare class Category {
     'id': number;
     'name': string;
@@ -14,9 +15,9 @@ export declare class Order {
 }
 export declare namespace Order {
     enum StatusEnum {
-        StatusEnum_placed,
-        StatusEnum_approved,
-        StatusEnum_delivered,
+        Placed,
+        Approved,
+        Delivered,
     }
 }
 export declare class Pet {
@@ -29,9 +30,9 @@ export declare class Pet {
 }
 export declare namespace Pet {
     enum StatusEnum {
-        StatusEnum_available,
-        StatusEnum_pending,
-        StatusEnum_sold,
+        Available,
+        Pending,
+        Sold,
     }
 }
 export declare class Tag {
@@ -78,12 +79,14 @@ export declare enum PetApiApiKeys {
 export declare class PetApi {
     protected basePath: string;
     protected defaultHeaders: any;
+    protected _useQuerystring: boolean;
     protected authentications: {
         'default': Authentication;
         'api_key': ApiKeyAuth;
         'petstore_auth': OAuth;
     };
     constructor(basePath?: string);
+    useQuerystring: boolean;
     setApiKey(key: PetApiApiKeys, value: string): void;
     accessToken: string;
     private extendObj<T1, T2>(objA, objB);
@@ -126,12 +129,14 @@ export declare enum StoreApiApiKeys {
 export declare class StoreApi {
     protected basePath: string;
     protected defaultHeaders: any;
+    protected _useQuerystring: boolean;
     protected authentications: {
         'default': Authentication;
         'api_key': ApiKeyAuth;
         'petstore_auth': OAuth;
     };
     constructor(basePath?: string);
+    useQuerystring: boolean;
     setApiKey(key: StoreApiApiKeys, value: string): void;
     accessToken: string;
     private extendObj<T1, T2>(objA, objB);
@@ -160,12 +165,14 @@ export declare enum UserApiApiKeys {
 export declare class UserApi {
     protected basePath: string;
     protected defaultHeaders: any;
+    protected _useQuerystring: boolean;
     protected authentications: {
         'default': Authentication;
         'api_key': ApiKeyAuth;
         'petstore_auth': OAuth;
     };
     constructor(basePath?: string);
+    useQuerystring: boolean;
     setApiKey(key: UserApiApiKeys, value: string): void;
     accessToken: string;
     private extendObj<T1, T2>(objA, objB);

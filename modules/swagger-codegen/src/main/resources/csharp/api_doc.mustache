@@ -1,7 +1,7 @@
 # {{packageName}}.Api.{{classname}}{{#description}}
 {{description}}{{/description}}
 
-All URIs are relative to *{{basePath}}*
+All URIs are relative to *{{{basePath}}}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,6 +10,7 @@ Method | HTTP request | Description
 
 {{#operations}}
 {{#operation}}
+<a name="{{{operationIdLowerCase}}}"></a>
 # **{{{operationId}}}**
 > {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}void{{/returnType}} {{operationId}} ({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = null{{/optionalMethodArgument}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
 
@@ -33,14 +34,14 @@ namespace Example
         {
             {{#hasAuthMethods}}{{#authMethods}}{{#isBasic}}
             // Configure HTTP basic authorization: {{{name}}}
-            Configuration.Default.Username = 'YOUR_USERNAME';
-            Configuration.Default.Password = 'YOUR_PASSWORD';{{/isBasic}}{{#isApiKey}}
+            Configuration.Default.Username = "YOUR_USERNAME";
+            Configuration.Default.Password = "YOUR_PASSWORD";{{/isBasic}}{{#isApiKey}}
             // Configure API key authorization: {{{name}}}
-            Configuration.Default.ApiKey.Add('{{{keyParamName}}}', 'YOUR_API_KEY');
+            Configuration.Default.ApiKey.Add("{{{keyParamName}}}", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add('{{{keyParamName}}}', 'Bearer');{{/isApiKey}}{{#isOAuth}}
+            // Configuration.Default.ApiKeyPrefix.Add("{{{keyParamName}}}", "Bearer");{{/isApiKey}}{{#isOAuth}}
             // Configure OAuth2 access token for authorization: {{{name}}}
-            Configuration.Default.AccessToken = 'YOUR_ACCESS_TOKEN';{{/isOAuth}}{{/authMethods}}
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";{{/isOAuth}}{{/authMethods}}
             {{/hasAuthMethods}}
 
             var apiInstance = new {{classname}}();
@@ -87,8 +88,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: {{#consumes}}{{mediaType}}{{#hasMore}}, {{/hasMore}}{{/consumes}}{{^consumes}}Not defined{{/consumes}}
- - **Accept**: {{#produces}}{{mediaType}}{{#hasMore}}, {{/hasMore}}{{/produces}}{{^produces}}Not defined{{/produces}}
+ - **Content-Type**: {{#consumes}}{{{mediaType}}}{{#hasMore}}, {{/hasMore}}{{/consumes}}{{^consumes}}Not defined{{/consumes}}
+ - **Accept**: {{#produces}}{{{mediaType}}}{{#hasMore}}, {{/hasMore}}{{/produces}}{{^produces}}Not defined{{/produces}}
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

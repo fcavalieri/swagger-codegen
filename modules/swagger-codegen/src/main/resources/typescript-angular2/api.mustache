@@ -1,7 +1,9 @@
-import {Http, Headers, RequestOptionsArgs, Response, URLSearchParams} from 'angular2/http';
-import {Injectable} from 'angular2/core';
+{{>licenseInfo}}
+import {Http, Headers, RequestOptionsArgs, Response, URLSearchParams} from '@angular/http';
+import {Injectable, Optional} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import * as models from '../model/models';
+import 'rxjs/Rx';
 
 /* tslint:disable:no-unused-variable member-ordering */
 
@@ -18,7 +20,7 @@ export class {{classname}} {
     protected basePath = '{{basePath}}';
     public defaultHeaders : Headers = new Headers();
 
-    constructor(protected http: Http, basePath: string) {
+    constructor(protected http: Http, @Optional() basePath: string) {
         if (basePath) {
             this.basePath = basePath;
         }
@@ -34,7 +36,7 @@ export class {{classname}} {
         const path = this.basePath + '{{path}}'{{#pathParams}}
             .replace('{' + '{{baseName}}' + '}', String({{paramName}})){{/pathParams}};
 
-        let queryParameters: any = ""; // This should probably be an object in the future
+        let queryParameters = new URLSearchParams();
         let headerParams = this.defaultHeaders;
 {{#hasFormParams}}
         let formParams = new URLSearchParams();
@@ -42,20 +44,20 @@ export class {{classname}} {
 {{/hasFormParams}}
 {{#allParams}}
 {{#required}}
-        // verify required parameter '{{paramName}}' is set
-        if (!{{paramName}}) {
-            throw new Error('Missing required parameter {{paramName}} when calling {{nickname}}');
+        // verify required parameter '{{paramName}}' is not null or undefined
+        if ({{paramName}} === null || {{paramName}} === undefined) {
+            throw new Error('Required parameter {{paramName}} was null or undefined when calling {{nickname}}.');
         }
 {{/required}}
 {{/allParams}}
 {{#queryParams}}
         if ({{paramName}} !== undefined) {
-            queryParameters['{{baseName}}'] = {{paramName}};
+            queryParameters.set('{{baseName}}', String({{paramName}}));
         }
 
 {{/queryParams}}
 {{#headerParams}}
-            headerParams.set('{{baseName}}', {{paramName }});
+            headerParams.set('{{baseName}}', String({{paramName}}));
 
 {{/headerParams}}
 {{#hasFormParams}}
@@ -79,7 +81,13 @@ export class {{classname}} {
         {{/hasFormParams}}
 
         return this.http.request(path, requestOptions)
-            .map((response: Response) => response.json());
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
     }
 
 {{/operation}}

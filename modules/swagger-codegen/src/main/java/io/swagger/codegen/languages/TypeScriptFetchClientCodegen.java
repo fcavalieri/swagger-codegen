@@ -15,6 +15,11 @@ public class TypeScriptFetchClientCodegen extends AbstractTypeScriptClientCodege
 
     public TypeScriptFetchClientCodegen() {
         super();
+
+        // clear import mapping (from default generator) as TS does not use it
+        // at the moment
+        importMapping.clear();
+
         outputFolder = "generated-code/typescript-fetch";
         embeddedTemplateDir = templateDir = "TypeScript-Fetch";
         this.cliOptions.add(new CliOption(NPM_NAME, "The name under which you want to publish generated npm package"));
@@ -26,11 +31,11 @@ public class TypeScriptFetchClientCodegen extends AbstractTypeScriptClientCodege
         super.processOpts();
         supportingFiles.add(new SupportingFile("api.mustache", "", "api.ts"));
         supportingFiles.add(new SupportingFile("git_push.sh.mustache", "", "git_push.sh"));
-        supportingFiles.add(new SupportingFile("assign.ts", "", "assign.ts"));
         supportingFiles.add(new SupportingFile("README.md", "", "README.md"));
         supportingFiles.add(new SupportingFile("package.json.mustache", "", "package.json"));
         supportingFiles.add(new SupportingFile("typings.json.mustache", "", "typings.json"));
         supportingFiles.add(new SupportingFile("tsconfig.json.mustache", "", "tsconfig.json"));
+        supportingFiles.add(new SupportingFile("gitignore", "", ".gitignore"));
 
         if(additionalProperties.containsKey(NPM_NAME)) {
             this.setNpmName(additionalProperties.get(NPM_NAME).toString());
