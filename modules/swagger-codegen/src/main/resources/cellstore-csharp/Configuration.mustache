@@ -36,7 +36,7 @@ namespace {{packageName}}.Client
                              Dictionary<String, String> apiKeyPrefix = null,
                              string tempFolderPath = null,
                              string dateTimeFormat = null,
-                             int timeout = 100000,
+                             int timeout = 1800000,
                              string userAgent = "{{#httpUserAgent}}{{.}}{{/httpUserAgent}}{{^httpUserAgent}}Swagger-Codegen/{{packageVersion}}/csharp{{/httpUserAgent}}"
                             )
         {
@@ -92,7 +92,7 @@ namespace {{packageName}}.Client
         };
 
         /// <summary>
-        /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 100000 milliseconds.
+        /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 1800000 milliseconds.
         /// </summary>
         /// <value>Timeout.</value>
         public int Timeout
