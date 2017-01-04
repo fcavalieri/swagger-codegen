@@ -255,7 +255,7 @@ namespace {{packageName}}.Api
             {{/formParams}}
 /* 28msec */
             {{#bodyParam}}
-            if ({{paramName}} != null && {{paramName}}.GetType() != typeof(byte[]))
+            if ({{paramName}} != null && {{paramName}}.GetType() != typeof(byte[]) && {{paramName}}.GetType() != typeof(String))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize({{paramName}}); // http body (model) parameter
             }
@@ -394,7 +394,7 @@ namespace {{packageName}}.Api
             {{/formParams}}
 /* 28msec */
             {{#bodyParam}}
-            if ({{paramName}} != null && {{paramName}}.GetType() != typeof(byte[]))
+            if ({{paramName}} != null && {{paramName}}.GetType() != typeof(byte[]) && {{paramName}}.GetType() != typeof(String))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize({{paramName}}); // http body (model) parameter
             }
