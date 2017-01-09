@@ -86,8 +86,8 @@ namespace {{packageName}}.Client
         public static readonly ExceptionFactory DefaultExceptionFactory = (methodName, request, response) =>
         {
             int status = (int) response.StatusCode;
-            if (status >= 400) return new ApiException(status, String.Format("Error calling {0}", methodName), request, response);
-            if (status == 0) return new ApiException(status, String.Format("Error calling {0}", methodName), request, response);
+            if (status >= 400) return new ApiException(status, String.Format("Error calling {0}: {1}", methodName, response.Content), request, response);
+            if (status == 0) return new ApiException(status, String.Format("Error calling {0}: {1}", methodName, response.ErrorMessage), request, response);
             return null;
         };
 
