@@ -1,5 +1,6 @@
 {{>partial_header}}
 using System;
+using RestSharp;
 
 namespace {{packageName}}.Client
 {
@@ -15,10 +16,16 @@ namespace {{packageName}}.Client
         public int ErrorCode { get; set; }
 
         /// <summary>
-        /// Gets or sets the error content (body json object)
+        /// Gets or sets the request
         /// </summary>
-        /// <value>The error content (Http response body).</value>
-        public {{#supportsAsync}}dynamic{{/supportsAsync}}{{^supportsAsync}}object{{/supportsAsync}} ErrorContent { get; private set; }
+        /// <value>The http request that generated the error.</value>
+        public IRestRequest Request { get; set; }
+
+        /// <summary>
+        /// Gets or sets the request
+        /// </summary>
+        /// <value>The http response containing the generated error.</value>
+        public IRestResponse Response { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiException"/> class.
@@ -41,10 +48,11 @@ namespace {{packageName}}.Client
         /// <param name="errorCode">HTTP status code.</param>
         /// <param name="message">Error message.</param>
         /// <param name="errorContent">Error content.</param>
-        public ApiException(int errorCode, string message, {{#supportsAsync}}dynamic{{/supportsAsync}}{{^supportsAsync}}object{{/supportsAsync}} errorContent = null) : base(message)
+        public ApiException(int errorCode, string message, IRestRequest request, IRestResponse response) : base(message)
         {
-            this.ErrorCode = errorCode;
-            this.ErrorContent = errorContent;
+          this.ErrorCode = errorCode;
+          this.Request = request;
+          this.Response = response;
         }
     }
 
