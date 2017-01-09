@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
+using System.Collections;
 using RestSharp;
 using {{packageName}}.Client;
 {{#hasImport}}using {{packageName}}.Model;
@@ -255,7 +257,28 @@ namespace {{packageName}}.Api
             {{/formParams}}
 /* 28msec */
             {{#bodyParam}}
-            if ({{paramName}} != null && {{paramName}}.GetType() != typeof(byte[]) && {{paramName}}.GetType() != typeof(String))
+            if ({{paramName}} != null && {{paramName}} is IEnumerable<string>)
+            {
+                StringBuilder localVarSb = new StringBuilder();
+                foreach (string localVarItem in {{paramName}} as IEnumerable<string>)
+                    localVarSb.AppendLine(localVarItem);
+                localVarPostBody = localVarSb.ToString();
+            }
+            else if ({{paramName}} != null && {{paramName}} is IEnumerable<String>)
+            {
+                StringBuilder localVarSb = new StringBuilder();
+                foreach (string localVarItem in {{paramName}} as IEnumerable<String>)
+                    localVarSb.AppendLine(localVarItem);
+                localVarPostBody = localVarSb.ToString();
+            }
+            else if ({{paramName}} != null && {{paramName}} is IEnumerable)
+            {
+                StringBuilder localVarSb = new StringBuilder();
+                foreach (string localVarItem in {{paramName}} as IEnumerable<string>)
+                    localVarSb.AppendLine(Configuration.ApiClient.Serialize(localVarItem));
+                localVarPostBody = localVarSb.ToString();
+            }
+            else if ({{paramName}} != null && {{paramName}}.GetType() != typeof(byte[]) && {{paramName}}.GetType() != typeof(String))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize({{paramName}}); // http body (model) parameter
             }
@@ -397,6 +420,27 @@ namespace {{packageName}}.Api
             {{/formParams}}
 /* 28msec */
             {{#bodyParam}}
+            if ({{paramName}} != null && {{paramName}} is IEnumerable<string>)
+            {
+                StringBuilder localVarSb = new StringBuilder();
+                foreach (string localVarItem in {{paramName}} as IEnumerable<string>)
+                    localVarSb.AppendLine(localVarItem);
+                localVarPostBody = localVarSb.ToString();
+            }
+            else if ({{paramName}} != null && {{paramName}} is IEnumerable<String>)
+            {
+                StringBuilder localVarSb = new StringBuilder();
+                foreach (string localVarItem in {{paramName}} as IEnumerable<String>)
+                    localVarSb.AppendLine(localVarItem);
+                localVarPostBody = localVarSb.ToString();
+            }
+            else if ({{paramName}} != null && {{paramName}} is IEnumerable)
+            {
+                StringBuilder localVarSb = new StringBuilder();
+                foreach (string localVarItem in {{paramName}} as IEnumerable<string>)
+                    localVarSb.AppendLine(Configuration.ApiClient.Serialize(localVarItem));
+                localVarPostBody = localVarSb.ToString();
+            }
             if ({{paramName}} != null && {{paramName}}.GetType() != typeof(byte[]) && {{paramName}}.GetType() != typeof(String))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize({{paramName}}); // http body (model) parameter
