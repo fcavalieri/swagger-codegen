@@ -274,7 +274,7 @@ namespace {{packageName}}.Api
             else if ({{paramName}} != null && {{paramName}} is IEnumerable)
             {
                 StringBuilder localVarSb = new StringBuilder();
-                foreach (string localVarItem in {{paramName}} as IEnumerable<string>)
+                foreach (dynamic localVarItem in {{paramName}} as IEnumerable)
                     localVarSb.AppendLine(Configuration.ApiClient.Serialize(localVarItem));
                 localVarPostBody = localVarSb.ToString();
             }
@@ -437,7 +437,7 @@ namespace {{packageName}}.Api
             else if ({{paramName}} != null && {{paramName}} is IEnumerable)
             {
                 StringBuilder localVarSb = new StringBuilder();
-                foreach (string localVarItem in {{paramName}} as IEnumerable<string>)
+                foreach (dynamic localVarItem in {{paramName}} as IEnumerable)
                     localVarSb.AppendLine(Configuration.ApiClient.Serialize(localVarItem));
                 localVarPostBody = localVarSb.ToString();
             }
