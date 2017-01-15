@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using RestSharp;
+using Newtonsoft.Json.Linq;
 using {{packageName}}.Client;
 {{#hasImport}}using {{packageName}}.Model;
 {{/hasImport}}
@@ -271,7 +272,7 @@ namespace {{packageName}}.Api
                     localVarSb.AppendLine(localVarItem);
                 localVarPostBody = localVarSb.ToString();
             }
-            else if ({{paramName}} != null && {{paramName}} is IEnumerable)
+            else if ({{paramName}} != null && {{paramName}} is IEnumerable  && !({{paramName}} is JContainer))
             {
                 StringBuilder localVarSb = new StringBuilder();
                 foreach (dynamic localVarItem in {{paramName}} as IEnumerable)
@@ -434,7 +435,7 @@ namespace {{packageName}}.Api
                     localVarSb.AppendLine(localVarItem);
                 localVarPostBody = localVarSb.ToString();
             }
-            else if ({{paramName}} != null && {{paramName}} is IEnumerable)
+            else if ({{paramName}} != null && {{paramName}} is IEnumerable  && !({{paramName}} is JContainer))
             {
                 StringBuilder localVarSb = new StringBuilder();
                 foreach (dynamic localVarItem in {{paramName}} as IEnumerable)
