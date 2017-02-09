@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using RestSharp;
+using Newtonsoft.Json.Linq;
 using {{packageName}}.Client;
 {{#hasImport}}using {{packageName}}.Model;
 {{/hasImport}}
@@ -257,34 +258,42 @@ namespace {{packageName}}.Api
             {{/formParams}}
 /* 28msec */
             {{#bodyParam}}
-            if ({{paramName}} != null && {{paramName}} is IEnumerable<string>)
+            if ({{paramName}} != null)
             {
-                StringBuilder localVarSb = new StringBuilder();
-                foreach (string localVarItem in {{paramName}} as IEnumerable<string>)
-                    localVarSb.AppendLine(localVarItem);
-                localVarPostBody = localVarSb.ToString();
-            }
-            else if ({{paramName}} != null && {{paramName}} is IEnumerable<String>)
-            {
-                StringBuilder localVarSb = new StringBuilder();
-                foreach (string localVarItem in {{paramName}} as IEnumerable<String>)
-                    localVarSb.AppendLine(localVarItem);
-                localVarPostBody = localVarSb.ToString();
-            }
-            else if ({{paramName}} != null && {{paramName}} is IEnumerable)
-            {
-                StringBuilder localVarSb = new StringBuilder();
-                foreach (dynamic localVarItem in {{paramName}} as IEnumerable)
-                    localVarSb.AppendLine(Configuration.ApiClient.Serialize(localVarItem));
-                localVarPostBody = localVarSb.ToString();
-            }
-            else if ({{paramName}} != null && {{paramName}}.GetType() != typeof(byte[]) && {{paramName}}.GetType() != typeof(String))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize({{paramName}}); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = {{paramName}}; // byte array
+                if ({{paramName}} is byte[] || {{paramName}} is string || {{paramName}} is String)
+                    localVarPostBody = {{paramName}};
+                else if ({{paramName}} is JObject)
+                    localVarPostBody = Configuration.ApiClient.Serialize({{paramName}});
+                else if ({{paramName}} is IEnumerable<string>)
+                {
+                    StringBuilder localVarSb = new StringBuilder();
+                    foreach (string localVarItem in {{paramName}} as IEnumerable<string>)
+                        localVarSb.AppendLine(localVarItem);
+                    localVarPostBody = localVarSb.ToString();
+                }
+                else if ({{paramName}} is IEnumerable<String>)
+                {
+                    StringBuilder localVarSb = new StringBuilder();
+                    foreach (string localVarItem in {{paramName}} as IEnumerable<String>)
+                        localVarSb.AppendLine(localVarItem);
+                    localVarPostBody = localVarSb.ToString();
+                }
+                else if ({{paramName}} is IEnumerable<JObject>)
+                {
+                    StringBuilder localVarSb = new StringBuilder();
+                    foreach (dynamic localVarItem in {{paramName}} as IEnumerable<JObject>)
+                        localVarSb.AppendLine(Configuration.ApiClient.Serialize(localVarItem));
+                    localVarPostBody = localVarSb.ToString();
+                }
+                else if ({{paramName}} is IEnumerable && !({{paramName}} is JContainer))
+                {
+                    StringBuilder localVarSb = new StringBuilder();
+                    foreach (dynamic localVarItem in {{paramName}} as IEnumerable)
+                        localVarSb.AppendLine(Configuration.ApiClient.Serialize(localVarItem));
+                    localVarPostBody = localVarSb.ToString();
+                }
+                else
+                    localVarPostBody = Configuration.ApiClient.Serialize({{paramName}});
             }
             {{/bodyParam}}
 
@@ -420,34 +429,42 @@ namespace {{packageName}}.Api
             {{/formParams}}
 /* 28msec */
             {{#bodyParam}}
-            if ({{paramName}} != null && {{paramName}} is IEnumerable<string>)
+            if ({{paramName}} != null)
             {
-                StringBuilder localVarSb = new StringBuilder();
-                foreach (string localVarItem in {{paramName}} as IEnumerable<string>)
-                    localVarSb.AppendLine(localVarItem);
-                localVarPostBody = localVarSb.ToString();
-            }
-            else if ({{paramName}} != null && {{paramName}} is IEnumerable<String>)
-            {
-                StringBuilder localVarSb = new StringBuilder();
-                foreach (string localVarItem in {{paramName}} as IEnumerable<String>)
-                    localVarSb.AppendLine(localVarItem);
-                localVarPostBody = localVarSb.ToString();
-            }
-            else if ({{paramName}} != null && {{paramName}} is IEnumerable)
-            {
-                StringBuilder localVarSb = new StringBuilder();
-                foreach (dynamic localVarItem in {{paramName}} as IEnumerable)
-                    localVarSb.AppendLine(Configuration.ApiClient.Serialize(localVarItem));
-                localVarPostBody = localVarSb.ToString();
-            }
-            if ({{paramName}} != null && {{paramName}}.GetType() != typeof(byte[]) && {{paramName}}.GetType() != typeof(String))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize({{paramName}}); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = {{paramName}}; // byte array
+                if ({{paramName}} is byte[] || {{paramName}} is string || {{paramName}} is String)
+                    localVarPostBody = {{paramName}};
+                else if ({{paramName}} is JObject)
+                    localVarPostBody = Configuration.ApiClient.Serialize({{paramName}});
+                else if ({{paramName}} is IEnumerable<string>)
+                {
+                    StringBuilder localVarSb = new StringBuilder();
+                    foreach (string localVarItem in {{paramName}} as IEnumerable<string>)
+                        localVarSb.AppendLine(localVarItem);
+                    localVarPostBody = localVarSb.ToString();
+                }
+                else if ({{paramName}} is IEnumerable<String>)
+                {
+                    StringBuilder localVarSb = new StringBuilder();
+                    foreach (string localVarItem in {{paramName}} as IEnumerable<String>)
+                        localVarSb.AppendLine(localVarItem);
+                    localVarPostBody = localVarSb.ToString();
+                }
+                else if ({{paramName}} is IEnumerable<JObject>)
+                {
+                    StringBuilder localVarSb = new StringBuilder();
+                    foreach (dynamic localVarItem in {{paramName}} as IEnumerable<JObject>)
+                        localVarSb.AppendLine(Configuration.ApiClient.Serialize(localVarItem));
+                    localVarPostBody = localVarSb.ToString();
+                }
+                else if ({{paramName}} is IEnumerable && !({{paramName}} is JContainer))
+                {
+                    StringBuilder localVarSb = new StringBuilder();
+                    foreach (dynamic localVarItem in {{paramName}} as IEnumerable)
+                        localVarSb.AppendLine(Configuration.ApiClient.Serialize(localVarItem));
+                    localVarPostBody = localVarSb.ToString();
+                }
+                else
+                    localVarPostBody = Configuration.ApiClient.Serialize({{paramName}});
             }
             {{/bodyParam}}
 
