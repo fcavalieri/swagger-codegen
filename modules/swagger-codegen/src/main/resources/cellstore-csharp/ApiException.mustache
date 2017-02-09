@@ -70,6 +70,7 @@ namespace {{packageName}}.Client
                 sb.AppendLine("URI: " + Request.Resource);
                 sb.AppendLine("Parameters: ");
                 if (Request.Parameters != null)
+                {
                     foreach (Parameter parameter in Request.Parameters)
                     {
                         if (parameter != null)
@@ -79,6 +80,7 @@ namespace {{packageName}}.Client
                                 sb.AppendFormat("* Type: {0}, Name: {1}, Value: ***hidden***\n", parameter.Type, parameter.Name);
                         }
                     }
+                }
             }
 
             if (Response != null)
