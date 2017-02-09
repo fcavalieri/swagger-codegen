@@ -1,5 +1,6 @@
 {{>partial_header}}
 using System;
+using System.Text;
 using RestSharp;
 
 namespace {{packageName}}.Client
@@ -54,6 +55,55 @@ namespace {{packageName}}.Client
           this.Request = request;
           this.Response = response;
         }
+
+        public string ToStringDebug()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.ToString());
+            sb.AppendLine("\n====Library====");
+            sb.AppendLine(Configuration.ToDebugReport());
+            if (Request != null)
+            {
+                sb.AppendLine("\n====Request====");
+                sb.AppendLine("Timeout: " + Request.Timeout + "ms");
+                sb.AppendLine("Method: " + Request.Method);
+                sb.AppendLine("URI: " + Request.Resource);
+                sb.AppendLine("Parameters: ");
+                if (Request.Parameters != null)
+                {
+                    foreach (Parameter parameter in Request.Parameters)
+                    {
+                        if (parameter != null)
+                        {
+                            sb.AppendFormat("* Type: {0}, Name: {1}, Value: {2}\n", parameter.Type, parameter.Name, parameter.Value);
+                            if ("token".Equals(parameter.Name))
+                                sb.AppendFormat("* Type: {0}, Name: {1}, Value: ***hidden***\n", parameter.Type, parameter.Name);
+                        }
+                    }
+                }
+            }
+
+            if (Response != null)
+            {
+                sb.AppendLine("\n====Response====");
+                sb.AppendLine("Status: " + Response.StatusCode + " " + Response.StatusDescription);
+                if (Response.ResponseUri != null)
+                  sb.AppendFormat("URI: {0}://{1}:{2}{3}\n", Response.ResponseUri.Scheme, Response.ResponseUri.Host, Response.ResponseUri.Port, Response.ResponseUri.AbsolutePath);
+                sb.AppendLine("Headers: ");
+                if (Response.Headers != null)
+                {
+                    foreach (Parameter header in Response.Headers)
+                    {
+                        if (header != null)
+                            sb.AppendFormat("* Name: {0}, Value: {1}\n", header.Name, header.Value);
+                    }
+                }
+                sb.AppendLine("Content Type: " + Response.ContentType);
+                sb.AppendLine("Content: " + Response.Content);
+            }
+            return sb.ToString();
+        }
+
     }
 
 }
