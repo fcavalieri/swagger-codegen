@@ -93,8 +93,10 @@ namespace {{packageName}}.Client
                 if (Response.Headers != null)
                 {
                     foreach (Parameter header in Response.Headers)
+                    {
                         if (header != null)
                             sb.AppendFormat("* Name: {0}, Value: {1}\n", header.Name, header.Value);
+                    }
                 }
                 sb.AppendLine("Content Type: " + Response.ContentType);
                 sb.AppendLine("Content: " + Response.Content);
