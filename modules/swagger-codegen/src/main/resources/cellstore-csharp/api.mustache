@@ -228,7 +228,8 @@ namespace {{packageName}}.Api
                 {{/consumes}}
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
+/* 28msec */
+            /*
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 {{#produces}}
@@ -238,7 +239,8 @@ namespace {{packageName}}.Api
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
+*/
+/* 28msec */
 /* 28msec */
             {{#hardcodedQueryParams}}localVarQueryParams.Add("{{baseName}}", Configuration.ApiClient.ParameterToString("{{defaultValue}}")); // hardcoded query parameter
             {{/hardcodedQueryParams}}
@@ -344,9 +346,19 @@ namespace {{packageName}}.Api
                 if (exception != null) throw exception;
             }
 
+            String localResponseFormat = null;
+            List<String> formatParameter = null;
+            if (localVarQueryParams.ContainsKey("format"))
+            {
+                formatParameter = localVarQueryParams["format"];
+                if (formatParameter != null && formatParameter.Count == 1)
+                    localResponseFormat = formatParameter.ElementAt(0);
+            }
+
+
             {{#returnType}}return new ApiResponse<{{{returnType}}}>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                ({{{returnType}}}) Configuration.ApiClient.Deserialize(localVarResponse, typeof({{#returnContainer}}{{{returnContainer}}}{{/returnContainer}}{{^returnContainer}}{{{returnType}}}{{/returnContainer}})));{{/returnType}}
+                ({{{returnType}}}) Configuration.ApiClient.Deserialize(localVarResponse, typeof({{#returnContainer}}{{{returnContainer}}}{{/returnContainer}}{{^returnContainer}}{{{returnType}}}{{/returnContainer}}), localResponseFormat));{{/returnType}}
             {{^returnType}}return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);{{/returnType}}
@@ -399,7 +411,8 @@ namespace {{packageName}}.Api
                 {{/consumes}}
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
+/* 28msec */
+            /*
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 {{#produces}}
@@ -409,7 +422,8 @@ namespace {{packageName}}.Api
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
+            */
+/* 28msec */
 /* 28msec */
             {{#hardcodedQueryParams}}localVarQueryParams.Add("{{baseName}}", Configuration.ApiClient.SingleParameterToString("{{defaultValue}}")); // hardcoded query parameter
             {{/hardcodedQueryParams}}            
@@ -517,9 +531,18 @@ namespace {{packageName}}.Api
                 if (exception != null) throw exception;
             }
 
+            String localResponseFormat = null;
+            List<String> formatParameter = null;
+            if (localVarQueryParams.ContainsKey("format"))
+            {
+                formatParameter = localVarQueryParams["format"];
+                if (formatParameter != null && formatParameter.Count == 1)
+                    localResponseFormat = formatParameter.ElementAt(0);
+            }
+
             {{#returnType}}return new ApiResponse<{{{returnType}}}>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                ({{{returnType}}}) Configuration.ApiClient.Deserialize(localVarResponse, typeof({{#returnContainer}}{{{returnContainer}}}{{/returnContainer}}{{^returnContainer}}{{{returnType}}}{{/returnContainer}})));{{/returnType}}
+                ({{{returnType}}}) Configuration.ApiClient.Deserialize(localVarResponse, typeof({{#returnContainer}}{{{returnContainer}}}{{/returnContainer}}{{^returnContainer}}{{{returnType}}}{{/returnContainer}}), localResponseFormat));{{/returnType}}
             {{^returnType}}return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);{{/returnType}}
