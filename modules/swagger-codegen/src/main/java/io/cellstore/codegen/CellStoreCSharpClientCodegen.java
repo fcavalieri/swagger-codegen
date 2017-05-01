@@ -25,7 +25,7 @@ public class CellStoreCSharpClientCodegen extends CSharpClientCodegen
 
   @Override
   public String getName() {
-    return "cellstore-csharp";
+    return "xbrlserver-csharp";
   }
 
   @Override
